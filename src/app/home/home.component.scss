@@ -1,0 +1,56 @@
+.laboratoire-list {
+    margin: 20px auto;
+    max-width: 1200px; /* Largeur maximale de la table */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fond clair pour le conteneur */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  }
+  
+  .laboratoire-list h2 {
+    text-align: center; /* Centrer le titre */
+    color: #343a40; /* Couleur du texte du titre */
+    font-size: 28px; /* Taille du titre */
+    margin-bottom: 20px; /* Espacement sous le titre */
+  }
+  
+  table {
+    width: 100%; /* Le tableau prend toute la largeur du conteneur */
+    border-collapse: collapse; /* Fusion des bordures */
+  }
+  
+  thead {
+    background-color: #343a40; /* Fond sombre pour l'en-tête */
+    color: white; /* Texte blanc pour l'en-tête */
+  }
+  
+  th, td {
+    padding: 12px 15px; /* Espacement interne des cellules */
+    text-align: left; /* Aligner le texte à gauche */
+    border-bottom: 1px solid #ddd; /* Bordure sous chaque ligne */
+  }
+  
+  th {
+    font-size: 18px; /* Taille du texte de l'en-tête */
+    text-transform: uppercase; /* Texte en majuscule pour l'en-tête */
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f1f1; /* Fond gris clair au survol des lignes */
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fond différent pour les lignes paires */
+  }
+  
+  tbody td {
+    font-size: 16px; /* Taille du texte des cellules */
+    color: #333; /* Couleur du texte des cellules */
+  }
+  
+  tbody td img {
+    max-width: 50px; /* Limiter la taille du logo */
+    height: auto; /* Garder les proportions */
+  }
+  
+  

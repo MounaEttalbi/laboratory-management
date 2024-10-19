@@ -1,0 +1,40 @@
+header {
+    background-color: #343a40; /* Couleur de fond du header */
+    padding: 20px; /* Espacement interne du header */
+    color: white; /* Couleur du texte */
+  }
+  
+  header nav {
+    display: flex; /* Utilisation de flexbox pour centrer les éléments */
+    justify-content: space-between; /* Espace entre le titre et un potentiel menu de navigation */
+    align-items: center; /* Centrage vertical des éléments */
+  }
+  
+  header h1 {
+    margin: 0; /* Enlever la marge par défaut du titre */
+    font-size: 24px; /* Taille du texte du titre */
+    font-weight: bold; /* Met le titre en gras */
+  }
+  
+  nav ul {
+    list-style-type: none; /* Enlève les puces des éléments de la liste */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Affiche les éléments de la liste horizontalement */
+  }
+  
+  nav ul li {
+    margin-left: 20px; /* Espacement entre les éléments du menu */
+  }
+  
+  nav ul li a {
+    color: white; /* Couleur des liens */
+    text-decoration: none; /* Enlève le soulignement des liens */
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline; /* Soulignement au survol des liens */
+  }
+  

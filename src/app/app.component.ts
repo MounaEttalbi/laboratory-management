@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, HomeComponent, HeaderComponent],
+  template: `
+    
+    <app-header />
+    <app-home />
+  `,
+  styles: [],
 })
 export class AppComponent {
-  title = 'projet_libre_frontend';
+  title = 'frontend-projet-libre';
 }
