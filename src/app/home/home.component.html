@@ -1,26 +1,54 @@
 <div class="laboratoire-list">
-    <h2>Liste des Laboratoires</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Status</th>
-          <th>NRC</th>
-          <th>Date Activation</th>
-          <th>Logo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let labo of laboratoires">
-          <td>{{ labo.id }}</td>
-          <td>{{ labo.nom }}</td>
-          <td>{{ labo.statut }}</td>
-          <td>{{ labo.nrc }}</td>
-          <td>{{ labo.dateActivation }}</td>
-          <td><img [src]="labo.logo" alt="Logo"></td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>Liste des Laboratoires</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Status</th>
+        <th>NRC</th>
+        <th>Date Activation</th>
+        <th>Logo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let labo of laboratoires">
+        <td>{{ labo.id }}</td>
+        <td>{{ labo.nom }}</td>
+        <td>{{ labo.statut }}</td>
+        <td>{{ labo.nrc }}</td>
+        <td>{{ labo.dateActivation | date }}</td>
+        <td><img [src]="labo.logo" alt="Logo" width="50" height="50"></td>
+        <!-- Icone d'édition -->
+        <td>
+          <button (click)="editLabo(labo)">
+            <i class="fas fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire de modification qui s'affiche lors du clic -->
+  <div *ngIf="selectedLabo" class="edit-form">
+    <h3>Modifier Laboratoire</h3>
+    <form (ngSubmit)="onSubmit()">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" [(ngModel)]="selectedLabo.nom" name="nom" required>
+
+      <label for="statut">Statut</label>
+      <input type="text" id="statut" [(ngModel)]="selectedLabo.statut" name="statut" required>
+
+      <label for="nrc">NRC</label>
+      <input type="text" id="nrc" [(ngModel)]="selectedLabo.nrc" name="nrc" required>
+
+      <label for="dateActivation">Date Activation</label>
+      <input type="date" id="dateActivation" [(ngModel)]="selectedLabo.dateActivation" name="dateActivation" required>
+
+      <!-- Bouton de soumission -->
+      <button type="submit" >Enregistrer</button>
+      <button type="button" (click)="cancelEdit()">Annuler</button>
+    </form>
   </div>
-  
+</div>
