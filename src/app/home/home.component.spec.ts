@@ -46,13 +46,13 @@ describe('HomeComponent', () => {
     expect(rows[0].nativeElement.cells[1].textContent).toContain('Labo1'); // Vérifier le nom
     expect(rows[0].nativeElement.cells[2].textContent).toContain('Actif'); // Vérifier le statut
     expect(rows[0].nativeElement.cells[3].textContent).toContain('12345'); // Vérifier le NRC
-    expect(rows[0].nativeElement.cells[4].textContent).toContain('2024-01-01'); // Vérifier la date d'activation
+    expect(rows[0].nativeElement.cells[4].textContent).toContain('Jan 1, 2024'); // Vérifier la date d'activation
     expect(rows[0].nativeElement.cells[5].querySelector('img').src).toContain('url_to_logo1'); // Vérifier le logo
 
     expect(rows[1].nativeElement.cells[1].textContent).toContain('Labo2'); // Vérifier le nom
     expect(rows[1].nativeElement.cells[2].textContent).toContain('Inactif'); // Vérifier le statut
     expect(rows[1].nativeElement.cells[3].textContent).toContain('67890'); // Vérifier le NRC
-    expect(rows[1].nativeElement.cells[4].textContent).toContain('2024-01-02'); // Vérifier la date d'activation
+    expect(rows[1].nativeElement.cells[4].textContent).toContain('Jan 2, 2024'); // Vérifier la date d'activation
     expect(rows[1].nativeElement.cells[5].querySelector('img').src).toContain('url_to_logo2'); // Vérifier le logo
   });
 });

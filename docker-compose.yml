@@ -1,0 +1,6 @@
+services:
+  frontend:
+    build:
+      context: . # Dossier contenant le Dockerfile
+    ports:
+      - "4200:80" # Map le port 80 du conteneur au port 4200 de l'hôte
