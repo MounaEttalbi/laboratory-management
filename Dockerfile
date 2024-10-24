@@ -14,9 +14,9 @@ RUN npm install
 COPY . .
 
 # Construire l'application pour la production
-RUN npm run build 
+RUN npm run build --prod  # Assurez-vous que cela génère bien le dossier dist/projet_libre_frontend
 
-# Étape 2 : Servir l'application
+# Étape 2 : Servir l'application avec NGINX
 FROM nginx:alpine
 
 # Copier les fichiers de l'étape de construction vers le répertoire NGINX
