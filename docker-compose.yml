@@ -1,6 +1,10 @@
+version: '3'
 services:
-  frontend:
-    build:
-      context: . # Dossier contenant le Dockerfile
+  backend:
+    build: ./ProjetLibre
     ports:
-      - "4200:80" # Map le port 80 du conteneur au port 4200 de l'hôte
+      - "8080:8080"
+  frontend:
+    build: ./ProjetLibreFrontend
+    ports:
+      - "4200:80"
