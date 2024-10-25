@@ -20,7 +20,7 @@ RUN npm run build --prod  # Assurez-vous que cela génère bien le dossier dist/
 FROM nginx:alpine
 
 # Copier les fichiers de l'étape de construction vers le répertoire NGINX
-COPY --from=builder /app/dist/projet_libre_frontend/broxser /usr/share/nginx/html
+COPY --from=builder /app/dist/projet_libre_frontend/browser /usr/share/nginx/html
 
 # Exposer le port 80
 EXPOSE 80
