@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copier les fichiers de l'étape de construction vers le répertoire NGINX
-COPY --from=builder /app/dist/projet_libre_frontend /usr/share/nginx/html
+COPY --from=builder /app/dist/projet_libre_frontend/broxser /usr/share/nginx/html
 
 # Exposer le port 80
 EXPOSE 80
