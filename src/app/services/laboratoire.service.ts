@@ -6,20 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LaboratoireService {
-
-  private apiUrl = 'http://localhost:8080/api/laboratoires/all';  // URL de votre API Spring Boot
- 
+  private apiUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/all';  // URL pour récupérer tous les laboratoires
+  private addUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/ajouterLaboratoire'; // URL pour ajouter un laboratoire
 
   constructor(private http: HttpClient) { }
 
-  // Méthode pour récupérer les laboratoires
+  // Récupérer la liste des laboratoires
   getLaboratoires(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Méthode pour mettre à jour un laboratoire
-  modifierLaboratoire(labo: any): Observable<any> {
-    const modifyUrl = `http://localhost:8080/api/laboratoires/modifierLabo/${labo.id}`;
-    return this.http.put<any>(modifyUrl, labo);
+  // Ajouter un laboratoire avec FormData
+  addLaboratoire(laboratoireData: FormData): Observable<any> {
+    return this.http.post<any>(this.addUrl, laboratoireData);
   }
 }

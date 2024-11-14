@@ -1,0 +1,126 @@
+.laboratoire-list {
+    margin: 20px auto;
+    max-width: 1200px; /* Largeur maximale de la table */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fond clair pour le conteneur */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  }
+  
+  .laboratoire-list h2 {
+    text-align: center; /* Centrer le titre */
+    color: #685209; /* Couleur du texte du titre */
+    font-size: 28px; /* Taille du titre */
+    margin-bottom: 20px; /* Espacement sous le titre */
+  }
+  
+  table {
+    width: 100%; /* Le tableau prend toute la largeur du conteneur */
+    border-collapse: collapse; /* Fusion des bordures */
+  }
+  
+  thead {
+    background-color: #9b8211; /* Fond sombre pour l'en-tête */
+    color: white; /* Texte blanc pour l'en-tête */
+  }
+  
+  th, td {
+    padding: 12px 15px; /* Espacement interne des cellules */
+    text-align: left; /* Aligner le texte à gauche */
+    border-bottom: 1px solid #ddd; /* Bordure sous chaque ligne */
+  }
+  
+  th {
+    font-size: 18px; /* Taille du texte de l'en-tête */
+    text-transform: uppercase; /* Texte en majuscule pour l'en-tête */
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f1f1; /* Fond gris clair au survol des lignes */
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fond différent pour les lignes paires */
+  }
+  
+  tbody td {
+    font-size: 16px; /* Taille du texte des cellules */
+    color: #020200; /* Couleur du texte des cellules */
+  }
+  
+  tbody td img {
+    max-width: 50px; /* Limiter la taille du logo */
+    height: auto; /* Garder les proportions */
+  }
+  
+  /*style pour formulaire de modification les infos de laboratoire*/
+  .edit-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .edit-form h3 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .edit-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .edit-form input[type="text"],
+  .edit-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .edit-form input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .edit-form button[type="submit"],
+  .edit-form button[type="button"] {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .edit-form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .edit-form button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 4%;
+  }
+  
+  .edit-form button:hover {
+    opacity: 0.9;
+  }
+  button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  
