@@ -1,18 +1,21 @@
-<form (ngSubmit)="addLaboratoire()">
-  <label for="nom">Nom du Laboratoire:</label>
-  <input type="text" [(ngModel)]="laboratoire.nom" name="nom" />
+<div *ngIf="isAdding">
+<form (ngSubmit)="addLaboratoire()" enctype="multipart/form-data">
+  
+  <label for="nom">Nom</label>
+  <input type="text" id="nom" name="nom" [(ngModel)]="laboratoire.nom" required>
 
-  <label for="nrc">NRC:</label>
-  <input type="text" [(ngModel)]="laboratoire.nrc" name="nrc" />
+  <label for="nrc">NRC</label>
+  <input type="text" id="nrc" name="nrc" [(ngModel)]="laboratoire.nrc" required>
 
-  <label for="statut">Statut:</label>
-  <input type="number" [(ngModel)]="laboratoire.statut" name="statut" />
+  <label for="statut">Statut</label>
+  <input type="text" id="statut" name="statut" [(ngModel)]="laboratoire.statut" required>
 
-  <label for="date_activation">Date d'Activation:</label>
-  <input type="date" [(ngModel)]="laboratoire.date_activation" name="date_activation" />
+  <label for="date_activation">Date Activation</label>
+  <input type="date" id="date_activation" name="date_activation" [(ngModel)]="laboratoire.date_activation" required>
 
-  <label for="logo">Logo:</label>
-  <input type="file" (change)="onFileChange($event)" name="logo" />
+  <label for="logo">Logo</label>
+  <input type="file" id="logo" name="logo" (change)="onFileChange($event)" required>
 
-  <button type="submit">Ajouter le laboratoire</button>
+  <button type="submit">Ajouter</button>
 </form>
+</div>

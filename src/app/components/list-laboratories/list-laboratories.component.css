@@ -123,4 +123,25 @@
     color: #333;
   }
   
-  
+  /* laboratoire-list.component.css */
+.add-button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.add-button .material-icons {
+  margin-right: 8px;
+}

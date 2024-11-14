@@ -21,9 +21,19 @@
           <td>{{ labo.dateActivation | date }}</td>
           <td><img [src]="labo.logo" alt="Logo" width="50" height="50"></td>
           <td>
+            <button (click)="openDeleteDialog(labo.id)" class="delete-button">Supprimer</button>
           </td>
         </tr>
       </tbody>
     </table>
+
+     <!-- Bouton Ajouter avec l'icône -->
+  <div class="add-button-container">
+    <button (click)="openAddLaboratory()" class="add-button">
+      <span class="material-icons">add</span> Ajouter un Laboratoire
+    </button>
+  </div>
+
+  
   </div>
   

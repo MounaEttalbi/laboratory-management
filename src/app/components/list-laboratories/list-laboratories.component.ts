@@ -3,6 +3,10 @@ import { LaboratoireService } from '../../services/laboratoire.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { MatDialog } from '@angular/material/dialog';
+import { AddLaboratoryComponent } from '../add-laboratory/add-laboratory.component';
+import { DeleteLaboratoryComponent } from '../delete-laboratory/delete-laboratory.component';
+
 @Component({
   selector: 'app-list-laboratories',
   standalone: true,
@@ -15,7 +19,8 @@ export class ListLaboratoriesComponent implements OnInit {
   laboratoires: any[] = [];  // Tableau pour stocker les laboratoires
   selectedLabo: any = null;  // Propriété pour le laboratoire sélectionné pour l'édition
 
-  constructor(private laboratoireService: LaboratoireService) { }
+  constructor(private laboratoireService: LaboratoireService,
+    private dialog: MatDialog ) { }
 
   ngOnInit(): void {
     // Récupération des laboratoires au chargement du composant
@@ -28,4 +33,15 @@ export class ListLaboratoriesComponent implements OnInit {
       }
     );
   }  
+  openAddLaboratory(): void {
+    this.dialog.open(AddLaboratoryComponent, {
+      width: '500px'
+    });
+  }
+  openDeleteDialog(laboId: number): void {
+    const dialogRef = this.dialog.open(DeleteLaboratoryComponent, {
+      width: '400px',
+      data: { id: laboId }  // Pass the laboratory ID to the dialog
+    });
+}
 }
