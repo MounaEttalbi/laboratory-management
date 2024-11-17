@@ -1,0 +1,45 @@
+<div class="laboratoire-list">
+    <h2>Liste des Laboratoires</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Status</th>
+          <th>NRC</th>
+          <th>Date Activation</th>
+          <th>Logo</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let labo of laboratoires">
+          <td>{{ labo.id }}</td>
+          <td>{{ labo.nom }}</td>
+          <td>{{ labo.statut }}</td>
+          <td>{{ labo.nrc }}</td>
+          <td>{{ labo.dateActivation | date }}</td>
+          <td><img [src]="labo.logo" alt="Logo" width="50" height="50"></td>
+          <td>
+             <!-- Icône pour modifier -->
+          <button (click)="openEditDialog(labo.id)" class="edit-button">
+            <span class="material-icons">edit</span>
+          </button>
+            <!-- Icône pour supprimer -->
+            <button (click)="openDeleteDialog(labo.id)" class="delete-button">
+              <span class="material-icons">delete</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+     <!-- Bouton Ajouter avec l'icône -->
+  <div class="add-button-container">
+    <button (click)="openAddLaboratory()" class="add-button">
+      <span class="material-icons">add</span> Ajouter un Laboratoire
+    </button>
+  </div>
+
+  
+  </div>

@@ -1,0 +1,78 @@
+/* Style global pour la sidebar */
+.sidenav-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidenav {
+    width: 240px;
+    background-color: #e2e4e7; /* Couleur de fond de la sidebar */
+    color: white;
+    padding-top: 10px;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #58ac78;
+    border-bottom: 1px solid #333;
+  }
+  
+  .sidebar-icon {
+    font-size: 36px;
+    margin-right: 10px;
+  }
+  
+  .sidebar-title {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  mat-nav-list a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+  }
+  
+  mat-nav-list a:hover {
+    background-color: #77a590; /* Survol des liens */
+  }
+  
+  .active-link {
+    background-color: #6fad89; /* Lien actif */
+  }
+  
+  mat-icon.matListIcon {
+    margin-right: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .sidenav {
+      width: 60px; /* Réduire la largeur sur mobile */
+    }
+  
+    .sidebar-title {
+      display: none; /* Cacher le titre sur mobile */
+    }
+  
+    mat-nav-list a {
+      justify-content: center;
+    }
+  }
+  .example-container {
+  display: flex;
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+mat-sidenav-content {
+  flex: 1;
+  padding: 16px;
+}
