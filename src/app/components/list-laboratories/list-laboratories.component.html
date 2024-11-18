@@ -21,7 +21,14 @@
           <td>{{ labo.dateActivation | date }}</td>
           <td><img [src]="labo.logo" alt="Logo" width="50" height="50"></td>
           <td>
-            <button (click)="openDeleteDialog(labo.id)" class="delete-button">Supprimer</button>
+             <!-- Icône pour modifier -->
+          <button (click)="openEditDialog(labo.id)" class="edit-button">
+            <span class="material-icons">edit</span>
+          </button>
+            <!-- Icône pour supprimer -->
+            <button (click)="openDeleteDialog(labo.id)" class="delete-button">
+              <span class="material-icons">delete</span>
+            </button>
           </td>
         </tr>
       </tbody>

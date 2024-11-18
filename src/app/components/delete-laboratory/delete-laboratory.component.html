@@ -1,7 +1,9 @@
-<h2>Confirmer la suppression</h2>
-<p>Êtes-vous sûr de vouloir supprimer ce laboratoire ?</p>
-
-<div class="button-group">
-  <button (click)="deleteLaboratoire()" class="confirm-button">Supprimer</button>
-  <button (click)="closeDialog()" class="cancel-button">Annuler</button>
-</div>
+<div class="delete-dialog-container">
+    <h2 class="dialog-title">Confirmation de suppression</h2>
+    <p class="dialog-message">Voulez-vous vraiment supprimer ce laboratoire ?</p>
+    <div class="dialog-buttons">
+      <button class="confirm-button" (click)="deleteLaboratoire()">Confirmer</button>
+      <button class="cancel-button" (click)="dialogRef.close()">Annuler</button>
+    </div>
+  </div>
+  

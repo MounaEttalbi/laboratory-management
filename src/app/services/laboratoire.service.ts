@@ -16,7 +16,6 @@ export class LaboratoireService {
   getLaboratoires(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-
   // Ajouter un laboratoire avec FormData
   addLaboratoire(laboratoire: any): Observable<any> {
     // Supprimez les en-têtes personnalisés et laissez Angular gérer automatiquement le type de contenu
@@ -25,7 +24,18 @@ export class LaboratoireService {
   
   // Méthode pour supprimer un laboratoire
   deleteLaboratoire(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.deleteUrl}/${id}`);
+    const url = `${this.deleteUrl}/${id}`;
+    console.log("URL générée pour suppression :", url); // Log de l'URL utilisée
+    return this.http.delete<void>(url);
   }
-
+  
+  updateLaboratoire(id: number, laboratoire: any): Observable<any> {
+    const url = `http://localhost:8889/PROJETLIBRE/api/laboratoires/modifierLabo/${id}`;
+    return this.http.put<any>(url, laboratoire);
+  }
+  getLaboratoireById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+  
+  
 }

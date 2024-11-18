@@ -1,0 +1,63 @@
+.add-container {
+    background-color: #447d56; /* Fond vert foncé */
+    padding: 20px; /* Espace autour du formulaire */
+    border-radius: 15px; /* Coins arrondis */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    color: white; /* Couleur du texte */
+    max-width: 500px; /* Limiter la largeur */
+    margin: 30px auto; /* Centrer verticalement et horizontalement */
+}
+
+.add-container h2 {
+    font-size: 24px; /* Taille agrandie */
+    color: white; /* Texte en blanc */
+    text-align: center; /* Centrage */
+    margin-bottom: 20px; /* Espacement sous le titre */
+}
+
+form {
+    background-color: #f9f9f9; /* Fond neutre */
+    padding: 25px; /* Espacement intérieur généreux */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre subtile */
+    max-width: 100%; /* Adapter à la largeur de .add-container */
+}
+
+form label {
+    display: block; /* Chaque label sur une nouvelle ligne */
+    margin-bottom: 5px; /* Espacement sous le label */
+    font-weight: bold; /* Texte en gras */
+    color: #333; /* Couleur du texte */
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="file"] {
+    width: 100%; /* Largeur maximale */
+    padding: 12px; /* Espacement confortable */
+    margin-bottom: 20px; /* Espacement entre les champs */
+    border: 1px solid #ddd; /* Bordure discrète */
+    border-radius: 8px; /* Coins arrondis */
+    font-size: 14px; /* Taille uniforme */
+    box-sizing: border-box; /* Gestion des marges/paddings */
+}
+
+form input[type="file"] {
+    padding: 8px; /* Réduction pour les fichiers */
+}
+
+form button {
+    background-color: #4CAF50; /* Fond vert vif */
+    color: white; /* Texte en blanc */
+    padding: 12px; /* Espacement généreux */
+    border-radius: 8px; /* Coins arrondis */
+    font-size: 16px; /* Taille lisible */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Indication cliquable */
+    transition: all 0.3s ease; /* Animation douce */
+}
+
+form button:hover {
+    background-color: #3e8e41; /* Couleur légèrement plus foncée */
+    transform: scale(1.05); /* Léger agrandissement au survol */
+}

@@ -1,21 +1,23 @@
-<div *ngIf="isAdding">
-<form (ngSubmit)="addLaboratoire()" enctype="multipart/form-data">
-  
-  <label for="nom">Nom</label>
-  <input type="text" id="nom" name="nom" [(ngModel)]="laboratoire.nom" required>
+<div class="add-container">
+    <h2>Ajouter un laboratoire</h2>
+    <div *ngIf="isAdding">
+        <form (ngSubmit)="addLaboratoire()" enctype="multipart/form-data">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" [(ngModel)]="laboratoire.nom" required>
 
-  <label for="nrc">NRC</label>
-  <input type="text" id="nrc" name="nrc" [(ngModel)]="laboratoire.nrc" required>
+            <label for="nrc">NRC</label>
+            <input type="text" id="nrc" name="nrc" [(ngModel)]="laboratoire.nrc" required>
 
-  <label for="statut">Statut</label>
-  <input type="text" id="statut" name="statut" [(ngModel)]="laboratoire.statut" required>
+            <label for="statut">Statut</label>
+            <input type="text" id="statut" name="statut" [(ngModel)]="laboratoire.statut" required>
 
-  <label for="date_activation">Date Activation</label>
-  <input type="date" id="date_activation" name="date_activation" [(ngModel)]="laboratoire.date_activation" required>
+            <label for="date_activation">Date Activation</label>
+            <input type="date" id="date_activation" name="date_activation" [(ngModel)]="laboratoire.date_activation" required>
 
-  <label for="logo">Logo</label>
-  <input type="file" id="logo" name="logo" (change)="onFileChange($event)" required>
+            <label for="logo">Logo</label>
+            <input type="file" id="logo" name="logo" (change)="onFileChange($event)" required>
 
-  <button type="submit">Ajouter</button>
-</form>
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
 </div>

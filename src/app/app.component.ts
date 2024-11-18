@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './components/header/header.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HomeComponent, HeaderComponent],
-  template: `
-    
-    <router-outlet/>
-  `,
-  styles: [],
+  standalone: true, // Indique que ce composant est autonome
+  imports: [RouterModule], // Importez les modules nécessaires ici
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend-projet-libre';
+  title = 'gestion-de-laboratoire';
 }

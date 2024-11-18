@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { LaboratoireService } from '../../services/laboratoire.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 import { AddLaboratoryComponent } from '../add-laboratory/add-laboratory.component';
@@ -9,8 +10,6 @@ import { DeleteLaboratoryComponent } from '../delete-laboratory/delete-laborator
 
 @Component({
   selector: 'app-list-laboratories',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './list-laboratories.component.html',
   styleUrl: './list-laboratories.component.css'
 })
@@ -20,7 +19,8 @@ export class ListLaboratoriesComponent implements OnInit {
   selectedLabo: any = null;  // Propriété pour le laboratoire sélectionné pour l'édition
 
   constructor(private laboratoireService: LaboratoireService,
-    private dialog: MatDialog ) { }
+    private dialog: MatDialog ,
+    private router: Router) { }
 
   ngOnInit(): void {
     // Récupération des laboratoires au chargement du composant
@@ -41,7 +41,24 @@ export class ListLaboratoriesComponent implements OnInit {
   openDeleteDialog(laboId: number): void {
     const dialogRef = this.dialog.open(DeleteLaboratoryComponent, {
       width: '400px',
-      data: { id: laboId }  // Pass the laboratory ID to the dialog
+      data: { id: laboId }
     });
-}
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) { // Si la suppression a réussi
+        this.laboratoireService.getLaboratoires().subscribe(
+          (data: any[]) => {
+            this.laboratoires = data; // Rafraîchissez la liste
+          },
+          (error) => {
+            console.error('Erreur lors du rafraîchissement des laboratoires', error);
+          }
+        );
+      }
+    });
+  }
+  
+  openEditDialog(id: number): void {
+    this.router.navigate(['/edit-laboratory', id]); // Redirige vers la page d'édition
+  }
 }

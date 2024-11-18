@@ -1,0 +1,36 @@
+<div class="edit-laboratory-container">
+    <h2>Modifier le laboratoire</h2>
+    <form [formGroup]="editLabForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input id="nom" formControlName="nom" type="text" />
+      </div>
+  
+      <div class="form-group">
+        <label for="nrc">NRC :</label>
+        <input id="nrc" formControlName="nrc" type="text" />
+      </div>
+  
+      <div class="form-group">
+        <label for="statut">Statut :</label>
+        <select id="statut" formControlName="statut">
+          <option value="0">Inactif</option>
+          <option value="1">Actif</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="date_activation">Date d'activation :</label>
+        <input id="date_activation" formControlName="date_activation" type="date" />
+      </div>
+  
+      <div class="form-group">
+        <label for="logo">Logo :</label>
+        <input id="logo" formControlName="logo" type="file" />
+      </div>
+  
+      <button type="submit" [disabled]="editLabForm.invalid">Enregistrer</button>
+      <button type="button" (click)="router.navigate(['/list-laboratory'])">Annuler</button>
+    </form>
+  </div>
+  

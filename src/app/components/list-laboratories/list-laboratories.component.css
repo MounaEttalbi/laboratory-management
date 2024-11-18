@@ -9,7 +9,7 @@
   
   .laboratoire-list h2 {
     text-align: center; /* Centrer le titre */
-    color: #685209; /* Couleur du texte du titre */
+    color: #447d56; /* Couleur du texte du titre */
     font-size: 28px; /* Taille du titre */
     margin-bottom: 20px; /* Espacement sous le titre */
   }
@@ -20,7 +20,7 @@
   }
   
   thead {
-    background-color: #9b8211; /* Fond sombre pour l'en-tête */
+    background-color: #508461; /* Fond sombre pour l'en-tête */
     color: white; /* Texte blanc pour l'en-tête */
   }
   
@@ -58,7 +58,7 @@
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(75, 135, 83, 0.1);
     max-width: 600px;
     margin: 20px auto;
   }
@@ -74,7 +74,7 @@
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #555;
+    color: #055f18;
   }
   
   .edit-form input[type="text"],
@@ -144,4 +144,51 @@
 
 .add-button .material-icons {
   margin-right: 8px;
+}
+
+
+
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espacement entre l'icône et le texte */
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+.edit-button, .delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Taille des icônes */
+  padding: 5px; /* Espacement */
+}
+
+.edit-button {
+  color: blue; /* Couleur de l'icône modifier */
+}
+
+.edit-button:hover {
+  color: darkblue; /* Couleur au survol */
+}
+
+.delete-button {
+  color: red; /* Couleur de l'icône supprimer */
+}
+
+.delete-button:hover {
+  color: darkred; /* Couleur au survol */
+}
+
+/* Pour espacer les icônes */
+td > button {
+  margin-right: 5px;
 }

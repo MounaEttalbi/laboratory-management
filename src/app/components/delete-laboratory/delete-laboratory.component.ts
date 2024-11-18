@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LaboratoireService } from '../../services/laboratoire.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-delete-laboratory',
@@ -8,28 +9,22 @@ import { LaboratoireService } from '../../services/laboratoire.service';
   styleUrls: ['./delete-laboratory.component.css']
 })
 export class DeleteLaboratoryComponent {
-  
   constructor(
     private laboratoireService: LaboratoireService,
-    private dialogRef: MatDialogRef<DeleteLaboratoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number } // Inject the laboratory ID to delete
+    private snackBar: MatSnackBar, // Injectez MatSnackBar
+    public dialogRef: MatDialogRef<DeleteLaboratoryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number } // Réception de l'ID
   ) {}
 
-  deleteLaboratoire() {
+  deleteLaboratoire(): void {
     this.laboratoireService.deleteLaboratoire(this.data.id).subscribe({
-      next: (response) => {
-        console.log('Laboratoire supprimé avec succès:', response);
-        this.dialogRef.close(); // Succès
+      next: () => {
+        this.snackBar.open('Laboratoire supprimé avec succès.', 'Fermer', { duration: 3000 });
+        this.dialogRef.close(true);
       },
-      error: (error) => {
-        console.error("Erreur lors de la suppression du laboratoire : ", error);
-        alert("Erreur lors de la suppression du laboratoire : " + error.message);
+      error: (err) => {
+        console.error('Erreur lors de la suppression du laboratoire :', err);
+        this.snackBar.open('Échec de la suppression du laboratoire.', 'Fermer', { duration: 3000 });
       }
     });
-  }
-  
-
-  closeDialog() {
-    this.dialogRef.close(false); // Close dialog without action
-  }
-}
+  }}
