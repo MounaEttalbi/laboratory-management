@@ -53,6 +53,14 @@ export class EditLaboratoryComponent implements OnInit {
     });
   }
 
+  // Gestion du fichier logo
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.editLabForm.patchValue({ logo: file });
+    }
+  }
+
   // Soumettre les modifications
   onSubmit(): void {
     if (this.editLabForm.invalid) {
@@ -64,7 +72,7 @@ export class EditLaboratoryComponent implements OnInit {
     this.laboratoireService.updateLaboratoire(this.labId, updatedLab).subscribe({
       next: () => {
         this.snackBar.open('Laboratoire mis à jour avec succès.', 'Fermer', { duration: 3000 });
-        this.router.navigate(['/laboratoires']);
+        this.router.navigate(['/list_laboratory']);
       },
       error: () => {
         this.snackBar.open('Erreur lors de la mise à jour.', 'Fermer', { duration: 3000 });

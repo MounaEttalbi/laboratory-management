@@ -1,9 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LaboratoireService } from '../../services/laboratoire.service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { MatDialog } from '@angular/material/dialog';
 import { AddLaboratoryComponent } from '../add-laboratory/add-laboratory.component';
 import { DeleteLaboratoryComponent } from '../delete-laboratory/delete-laboratory.component';
@@ -11,16 +8,18 @@ import { DeleteLaboratoryComponent } from '../delete-laboratory/delete-laborator
 @Component({
   selector: 'app-list-laboratories',
   templateUrl: './list-laboratories.component.html',
-  styleUrl: './list-laboratories.component.css'
+  styleUrls: ['./list-laboratories.component.css'] // Correction ici (pluriel)
 })
 export class ListLaboratoriesComponent implements OnInit {
 
-  laboratoires: any[] = [];  // Tableau pour stocker les laboratoires
-  selectedLabo: any = null;  // Propriété pour le laboratoire sélectionné pour l'édition
+  laboratoires: any[] = []; // Tableau pour stocker les laboratoires
+  selectedLabo: any = null; // Propriété pour le laboratoire sélectionné pour l'édition
 
-  constructor(private laboratoireService: LaboratoireService,
-    private dialog: MatDialog ,
-    private router: Router) { }
+  constructor(
+    private laboratoireService: LaboratoireService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // Récupération des laboratoires au chargement du composant
@@ -32,18 +31,20 @@ export class ListLaboratoriesComponent implements OnInit {
         console.error('Erreur lors de la récupération des laboratoires', error);
       }
     );
-  }  
+  }
+
   openAddLaboratory(): void {
     this.dialog.open(AddLaboratoryComponent, {
       width: '500px'
     });
   }
+
   openDeleteDialog(laboId: number): void {
     const dialogRef = this.dialog.open(DeleteLaboratoryComponent, {
       width: '400px',
       data: { id: laboId }
     });
-  
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) { // Si la suppression a réussi
         this.laboratoireService.getLaboratoires().subscribe(
@@ -57,7 +58,7 @@ export class ListLaboratoriesComponent implements OnInit {
       }
     });
   }
-  
+
   openEditDialog(id: number): void {
     this.router.navigate(['/edit-laboratory', id]); // Redirige vers la page d'édition
   }

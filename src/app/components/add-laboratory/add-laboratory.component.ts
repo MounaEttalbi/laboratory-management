@@ -1,14 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { LaboratoireService } from '../../services/laboratoire.service';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-laboratory',
-  standalone: true,
-  imports: [CommonModule,FormsModule],
   templateUrl: './add-laboratory.component.html',
   styleUrls: ['./add-laboratory.component.css']
 })
