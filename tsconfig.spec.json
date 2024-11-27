@@ -4,13 +4,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": ["jest"],
-    "esModuleInterop": true
+    "types": [
+      "jasmine"
+    ]
   },
-  "files": [
-    "src/test.ts",
-    "setup-jest.ts"
-  ],
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"

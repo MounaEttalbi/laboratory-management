@@ -1,0 +1,49 @@
+/* Pour le formulaire */
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Pour les champs */
+  .form-field {
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  
+  /* Pour l'aperçu de la signature */
+  .signature-preview {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+  }
+  
+  .signature-text {
+    margin-left: 8px;
+    font-weight: 500;
+  }
+  
+  /* Pour les actions */
+  .dialog-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Boutons */
+  .cancel-button, .save-button {
+    margin-left: 8px;
+  }
+  /* Style pour la notification de succès */
+.success-snackbar {
+    background-color: #4caf50;  /* Vert */
+    color: white;
+  }
+  
+  /* Style pour la notification d'erreur */
+  .error-snackbar {
+    background-color: #f44336;  /* Rouge */
+    color: white;
+  }
+  

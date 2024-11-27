@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListerUtilisateursComponent } from './components/lister-utilisateurs/lister-utilisateurs.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -14,23 +15,38 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
+import { AjouterUtilisateurComponent } from './components/ajouter-utilisateur/ajouter-utilisateur.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select'; // Importez MatSelectModule
 import { MatOptionModule } from '@angular/material/core';  
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ListLaboratoriesComponent } from './components/list-laboratories/list-laboratories.component';
 import { AddLaboratoryComponent } from './components/add-laboratory/add-laboratory.component';
-import { EditLaboratoryComponent } from './components/edit-laboratory/edit-laboratory.component';
-import { DeleteLaboratoryComponent } from './components/delete-laboratory/delete-laboratory.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { BackgroundComponent } from './components/background/background.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
+    ListerUtilisateursComponent,
+    SidebarComponent,
+    AjouterUtilisateurComponent,
     ListLaboratoriesComponent,
-    EditLaboratoryComponent,
     AddLaboratoryComponent,
-    DeleteLaboratoryComponent
+    AboutUsComponent,
+    BackgroundComponent,
+    ContactComponent,
+    HeaderComponent,
+    HomeComponent,
+    LoginComponent,
+    
   ],
   imports: [
 
@@ -51,7 +67,7 @@ import { DeleteLaboratoryComponent } from './components/delete-laboratory/delete
     ReactiveFormsModule,
     MatSelectModule, // Ajoutez MatSelectModule ici
     MatOptionModule, // Ajoutez MatOptionModule ici
-    AppRoutingModule,
+   
     MatDialogModule,
     MatSnackBarModule, 
     

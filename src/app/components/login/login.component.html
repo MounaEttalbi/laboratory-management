@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="forms-container">
+    <div class="signin-signup">
+      <!-- Formulaire de connexion -->
+      <form (ngSubmit)="onLoginSubmit()" class="sign-in-form">
+        <h2 class="title">Se connecter</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            placeholder="Username"
+            
+            name="username"
+            required
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            placeholder="Password"
+           
+            name="password"
+            required
+          />
+        </div>
+        <input type="submit" value="Se connecter" class="btn solid" />
+        <p class="social-text">Ou connectez-vous avec vos réseaux sociaux</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+
+      <!-- Formulaire d'inscription -->
+      <form (ngSubmit)="onSignupSubmit()" class="sign-up-form">
+        <h2 class="title">S'inscrire</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            placeholder="Username"
+            
+            name="username"
+            required
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            placeholder="Email"
+            
+            name="email"
+            required
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            placeholder="Password"
+            
+            name="password"
+            required
+          />
+        </div>
+        <input type="submit" class="btn" value="s'inscrire" />
+        <p class="social-text">Ou connectez-vous avec vos réseaux sociaux</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+        <h3>Nouveau ici ?</h3>
+        <p>
+          Créez un compte en quelques étapes simples et commencez à explorer nos fonctionnalités !
+        </p>
+        <button (click)="onSignUpClick()" class="btn transparent">
+          s'inscrire
+        </button>
+      </div>
+      <div class="image-log" ></div>
+    </div>
+    <div class="panel right-panel">
+      <div class="content">
+        <h3>Déjà des nôtres ?</h3>
+        <p>
+          Connectez-vous pour continuer votre expérience et accéder à votre espace personnalisé!
+        </p>
+        <button (click)="onSignInClick()" class="btn transparent">
+          Se connecter
+        </button>
+      </div>
+      <div  class="image-register" ></div>
+    </div>
+  </div>
+</div>

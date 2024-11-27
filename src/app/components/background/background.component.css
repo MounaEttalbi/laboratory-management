@@ -1,0 +1,50 @@
+.bg{
+    width:1340px;
+    position: relative;
+  }
+  .background {
+    background-image: url('../../../assets/laboratory-management.png'); /* Utilise 'assets/' comme préfixe */
+    background-size: cover;
+    background-position: center;
+    height: 89vh;
+    position: relative;
+    margin-top: 80px; /* Ajout d'une marge pour éviter que la navbar ne recouvre l'image de fond */
+  }
+  
+  .overlay-bg {
+    background-color: rgba(37, 36, 36, 0.24);
+    color: white;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-start {
+    padding: 0.75rem 2rem;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 30px;
+  }
+  
+  .btn-start:hover {
+    background-color: #76517e;
+  }
+  
