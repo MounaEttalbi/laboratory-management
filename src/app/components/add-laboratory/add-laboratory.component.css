@@ -1,25 +1,22 @@
 .add-container {
-    background-color: #447d56; /* Fond vert foncé */
-    padding: 20px; /* Espace autour du formulaire */
-    border-radius: 15px; /* Coins arrondis */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre légère */
-    color: white; /* Couleur du texte */
-    max-width: 500px; /* Limiter la largeur */
-    margin: 30px auto; /* Centrer verticalement et horizontalement */
+    
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
 }
 
 .add-container h2 {
     font-size: 24px; /* Taille agrandie */
-    color: white; /* Texte en blanc */
+    color: black; /* Texte en blanc */
     text-align: center; /* Centrage */
     margin-bottom: 20px; /* Espacement sous le titre */
+    font-weight: bold; /* Texte en gras */
 }
 
 form {
     background-color: #f9f9f9; /* Fond neutre */
     padding: 25px; /* Espacement intérieur généreux */
     border-radius: 10px; /* Coins arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre subtile */
     max-width: 100%; /* Adapter à la largeur de .add-container */
 }
 
@@ -47,7 +44,6 @@ form input[type="file"] {
 }
 
 form button {
-    background-color: #4CAF50; /* Fond vert vif */
     color: white; /* Texte en blanc */
     padding: 12px; /* Espacement généreux */
     border-radius: 8px; /* Coins arrondis */
@@ -58,6 +54,15 @@ form button {
 }
 
 form button:hover {
-    background-color: #3e8e41; /* Couleur légèrement plus foncée */
     transform: scale(1.05); /* Léger agrandissement au survol */
 }
+.actions {
+    display: flex; /* Permet d'afficher les boutons côte à côte */
+    justify-content: space-between; /* Ajoute un espace égal entre les boutons */
+  }
+  .action-save{
+    background-color: #4caf50;
+  }
+  .action-cancel{
+    background-color: rgb(221, 1, 1);
+  }

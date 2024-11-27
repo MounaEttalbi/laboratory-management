@@ -23,8 +23,8 @@
     <div class="form-group">
       <label for="statut">Statut :</label>
       <select id="statut" formControlName="statut">
-        <option value="0">Inactif</option>
-        <option value="1">Actif</option>
+        <option value="0">ACTIF</option>
+        <option value="1">INACTIF</option>
       </select>
       <div *ngIf="editLabForm.get('statut')?.invalid && editLabForm.get('statut')?.touched" class="error">
         Le statut est requis.
@@ -33,9 +33,9 @@
 
     <!-- Date d'activation -->
     <div class="form-group">
-      <label for="date_activation">Date d'activation :</label>
-      <input id="date_activation" formControlName="date_activation" type="date" />
-      <div *ngIf="editLabForm.get('date_activation')?.invalid && editLabForm.get('date_activation')?.touched" class="error">
+      <label for="dateActivation">Date d'activation :</label>
+      <input id="dateActivation" formControlName="dateActivation" type="date"  />
+      <div *ngIf="editLabForm.get('dateActivation')?.invalid && editLabForm.get('dateActivation')?.touched" class="error">
         La date d'activation est requise.
       </div>
     </div>
@@ -48,8 +48,8 @@
 
     <!-- Actions -->
     <div class="actions">
-      <button type="submit" [disabled]="editLabForm.invalid">Enregistrer</button>
-      <button type="button" (click)="router.navigate(['/list-laboratory'])">Annuler</button>
+      <button class="action-save" type="submit" [disabled]="editLabForm.invalid">Enregistrer</button>
+      <button class="action-cancel" type="button" (click)="dialogRef.close()">Annuler</button>
     </div>
   </form>
 </div>

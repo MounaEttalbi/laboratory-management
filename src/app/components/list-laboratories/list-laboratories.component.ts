@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddLaboratoryComponent } from '../add-laboratory/add-laboratory.component';
 import { DeleteLaboratoryComponent } from '../delete-laboratory/delete-laboratory.component';
+import { EditLaboratoryComponent } from '../edit-laboratory/edit-laboratory.component';
 
 @Component({
   selector: 'app-list-laboratories',
@@ -34,6 +35,7 @@ export class ListLaboratoriesComponent implements OnInit {
   }
 
   openAddLaboratory(): void {
+    console.log('Ajouter un laboratoire');
     this.dialog.open(AddLaboratoryComponent, {
       width: '500px'
     });
@@ -60,6 +62,12 @@ export class ListLaboratoriesComponent implements OnInit {
   }
 
   openEditDialog(id: number): void {
-    this.router.navigate(['/edit-laboratory', id]); // Redirige vers la page d'édition
+    const dialogRef = this.dialog.open(EditLaboratoryComponent, {
+      width: '400px',
+      data: { id: id }  // Passez l'ID du laboratoire ici
+    });
   }
+  
+  
+  
 }

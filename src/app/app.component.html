@@ -1,9 +1,9 @@
-<!-- app.component.html -->
-<div>
-  <nav>
-    <a routerLink="/">Home</a>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/list-laboratory">List Laboratories</a>
-    <a routerLink="/add-laboratory">Add Laboratory</a>
-  </nav>
+<div class="navbar">
+  <!-- Vous pouvez ajouter ici des liens de navigation -->
+  <a routerLink="/list-laboratory" routerLinkActive="active">Liste des Laboratoires</a>
+  <a routerLink="/add-laboratory" routerLinkActive="active">Ajouter un Laboratoire</a>
+  <a routerLink="/edit-laboratory/:id" routerLinkActive="active">Modifier un Laboratoire</a>
 </div>
+
+<!-- Le contenu des composants liés aux routes s'affichera ici -->
+<router-outlet></router-outlet>

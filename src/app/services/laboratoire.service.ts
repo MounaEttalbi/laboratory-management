@@ -29,12 +29,13 @@ export class LaboratoireService {
     return this.http.delete<void>(url);
   }
   
-  updateLaboratoire(id: number, laboratoire: any): Observable<any> {
+  updateLaboratoire(id: number, updatedLab: any): Observable<any> {
     const url = `http://localhost:8889/PROJETLIBRE/api/laboratoires/modifierLabo/${id}`;
-    return this.http.put<any>(url, laboratoire);
+    return this.http.put<any>(url, updatedLab);
   }
   getLaboratoireById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    const urlGet = `http://localhost:8889/PROJETLIBRE/api/laboratoires/${id}`;
+    return this.http.get<any>(urlGet);
   }
   
   

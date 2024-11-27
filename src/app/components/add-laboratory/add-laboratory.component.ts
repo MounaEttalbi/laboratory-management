@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LaboratoireService } from '../../services/laboratoire.service';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import {  MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-laboratory',
@@ -9,6 +9,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-laboratory.component.css']
 })
 export class AddLaboratoryComponent implements OnInit {
+  @Output() laboratoryAdded = new EventEmitter<void>(); // Événement à émettre après ajout
+
   // Déclarez la propriété 'laboratoire' et initialisez-la
   laboratoire = {
     nom: '',
@@ -21,7 +23,7 @@ export class AddLaboratoryComponent implements OnInit {
 
   showSuccessMessage = false;  // Control the display of the success message
   constructor(private laboratoireService: LaboratoireService, private router: Router,
-    private dialogRef: MatDialogRef<AddLaboratoryComponent>
+    public dialogRef: MatDialogRef<AddLaboratoryComponent>
   ) {}
   ngOnInit(): void {
     console.log("AddLaboratoryComponent initialisé");
@@ -51,11 +53,8 @@ export class AddLaboratoryComponent implements OnInit {
 
     this.laboratoireService.addLaboratoire(formData).subscribe({
       next: (response) => {
-        this.isAdding = false; 
+        this.laboratoryAdded.emit(); // Émettre l'événement 
         this.dialogRef.close();  // Close the dialog
-        this.router.navigateByUrl('/refresh', { skipLocationChange: false }).then(() => {
-          this.router.navigate(['/list-laboratory']);
-          });
       },
       error: (error) => {
         console.error("Erreur lors de l'ajout du laboratoire : ", error);

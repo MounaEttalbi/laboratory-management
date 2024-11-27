@@ -1,6 +1,5 @@
-<div class="add-container">
+<div *ngIf="isAdding" class="add-container">
     <h2>Ajouter un laboratoire</h2>
-    <div *ngIf="isAdding">
         <form (ngSubmit)="addLaboratoire()" enctype="multipart/form-data">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" [(ngModel)]="laboratoire.nom" required>
@@ -17,7 +16,9 @@
             <label for="logo">Logo</label>
             <input type="file" id="logo" name="logo" (change)="onFileChange($event)" required>
 
-            <button type="submit">Ajouter</button>
+            <div class="actions">
+            <button type="submit" class="action-save">Ajouter</button>
+            <button class="action-cancel" type="button" (click)="dialogRef.close()">Annuler</button>
+            </div>
         </form>
-    </div>
 </div>
