@@ -15,11 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
-import { AjouterUtilisateurComponent } from './components/ajouter-utilisateur/ajouter-utilisateur.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select'; // Importez MatSelectModule
 import { MatOptionModule } from '@angular/material/core';  
@@ -32,12 +29,15 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+
+import { EditLaboratoryComponent } from './components/edit-laboratory/edit-laboratory.component';
+import {AjouterUtilisateurComponent} from './components/ajouter-utilisateur/ajouter-utilisateur.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component'
 @NgModule({
   declarations: [
     AppComponent,
-    ListerUtilisateursComponent,
     SidebarComponent,
-    AjouterUtilisateurComponent,
+    ListerUtilisateursComponent,
     ListLaboratoriesComponent,
     AddLaboratoryComponent,
     AboutUsComponent,
@@ -46,6 +46,8 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
+    EditLaboratoryComponent,
+    AjouterUtilisateurComponent,
     
   ],
   imports: [
@@ -67,7 +69,7 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     MatSelectModule, // Ajoutez MatSelectModule ici
     MatOptionModule, // Ajoutez MatOptionModule ici
-   
+    AppRoutingModule,
     MatDialogModule,
     MatSnackBarModule, 
     
@@ -78,4 +80,4 @@ import { LoginComponent } from './components/login/login.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

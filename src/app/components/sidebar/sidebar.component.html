@@ -1,29 +1,35 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened class="sidenav">
-      <div class="sidebar-header">
-        <mat-icon class="sidebar-icon">account_balance</mat-icon>
-        <span class="sidebar-title">Admin Panel</span>
-      </div>
-      
-      <mat-nav-list>
-        <a mat-list-item routerLink="/laboratoires" routerLinkActive="active-link">
-          <mat-icon matListIcon>business</mat-icon>
-          <span>Laboratoires</span>
-        </a>
-        <a mat-list-item routerLink="/adresses" routerLinkActive="active-link">
-          <mat-icon matListIcon>location_on</mat-icon>
-          <span>Adresses</span>
-        </a>
-        <a mat-list-item routerLink="/utilisateurs" routerLinkActive="active-link">
-          <mat-icon matListIcon>group</mat-icon>
-          <span>Utilisateurs</span>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <div class="sidebar-header">
+      <mat-icon class="sidebar-icon">account_balance</mat-icon>
+      <span class="sidebar-title">Admin Panel</span>
+    </div>
+    
+    <mat-nav-list>
+      <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
+        <mat-icon matListIcon>business</mat-icon>
+        <span>Laboratoires</span>
+      </a>
+      <a mat-list-item (click)="selectSection('addresses')" [class.active]="selectedSection === 'addresses'">
+        <mat-icon matListIcon>location_on</mat-icon>
+        <span>Adresses</span>
+      </a>
+      <a mat-list-item (click)="selectSection('users')" [class.active]="selectedSection === 'users'">
+        <mat-icon matListIcon>group</mat-icon>
+        <span>Utilisateurs</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
   
-    <mat-sidenav-content>
-      <!-- Content goes here, based on the selected route -->
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+  <mat-sidenav-content>
+    <div *ngIf="selectedSection === 'laboratories'">
+      <app-list-laboratories></app-list-laboratories><!-- Component for Laboratories -->
+    </div>
+     <div *ngIf="selectedSection === 'addresses'"> 
+     <!--  <app-addresses></app-addresses> --> <!-- Component for Addresses --> 
+    </div>
+    <div *ngIf="selectedSection === 'users'">
+      <app-lister-utilisateurs></app-lister-utilisateurs> <!-- Component for Users -->
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
