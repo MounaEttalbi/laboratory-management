@@ -26,6 +26,12 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ListLaboratoriesComponent } from './components/list-laboratories/list-laboratories.component';
 import { AddLaboratoryComponent } from './components/add-laboratory/add-laboratory.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { BackgroundComponent } from './components/background/background.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +39,14 @@ import { AddLaboratoryComponent } from './components/add-laboratory/add-laborato
     SidebarComponent,
     AjouterUtilisateurComponent,
     ListLaboratoriesComponent,
-    AddLaboratoryComponent
+    AddLaboratoryComponent,
+    AboutUsComponent,
+    BackgroundComponent,
+    ContactComponent,
+    HeaderComponent,
+    HomeComponent,
+    LoginComponent,
+    
   ],
   imports: [
 

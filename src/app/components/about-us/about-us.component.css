@@ -1,0 +1,79 @@
+.about-us {
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+    color: #050505;
+    text-align: center;
+  
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+  
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+  
+      .feature {
+        position: relative;
+        background: linear-gradient(45deg, #f783f1, #5af588, #7acbf9, #0d76cc);
+        background-size: 400% 400%;
+        animation: gradientAnimation 5s ease infinite;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: translateY(-10px);
+        }
+  
+        .feature-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, #ff6b6b, #8087f5, #7acbf9, #faac52);
+          background-size: 400% 400%;
+          animation: gradientAnimation 10s ease infinite;
+          z-index: -1;
+        }
+  
+        .feature-description {
+          padding: 2rem;
+          background: rgba(238, 233, 233, 0.068); 
+          border-radius: 8px;
+  
+          h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+          }
+  
+          p {
+            font-size: 1rem;
+            color: #070505;
+          }
+        }
+      }
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
