@@ -8,6 +8,8 @@ import { EditLaboratoryComponent } from './components/edit-laboratory/edit-labor
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AppComponent } from './app.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
