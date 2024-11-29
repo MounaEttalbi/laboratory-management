@@ -1,0 +1,114 @@
+version: '3.9'
+
+services:
+  labo-manage-discovery-service:
+    build: ./discovery_service
+    container_name: labo-manage-discovery-service
+    ports:
+      - '8761:8761'
+    expose:
+      - '8761'
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8761/actuator/health" ]
+
+  # MySQL Service
+  labo-manage-mysql:
+    image: mysql:8.0 # Image officielle MySQL
+    platform: linux/x86_64
+    ports:
+      - "3308:3306" # Port pour la base de données
+    environment:
+      MYSQL_ROOT_PASSWORD: laboratory_service
+      MYSQL_DATABASE: laboratory_service
+      MYSQL_USER: laboratory_service
+      MYSQL_PASSWORD: laboratory_service
+    volumes:
+      - db_data:/var/lib/mysql # Persister les données MySQL dans un volume
+    healthcheck:
+      test:  ["CMD","mysqladmin", "ping", "-h", "localhost", "-u", "laboratory_service", "-plaboratory_service"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+
+  labo-manage-config-service:
+    build: ./config_service
+    container_name: labo-manage-config-service
+    ports:
+      - '9999:9999'
+    expose:
+      - '9999'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9999/actuator/health"]
+    environment:
+      - DISCOVERY_SERVICE_URL=http://labo-manage-discovery-service:8761/eureka
+    depends_on:
+      labo-manage-discovery-service:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  labo-manage-laboratory-service:
+    build: ./laboratory_service
+    container_name: labo-manage-laboratory-service
+    ports:
+      - '8089:8089'
+    expose:
+      - '8089'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8089/actuator/health"]
+    environment:
+      - DISCOVERY_SERVICE_URL=http://labo-manage-discovery-service:8761/eureka/
+      - CONFIG_SERVICE_URL=http://labo-manage-config-service:9999
+      - MYSQL_URL=jdbc:mysql://labo-manage-mysql:3306/laboratory_service
+      - MYSQL_USERNAME=laboratory_service
+      - MYSQL_PWD=laboratory_service
+    depends_on:
+      labo-manage-mysql:
+        condition: service_healthy
+      labo-manage-config-service:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  labo-manage-user-service:
+    build: ./user_service
+    container_name: labo-manage-user-service
+    ports:
+      - '8088:8088'
+    expose:
+      - '8088'
+    environment:
+      - DISCOVERY_SERVICE_URL=http://labo-manage-discovery-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://labo-manage-config-service:9999
+      - MYSQL_URL=jdbc:mysql://labo-manage-mysql:3306/user_service
+      - MYSQL_USERNAME=user_service
+      - MYSQL_PWD=user_service
+    depends_on:
+      - labo-manage-mysql
+      - labo-manage-config-service
+    networks:
+      - app-network
+
+  labo-manage-gateway-service:
+    build: ./gateway_service
+    container_name: labo-manage-gateway-service
+    ports:
+      - '8888:8888'
+    expose:
+      - '8888'
+    environment:
+      - DISCOVERY_SERVICE_URL=http://labo-manage-discovery-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://labo-manage-config-service:9999
+    depends_on:
+      labo-manage-config-service:
+        condition: service_healthy
+    networks:
+      - app-network
+volumes:
+  db_data:
+networks:
+  app-network:
+    driver: bridge

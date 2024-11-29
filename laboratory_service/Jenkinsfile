@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven' // Assurez-vous que Maven est configuré dans Jenkins
+    }
+    environment {
+        SONARQUBE_TOKEN = credentials('projet-libre-sonar-token') // Remplacez par votre ID d'identifiant Jenkins pour SonarQube
+    }
+    stages {
+        stage('Checkout Backend') {
+            steps {
+                // Checkout du backend à partir de la branche main
+                dir('./laboratory_service') {
+                    git branch: 'main', url: 'https://github.com/MounaEttalbi/Laboratory_Management.git'
+                }
+            }
+        }
+
+        stage('Checkout Frontend') {
+            steps {
+                // Checkout du frontend à partir de la branche master
+                dir('./front-end') {
+                    git branch: 'master', url: 'https://github.com/MounaEttalbi/Laboratory_Management.git'
+                }
+            }
+        }
+
+        stage('Build & Test Backend') {
+            steps {
+                dir('./laboratory_service') {
+                    // Exécution du build Maven
+                    bat 'mvn clean install' // Utilisez 'bat' si sous Windows
+                }
+            }
+        }
+
+        /*stage('Build & Test Frontend') {
+            steps {
+                dir('./front-end') {
+                    // Installation des dépendances npm et build Angular
+                    sh 'npm install' // Utilisez 'bat' si sous Windows
+                    sh 'npx --max_old_space_size=8192 npm run build --prod'
+                    // Exécution des tests
+                    sh 'npm run test -- --watch=false'
+                }
+            }
+        }*/
+
+        stage('SonarQube Analysis') {
+            steps {
+                dir('./laboratory_service') {
+                    // Exécution de l'analyse SonarQube
+                    sh "mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=sonar-jenkins \
+                        -Dsonar.projectName='sonar-jenkins' \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=${SONARQUBE_TOKEN}"
+                }
+            }
+        }
+
+        stage('Deploy with Docker Compose') {
+            steps {
+                dir('./laboratory_service') {
+                    // Démarrage de Docker Compose
+                    sh 'docker-compose -f docker-compose.yml up --build -d' // Utilisez 'bat' si sous Windows
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Le build, les tests et le déploiement ont réussi !'
+        }
+        failure {
+            echo 'Échec du build, des tests ou du déploiement.'
+        }
+    }
+}
