@@ -30,10 +30,10 @@ pipeline {
                 bat 'docker run -d -p 8080:80 %DOCKER_IMAGE%'  // Exposez l'application sur le port 80
             }
         }
-        stage('Clean Docker Images') {
+        /* stage('Clean Docker Images') {
             steps {
                 bat 'docker system prune -af'  // Nettoie les anciennes images Docker
             }
-        }
+        } */
     }
 }
