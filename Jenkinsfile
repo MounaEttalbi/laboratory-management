@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Docker Run') {
             steps {
-                bat 'docker run -d -p 80:80 %DOCKER_IMAGE%'  // Exposez l'application sur le port 80
+                bat 'docker run -d -p 8080:80 %DOCKER_IMAGE%'  // Exposez l'application sur le port 80
             }
         }
         stage('Clean Docker Images') {
