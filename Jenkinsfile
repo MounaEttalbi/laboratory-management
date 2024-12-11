@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                bat 'npm install' // Utilisation de bat au lieu de sh sous Windows
+                bat 'npm install --legacy-peer-deps' // Utilisation de --legacy-peer-deps pour ignorer les conflits de dépendances
             }
         }
         stage('Build Angular App') {
