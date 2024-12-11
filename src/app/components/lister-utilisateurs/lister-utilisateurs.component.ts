@@ -22,9 +22,19 @@ export class ListerUtilisateursComponent implements OnInit {
 
   // Méthode pour supprimer un utilisateur
   onDeleteUser(utilisateur: any): void {
-    // Logique pour la suppression de l'utilisateur
     console.log('Suppression de l’utilisateur :', utilisateur);
-  }
+    this.utilisateurService.deleteUtilisateur(utilisateur.cin).subscribe({
+        next: () => {
+            console.log('Utilisateur supprimé avec succès.');
+            // Ajoutez ici des actions supplémentaires, comme rafraîchir la liste des utilisateurs
+        },
+        error: (err) => {
+            console.error('Erreur lors de la suppression de l’utilisateur :', err);
+            // Gérer les erreurs, par exemple afficher une notification
+        }
+    });
+}
+
   ngOnInit(): void {
     console.log('Utili start:');
     // Récupération des utilisateurs

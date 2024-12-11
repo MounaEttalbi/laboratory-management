@@ -1,4 +1,5 @@
 export interface Utilisateur {
+  cin: string;
   email: string;
   nomComplet: string;
  numTel: string;
