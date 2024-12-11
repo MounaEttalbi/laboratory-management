@@ -20,14 +20,14 @@ pipeline {
                 bat 'npm run build --prod'  // Utilisation de npm run build --prod pour construire l'application en mode production
             }
         }
-        stage('Docker Build') {
+         stage('Docker Build') {
             steps {
-                bat 'docker build -t "${DOCKER_IMAGE}" .'  // Utilisation des guillemets autour de la variable
+                bat 'docker build -t %DOCKER_IMAGE% .'  // Utilisation de %DOCKER_IMAGE% pour la syntaxe sous Windows
             }
         }
         stage('Docker Run') {
             steps {
-                bat 'docker run -d -p 80:80 "${DOCKER_IMAGE}"'  // Exposez l'application sur le port 80
+                bat 'docker run -d -p 80:80 %DOCKER_IMAGE%'  // Exposez l'application sur le port 80
             }
         }
         stage('Clean Docker Images') {
