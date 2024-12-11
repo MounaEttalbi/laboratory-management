@@ -1,7 +1,7 @@
 .contact {
     padding: 2rem;
-    background-image:linear-gradient(-45deg, #ac0ba4 0%, #362b72 100%);
-    color: #fdf8f8;
+    background-image:linear-gradient(-45deg, #302e2e 0%, #302e2e 100%);
+    color: #000000;
     width:100%;
     
     .contact-header {
@@ -10,12 +10,12 @@
   
       h2 {
         font-size: 2rem;
-        color: #f8f7f7;
+        color: #ffffff;
       }
   
       p {
-        font-size: 1rem;
-        color: #eee9e9;
+        font-size: 1.3rem;
+        color: #ffffff;
       }
     }
   
@@ -37,12 +37,12 @@
   
       button {
         padding: 1rem;
-        background-color: #090a09a2;
+        background-color: #298b4a;
         color: rgb(255, 255, 255);
         border: none;
         border-radius: 20px;
         cursor: pointer;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         transition: background-color 0.3s;
   
         &:hover {
@@ -76,17 +76,17 @@
           transition: color 0.3s;
     
           i {
-            margin-right: 8px; /* Espace entre l'icône et le texte */
+            margin-right: 8px;
           }
     
           &:hover {
-            color: white; /* Vous pouvez changer la couleur au survol si vous le souhaitez */
+            color: white; 
           }
         }
     
         /* Facebook */
         .facebook {
-          color: #f2f2f8; /* Bleu spécifique à Facebook */
+          color: #f2f2f8; 
           
           &:hover {
             

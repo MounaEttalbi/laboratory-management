@@ -11,12 +11,12 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 0.3rem;
-    background-color: #000000;
+    background-color: #050505;
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-top: 20; /* Enlever tout décalage vers le bas */
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     height: 12%;
     width: 100%;
     margin-left: 0px;
@@ -26,27 +26,29 @@ html {
   .navbar1 .logo {
     display: flex;
     align-items: center;
-    background-image: url('../../../assets/logo2.png'); /* Le chemin correct vers votre image */
+    background-image: url('../../../assets/logo5.png'); /* Le chemin correct vers votre image */
     background-size: contain; /* Ajuste la taille de l'image */
     background-repeat: no-repeat;
     background-position:top; /* Positionne l'image au centre */
-    height: 160px; /* Ajustez la taille du logo */
-    width: 190px; /* Ajustez la largeur selon vos besoins */
+    height: 165px; /* Ajustez la taille du logo */
+    width: 198px; /* Ajustez la largeur selon vos besoins */
     margin-left: 20px;
-    margin-bottom: -70px;
+    margin-bottom: -85px;
   }
   
   .navbar1 .nav-links {
     list-style: none;
     display: flex;
     gap: 1rem;
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-bottom: 12px;
   }
   
   .navbar1 .nav-links a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 1.2rem;
   }
   
   .navbar1 .nav-links a:hover {
@@ -54,14 +56,15 @@ html {
   }
   
   .navbar1 .nav-links button {
-    padding: 0.5rem 1.5rem;
+    padding: 0.3rem 1.1rem;
     border: none;
-    background-color: #4caf50;  /* Green color for the button */
+    background-color: #298b4a;  /* Green color for the button */
     color: white;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 23px;
     transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1rem;
   }
   
   .navbar1 .nav-links button:hover {
