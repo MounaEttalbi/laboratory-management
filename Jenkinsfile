@@ -1,52 +1,28 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'my-angular-app:latest'
-        DOCKER_PORT = '8080'
+        DOCKER_IMAGE = 'my-angular-app:latest'  // Nom de l'image Docker
+        DOCKER_PORT = '4200'                    // Port pour exposer l'application Angular
     }
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'
+                git branch: 'master', url: 'https://github.com/HAJAR759/gestion-de-laboratoire.git'  // Remplacez par votre dépôt Git
             }
         }
         stage('Install Dependencies') {
             steps {
-                bat 'npm install --legacy-peer-deps'
-            }
-        }
-        stage('Build Angular App') {
-            steps {
-                bat 'npm run build --prod'
-            }
-        }
-        stage('Prepare Dockerfile') {
-            steps {
-                writeFile file: 'Dockerfile', text: '''
-                # Étape 1 : Construire l'application Angular
-                FROM node:18 AS builder
-                WORKDIR /app
-                COPY package*.json ./
-                RUN npm install --legacy-peer-deps
-                COPY . .
-                RUN npm run build --prod
-
-                # Étape 2 : Servir l'application avec NGINX
-                FROM nginx:alpine
-                COPY --from=builder /app/dist/projet-libre-frontend /usr/share/nginx/html
-                EXPOSE 80
-                CMD ["nginx", "-g", "daemon off;"]
-                '''
+                bat 'npm install --legacy-peer-deps'  // Utilisation de --legacy-peer-deps pour ignorer les conflits de dépendances
             }
         }
         stage('Docker Build') {
             steps {
-                bat 'docker build -t %DOCKER_IMAGE% .'
+                bat 'docker build -t %DOCKER_IMAGE% .'  // Construction de l'image Docker à partir du Dockerfile
             }
         }
         stage('Docker Run') {
             steps {
-                bat 'docker run -d -p %DOCKER_PORT%:80 %DOCKER_IMAGE%'
+                bat 'docker run -d -p 4200:4200 %DOCKER_IMAGE%'  // Expose l'application sur le port 4200
             }
         }
     }

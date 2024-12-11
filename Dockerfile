@@ -1,4 +1,4 @@
-# Étape 1 : Construire l'application Angular
+# Étape 1 : Utiliser l'image Node.js
 FROM node:18 AS builder
 
 # Définir le répertoire de travail
@@ -13,17 +13,8 @@ RUN npm install --legacy-peer-deps
 # Copier le reste des fichiers de l'application
 COPY . .
 
-# Construire l'application pour la production
-RUN npm run build --prod  # Assurez-vous que cela génère bien le dossier dist/projet-libre-frontend
+# Exposer le port 4200 (port de développement par défaut d'Angular)
+EXPOSE 4200
 
-# Étape 2 : Servir l'application avec NGINX
-FROM nginx:alpine
-
-# Copier les fichiers de l'étape de construction vers le répertoire NGINX
-COPY --from=builder /app/dist/projet-libre-frontend /usr/share/nginx/html
-
-# Exposer le port 80
-EXPOSE 80
-
-# Commande par défaut pour démarrer NGINX
-CMD ["nginx", "-g", "daemon off;"]
+# Commande par défaut pour démarrer l'application Angular en mode développement
+CMD ["npm", "start"]
