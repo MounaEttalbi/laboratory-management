@@ -1,11 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
     <div class="sidebar-header">
-      <mat-icon class="sidebar-icon">account_balance</mat-icon>
-      <span class="sidebar-title">Admin Panel</span>
+      <div class="sidebar-logo"></div>
+      <span class="sidebar-title">LabManage</span>
     </div>
     
-    <mat-nav-list>
+    <mat-nav-list class="matnavlist">
       <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
         <mat-icon matListIcon>business</mat-icon>
         <span>Laboratoires</span>
@@ -18,18 +18,36 @@
         <mat-icon matListIcon>group</mat-icon>
         <span>Utilisateurs</span>
       </a>
+      <!-- Bouton de déconnexion qui affiche le message de confirmation -->
+      <a mat-list-item (click)="confirmLogout()">
+        <mat-icon matListIcon>exit_to_app</mat-icon>
+        <span>Se déconnecter</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   
   <mat-sidenav-content>
-    <div *ngIf="selectedSection === 'laboratories'">
-      <app-list-laboratories></app-list-laboratories><!-- Component for Laboratories -->
+    <!-- Header avec icônes de notifications et utilisateur -->
+    <div class="header-pannel">
+      <mat-icon class="notification-icon">notifications</mat-icon>
+      <mat-icon class="user-icon">account_circle</mat-icon>
     </div>
-     <div *ngIf="selectedSection === 'addresses'"> 
-     <!--  <app-addresses></app-addresses> --> <!-- Component for Addresses --> 
+
+    <div *ngIf="selectedSection === 'laboratories'">
+      <app-list-laboratories></app-list-laboratories>
+    </div>
+    <div *ngIf="selectedSection === 'addresses'">
+      <!-- <app-addresses></app-addresses> -->
     </div>
     <div *ngIf="selectedSection === 'users'">
-      <app-lister-utilisateurs></app-lister-utilisateurs> <!-- Component for Users -->
+      <app-lister-utilisateurs></app-lister-utilisateurs>
+    </div>
+    
+    <!-- Message de confirmation -->
+    <div *ngIf="showConfirmation" class="confirmation-message">
+      <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+      <button (click)="logout()" class="confirm-btn">Oui</button>
+      <button (click)="cancelLogout()" class="cancel-btn">Non</button>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

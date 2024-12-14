@@ -28,7 +28,7 @@ export class AjouterUtilisateurComponent {
         nomComplet: [this.utilisateurData.nomComplet, Validators.required],
         email: [this.utilisateurData.email, [Validators.required, Validators.email]],
         numTel: [this.utilisateurData.numTel, [Validators.required, Validators.pattern('^\\+?\\d{1,3}?[- ]?\\(?\\d{1,3}\\)?[- ]?\\d{1,4}[- ]?\\d{1,4}[- ]?\\d{1,9}$')]],
-        role: [this.utilisateurData.role, Validators.required],
+        role: [this.utilisateurData.role],
         signature: [this.utilisateurData.signature || '']
       });
     } else {
@@ -60,6 +60,21 @@ export class AjouterUtilisateurComponent {
   }
 
   onSave(): void {
+    if(this.isEditMode){
+      this.utilisateurService.updateUtilisateur(this.formGroup.value.cin,this.formGroup.value).subscribe(() => {
+        console.log('Conducteur modif avec succès');
+       // this.router.navigate(['/confirmationCond'], { state: {conducteur: conducteur } });
+        
+      console.log("user",);
+      this.snackBar.open('Utilisateur modif avec succès !', 'Fermer', {
+        duration: 3000,
+        panelClass: ['success-snackbar'],
+      });
+      }, (error: any) => {
+        console.error('Erreur lors de modif du conducteur');
+        console.error(error);
+      });
+    }
     if( this.isEditMode){
       console.log("daz modif",this.utilisateurData)
     }

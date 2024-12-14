@@ -3,12 +3,12 @@
     position: relative;
   }
   .background {
-    background-image: url('../../../assets/laboratory-management.png'); /* Utilise 'assets/' comme préfixe */
+    background-image: url('../../../assets/bg2.jpg'); /* Utilise 'assets/' comme préfixe */
     background-size: cover;
     background-position: center;
     height: 89vh;
     position: relative;
-    margin-top: 80px; /* Ajout d'une marge pour éviter que la navbar ne recouvre l'image de fond */
+    margin-top: 72px; /* Ajout d'une marge pour éviter que la navbar ne recouvre l'image de fond */
   }
   
   .overlay-bg {
@@ -45,6 +45,6 @@
   }
   
   .btn-start:hover {
-    background-color: #76517e;
+    background-color: #2b573d;
   }
   
