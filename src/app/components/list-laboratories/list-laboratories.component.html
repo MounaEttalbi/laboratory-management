@@ -1,5 +1,11 @@
 <div class="laboratoire-list">
-  <h2>Liste des Laboratoires</h2>
+     <!-- Bouton Ajouter avec l'icône -->
+<div class="add-button-container">
+  <button (click)="openAddLaboratory()" class="add-button">
+    <span class="material-icons">add</span> Ajouter un Laboratoire
+  </button>
+  <br/>
+</div>
   <table>
     <thead>
       <tr>
@@ -34,13 +40,7 @@
     </tbody>
   </table>
 
-   <!-- Bouton Ajouter avec l'icône -->
-<div class="add-button-container">
-  <button (click)="openAddLaboratory()" class="add-button">
-    <span class="material-icons">add</span> Ajouter un Laboratoire
-  </button>
-  
-</div>
+
 
 
 </div>

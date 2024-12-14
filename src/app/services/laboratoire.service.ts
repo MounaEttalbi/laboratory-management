@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LaboratoireService {
-  private apiUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/all';  // URL pour récupérer tous les laboratoires
-  private addUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/ajouterLaboratoire'; // URL pour ajouter un laboratoire
-  private deleteUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/supprimerLabo';  // URL pour supprimer un laboratoire
+  private apiUrl = 'http://localhost:8888/laboratory-service/laboratory/all';  // URL pour récupérer tous les laboratoires
+  private addUrl = 'http://localhost:8089/laboratory/ajouterLaboratoire'; // URL pour ajouter un laboratoire
+  private deleteUrl = 'http://localhost:8089/laboratory/supprimerLabo';  // URL pour supprimer un laboratoire
 
   constructor(private http: HttpClient) { }
 
@@ -19,22 +19,24 @@ export class LaboratoireService {
   // Ajouter un laboratoire avec FormData
   addLaboratoire(laboratoire: any): Observable<any> {
     // Supprimez les en-têtes personnalisés et laissez Angular gérer automatiquement le type de contenu
-    return this.http.post<any>(this.addUrl, laboratoire);
-  }
+    return this.http.post<any>(this.addUrl, laboratoire,{
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
   
   // Méthode pour supprimer un laboratoire
-  deleteLaboratoire(id: number): Observable<void> {
+  deleteLaboratoire(id: number): Observable<any> {
     const url = `${this.deleteUrl}/${id}`;
     console.log("URL générée pour suppression :", url); // Log de l'URL utilisée
-    return this.http.delete<void>(url);
+    return this.http.delete<any>(url);
   }
   
   updateLaboratoire(id: number, updatedLab: any): Observable<any> {
-    const url = `http://localhost:8889/PROJETLIBRE/api/laboratoires/modifierLabo/${id}`;
+    const url = `http://localhost:8089/laboratory/modifierLabo/${id}`;
     return this.http.put<any>(url, updatedLab);
   }
   getLaboratoireById(id: number): Observable<any> {
-    const urlGet = `http://localhost:8889/PROJETLIBRE/api/laboratoires/${id}`;
+    const urlGet = `http://localhost:8888/laboratory-service/laboratory/${id}`;
     return this.http.get<any>(urlGet);
   }
   
