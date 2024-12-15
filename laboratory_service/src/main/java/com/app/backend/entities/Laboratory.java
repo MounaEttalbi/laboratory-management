@@ -2,6 +2,7 @@ package com.app.backend.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -15,9 +16,7 @@ public class Laboratory {
     
     private String nom;
     
-    @Lob
-    @Column(length = 100000)
-    private byte[] logo;
+    private String logo;
     
     private Long  nrc;
     private Statut statut;
@@ -26,7 +25,7 @@ public class Laboratory {
     public Laboratory() {
 		super();
 	}
-	public Laboratory(long id, String nom, byte[] logo, Long nrc, Statut statut, Date dateActivation) {
+	public Laboratory(long id, String nom, String logo, Long nrc, Statut statut, Date dateActivation) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -36,8 +35,14 @@ public class Laboratory {
 		this.dateActivation = dateActivation;
 	}
 	
-	//Getters and Setters
-    
+	public Laboratory(String nom2, Long nrc2, Statut statut2, Date activationDate, String logoUrl) {
+		super();
+		this.nom = nom2;
+		this.logo = logoUrl;
+		this.nrc = nrc2;
+		this.statut = statut2;
+		this.dateActivation = activationDate;
+	}
 	public long getId() {
 		return id;
 	}
@@ -50,10 +55,10 @@ public class Laboratory {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public byte[] getLogo() {
+	public String getLogo() {
 		return logo;
 	}
-	public void setLogo(byte[] logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 	public Long getNrc() {
@@ -80,7 +85,7 @@ public class Laboratory {
 		return "Laboratory{" +
 				"id=" + id +
 				", nom='" + nom + '\'' +
-				", logo=" + Arrays.toString(logo) +
+				", logo=" + logo +
 				", nrc=" + nrc +
 				", statut=" + statut +
 				", dateActivation=" + dateActivation +

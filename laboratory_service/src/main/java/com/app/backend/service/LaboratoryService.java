@@ -8,7 +8,7 @@ import com.app.backend.entities.Laboratory;
 
 public interface LaboratoryService {
 
-    Laboratory addLaboratory(LaboratoryDTO laboratoryDTO);
+    Laboratory addLaboratory(Laboratory laboratory);
 
     Laboratory updateLaboratory(Long id, LaboratoryDTO laboratoryDTO);
 

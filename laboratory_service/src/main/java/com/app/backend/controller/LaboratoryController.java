@@ -41,12 +41,19 @@ public class LaboratoryController {
 				.orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
-	// Ajouter un nouveau laboratoire
 	@PostMapping("/ajouterLaboratoire")
 	public ResponseEntity<Laboratory> addLaboratory(@RequestBody LaboratoryDTO laboratoryDTO) {
-		Laboratory laboratory = laboratoryService.addLaboratory(laboratoryDTO);
-		return ResponseEntity.status(HttpStatus.CREATED).body(laboratory);
+	    Laboratory laboratory = new Laboratory();
+	    laboratory.setNom(laboratoryDTO.getNom());
+	    laboratory.setNrc(laboratoryDTO.getNrc());
+	    laboratory.setStatut(laboratoryDTO.getStatut());
+	    laboratory.setDateActivation(laboratoryDTO.getDateActivation());
+	    laboratory.setLogo(laboratoryDTO.getLogo()); // Associe l'URL du logo
+
+	    laboratory = laboratoryService.addLaboratory(laboratory);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(laboratory);
 	}
+
 
 	// Mettre à jour un laboratoire existant
 	@PutMapping("/modifierLabo/{id}")
