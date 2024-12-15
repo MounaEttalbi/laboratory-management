@@ -11,26 +11,30 @@ public class Contact {
     private Long id;
 
     private Long fkIdLaboratoire;
+
     @Transient
     private Laboratory laboratory;
 
     private Long fkIdAdresse;
+
     @Transient
     private Adresse adresse;
 
     private String numTel;
     private String  fax;
     private String  email;
+    private String laboratoryName;
 
     public Contact(){super();}
 
-    public Contact(Long id, Long fkIdLaboratoire,Long fkIdAdresse,String numTel,String fax,String email) {
+    public Contact(Long id, Long fkIdLaboratoire,Long fkIdAdresse,String numTel,String fax,String email,String laboratoryName) {
         this.id = id;
         this.fkIdLaboratoire = fkIdLaboratoire;
         this.fkIdAdresse = fkIdAdresse;
         this.numTel =numTel;
         this.fax = fax;
         this.email=email;
+        this.laboratoryName=laboratoryName;
     }
 
     public Long getId() {
@@ -95,6 +99,14 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLaboratoryName() {
+        return laboratoryName;
+    }
+
+    public void setLaboratoryName(String laboratoryName) {
+        this.laboratoryName = laboratoryName;
     }
 
     @Override

@@ -9,7 +9,6 @@ public class Laboratory {
     private Long  nrc;
     private Date dateActivation;
 
-
     public String getNom() {
         return nom;
     }
