@@ -15,7 +15,8 @@ export class ListLaboratoriesComponent implements OnInit {
 
   laboratoires: any[] = []; // Tableau pour stocker les laboratoires
   selectedLabo: any = null; // Propriété pour le laboratoire sélectionné pour l'édition
-
+  searchQuery: string = '';
+  filteredLaboratories: any[] = []; // Tableau filtré des laboratoires
   constructor(
     private laboratoireService: LaboratoireService,
     private dialog: MatDialog,
@@ -31,6 +32,7 @@ export class ListLaboratoriesComponent implements OnInit {
     this.laboratoireService.getLaboratoires().subscribe(
       (data: any[]) => {
         this.laboratoires = data;
+        this.filteredLaboratories = data;
       },
       (error) => {
         console.error('Erreur lors de la récupération des laboratoires', error);
@@ -72,6 +74,21 @@ export class ListLaboratoriesComponent implements OnInit {
     });
   }
   
+  filterLaboratories(): void {
+    const query = this.searchQuery.toLowerCase().trim();  // Convertir la requête en minuscule et enlever les espaces
+    console.log('Recherche en cours avec le texte :', query);  // Log pour déboguer
+    
+    // Si la requête est vide, afficher tous les laboratoires
+    if (!query) {
+      this.filteredLaboratories = this.laboratoires;
+    } else {
+      this.filteredLaboratories = this.laboratoires.filter(labo => 
+        labo.nom.toLowerCase().includes(query) || labo.statut.toLowerCase().startsWith(query)
+      );
+    }
+    
+    console.log('Laboratoires filtrés :', this.filteredLaboratories);  // Log pour vérifier le résultat
+  }
   
   
 }

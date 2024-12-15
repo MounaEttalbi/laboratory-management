@@ -13,8 +13,16 @@
   <input type="date" [(ngModel)]="laboratoire.dateActivation" />
 
   <label>Logo :</label>
-  <input type="file" (change)="onFileChange($event)" />
+  <div class="logo-container">
+    <!-- Affichage du logo actuel -->
+    <div *ngIf="laboratoire.logo">
+      <img [src]="laboratoire.logo" alt="Logo actuel" (click)="triggerFileInput()" style="cursor: pointer; width: 100px; height: 100px; object-fit: cover;" />
+      <p>Cliquez sur l'image pour changer le logo</p>
+    </div>
 
+    <!-- Champ pour choisir un nouveau fichier -->
+    <input type="file" id="logo-input" (change)="onFileChange($event)" style="display: none" />
+  </div>
   <button (click)="updateLaboratoire()" class="action-save">Mettre à jour</button>
   <button (click)="dialogRef.close()" class="action-cancel">Annuler</button>
 </div>

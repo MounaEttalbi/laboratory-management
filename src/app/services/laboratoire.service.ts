@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LaboratoireService {
-  private apiUrl = 'http://localhost:8888/laboratory-service/laboratory/all';  // URL pour récupérer tous les laboratoires
+  private apiUrl = 'http://localhost:8089/laboratory/all';  // URL pour récupérer tous les laboratoires
   private addUrl = 'http://localhost:8089/laboratory/ajouterLaboratoire'; // URL pour ajouter un laboratoire
   private deleteUrl = 'http://localhost:8089/laboratory/supprimerLabo';  // URL pour supprimer un laboratoire
 
@@ -19,10 +19,7 @@ export class LaboratoireService {
   // Ajouter un laboratoire avec FormData
   addLaboratoire(laboratoire: any): Observable<any> {
     // Supprimez les en-têtes personnalisés et laissez Angular gérer automatiquement le type de contenu
-    return this.http.post<any>(this.addUrl, laboratoire,{
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
+    return this.http.post(`${this.addUrl}`, laboratoire);}
   
   // Méthode pour supprimer un laboratoire
   deleteLaboratoire(id: number): Observable<any> {
@@ -36,7 +33,7 @@ export class LaboratoireService {
     return this.http.put<any>(url, updatedLab);
   }
   getLaboratoireById(id: number): Observable<any> {
-    const urlGet = `http://localhost:8888/laboratory-service/laboratory/${id}`;
+    const urlGet = `http://localhost:8089/laboratory/${id}`;
     return this.http.get<any>(urlGet);
   }
   
