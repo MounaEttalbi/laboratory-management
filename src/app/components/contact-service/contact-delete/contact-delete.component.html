@@ -1,0 +1,10 @@
+<!-- adresse-delete.component.html -->
+<h2 mat-dialog-title>Confirmer la suppression</h2>
+<mat-dialog-content>
+  <p>Êtes-vous sûr de vouloir supprimer cette contact ? Cette action est irréversible.</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-button color="warn" (click)="onDelete()">Supprimer</button>
+</mat-dialog-actions>

@@ -32,7 +32,19 @@ import { LoginComponent } from './components/login/login.component';
 
 import { EditLaboratoryComponent } from './components/edit-laboratory/edit-laboratory.component';
 import {AjouterUtilisateurComponent} from './components/ajouter-utilisateur/ajouter-utilisateur.component';
-import {SidebarComponent} from './components/sidebar/sidebar.component'
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import { AdresseListComponent } from './components/adresse-service/adresse-list/adresse-list.component';
+import { AdresseAddComponent } from './components/adresse-service/adresse-add/adresse-add.component';
+import { AdresseUpdateComponent } from './components/adresse-service/adresse-update/adresse-update.component';
+import { AdresseDeleteComponent } from './components/adresse-service/adresse-delete/adresse-delete.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+
+import {ContactListComponent} from './components/contact-service/contact-list/contact-list.component';
+import {ContactAddComponent} from './components/contact-service/contact-add/contact-add.component';
+import {ContactUpdateComponent} from './components/contact-service/contact-update/contact-update.component';
+import {ContactDeleteComponent} from './components/contact-service/contact-delete/contact-delete.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,10 +60,19 @@ import {SidebarComponent} from './components/sidebar/sidebar.component'
     LoginComponent,
     EditLaboratoryComponent,
     AjouterUtilisateurComponent,
+    AdresseListComponent,
+    AdresseAddComponent,
+    AdresseUpdateComponent,
+    AdresseDeleteComponent,
+    ContactListComponent,
+    ContactAddComponent,
+    ContactUpdateComponent,
+    ContactDeleteComponent,
     
   ],
   imports: [
 
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,  // Ajout de BrowserAnimationsModule
     MatIconModule,
@@ -76,7 +97,8 @@ import {SidebarComponent} from './components/sidebar/sidebar.component'
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

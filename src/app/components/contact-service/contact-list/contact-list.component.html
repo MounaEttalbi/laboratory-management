@@ -1,0 +1,52 @@
+<!-- Bouton pour ajouter un nouveau contact -->
+<div class="header-actions">
+    <button mat-raised-button color="primary" (click)="openAddContactDialog()">Ajouter un Contact</button>
+  </div>
+  
+  <!-- Barre de recherche -->
+  <div class="search-bar-contact">
+    <mat-icon>search</mat-icon>
+    <input
+      type="text"
+      placeholder="Rechercher par email"
+      [(ngModel)]="searchTerm"
+      (input)="filterContacts()"
+      class="search-input"
+    />
+  </div>
+  
+  <!-- Tableau des contacts -->
+  <table class="table-contact">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Téléphone</th>
+        <th>Fax</th>
+        <th>Email</th>
+        <th>Laboratoire</th> <!-- Nouvelle colonne pour le laboratoire -->
+       <!-- <th>Adresse</th>      Nouvelle colonne pour l'adresse -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of filteredContacts">
+        <td>{{ contact.id }}</td>
+        <td>{{ contact.numTel }}</td>
+        <td>{{ contact.fax }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.laboratoryName }}</td> <!-- Affichage du nom du laboratoire -->
+         <!-- <td>{{ contact.adresse }}</td>         Affichage de l'adresse formatée -->
+        <td>
+          <!-- Bouton de suppression -->
+          <button mat-icon-button color="warn" (click)="openDeleteContactDialog(contact.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <!-- Bouton de mise à jour -->
+          <button mat-icon-button color="accent" (click)="openUpdateContactDialog(contact)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

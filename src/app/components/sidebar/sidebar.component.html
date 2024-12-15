@@ -10,13 +10,17 @@
         <mat-icon matListIcon>business</mat-icon>
         <span>Laboratoires</span>
       </a>
-      <a mat-list-item (click)="selectSection('addresses')" [class.active]="selectedSection === 'addresses'">
+      <a mat-list-item (click)="selectSection('adresses')" [class.active]="selectedSection === 'adresses'">
         <mat-icon matListIcon>location_on</mat-icon>
         <span>Adresses</span>
       </a>
       <a mat-list-item (click)="selectSection('users')" [class.active]="selectedSection === 'users'">
         <mat-icon matListIcon>group</mat-icon>
         <span>Utilisateurs</span>
+      </a>
+      <a mat-list-item (click)="selectSection('contacts')" [class.active]="selectedSection === 'contacts'">
+        <mat-icon matListIcon>contacts</mat-icon>
+        <span>Contacts</span>
       </a>
       <!-- Bouton de déconnexion qui affiche le message de confirmation -->
       <a mat-list-item (click)="confirmLogout()">
@@ -36,12 +40,15 @@
     <div *ngIf="selectedSection === 'laboratories'">
       <app-list-laboratories></app-list-laboratories>
     </div>
-    <div *ngIf="selectedSection === 'addresses'">
-      <!-- <app-addresses></app-addresses> -->
+    <div *ngIf="selectedSection === 'adresses'">
+        <app-adresse-list></app-adresse-list>
     </div>
     <div *ngIf="selectedSection === 'users'">
       <app-lister-utilisateurs></app-lister-utilisateurs>
     </div>
+    <div *ngIf="selectedSection === 'contacts'">
+      <app-contact-list></app-contact-list>
+  </div>
     
     <!-- Message de confirmation -->
     <div *ngIf="showConfirmation" class="confirmation-message">

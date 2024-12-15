@@ -1,0 +1,52 @@
+<!-- Bouton pour ajouter une nouvelle adresse -->
+<div class="header-actions">
+    <button mat-raised-button color="primary" (click)="openAddAdresseDialog()">Ajouter une Adresse</button>
+  </div>
+  
+  <!-- Barre de recherche -->
+  <div class="search-bar-adresse">
+    <mat-icon>search</mat-icon>
+    <input
+      type="text"
+      placeholder="Rechercher par ville"
+      [(ngModel)]="searchTerm"
+      (input)="filterAdresses()"
+      class="search-input"
+    />
+  </div>
+  
+  <!-- Tableau des adresses -->
+  <table class="table-adresse">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Numéro de Voie</th>
+        <th>Nom de Voie</th>
+        <th>Code Postal</th>
+        <th>Ville</th>
+        <th>Commune</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let adresse of filteredAdresses">
+        <td>{{ adresse.id }}</td>
+        <td>{{ adresse.numVoie }}</td>
+        <td>{{ adresse.nomVoie }}</td>
+        <td>{{ adresse.codePostal }}</td>
+        <td>{{ adresse.ville }}</td>
+        <td>{{ adresse.commune }}</td>
+        <td>
+          <!-- Bouton de suppression -->
+        <button mat-icon-button color="warn" (click)="openDeleteAdresseDialog(adresse.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <!-- Bouton de mise à jour -->
+          <button mat-icon-button color="accent" (click)="openUpdateAdresseDialog(adresse)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>      
+      </tr>
+    </tbody>
+  </table>
+  
