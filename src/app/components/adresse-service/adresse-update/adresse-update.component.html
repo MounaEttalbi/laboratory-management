@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Modifier l'adresse</h1>
+
+<form [formGroup]="adresseForm" (ngSubmit)="onUpdate()">
+  <mat-form-field appearance="fill">
+    <mat-label>Numéro de voie</mat-label>
+    <input matInput formControlName="numVoie" placeholder="Numéro de voie" />
+    <mat-error *ngIf="adresseForm.get('numVoie')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nom de voie</mat-label>
+    <input matInput formControlName="nomVoie" placeholder="Nom de voie" />
+    <mat-error *ngIf="adresseForm.get('nomVoie')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Code postal</mat-label>
+    <input matInput formControlName="codePostal" placeholder="Code postal" />
+    <mat-error *ngIf="adresseForm.get('codePostal')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ville</mat-label>
+    <input matInput formControlName="ville" placeholder="Ville" />
+    <mat-error *ngIf="adresseForm.get('ville')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Commune</mat-label>
+    <input matInput formControlName="commune" placeholder="Commune" />
+    <mat-error *ngIf="adresseForm.get('commune')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Annuler</button>
+    <button mat-button type="submit" [disabled]="!adresseForm.valid">Mettre à jour</button>
+  </div>
+</form>

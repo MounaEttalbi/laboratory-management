@@ -1,0 +1,39 @@
+/* adresse-delete.component.css */
+
+/* Style du titre de la fenêtre */
+mat-dialog-title {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Style du contenu du dialogue */
+  mat-dialog-content {
+    font-size: 1rem;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Style des boutons dans les actions */
+  mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  /* Style pour le bouton 'Annuler' */
+  button.mat-button {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  /* Style du bouton 'Supprimer' */
+  button.mat-button[color='warn'] {
+    background-color: #d32f2f;
+    color: white;
+  }
+  
+  button.mat-button[color='warn']:hover {
+    background-color: #c62828;
+  }
+  

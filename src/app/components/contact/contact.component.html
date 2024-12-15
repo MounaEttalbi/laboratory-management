@@ -5,29 +5,9 @@
   </div>
 
   <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
-    <input 
-      type="text" 
-      id="name" 
-      [(ngModel)]="name" 
-      name="name" 
-      placeholder="Nom" 
-      required 
-    />
-    <input 
-      type="email" 
-      id="email" 
-      [(ngModel)]="email" 
-      name="email" 
-      placeholder="Email" 
-      required 
-    />
-    <textarea 
-      id="message" 
-      [(ngModel)]="message" 
-      name="message" 
-      placeholder="Votre message" 
-      required
-    ></textarea>
+    <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Nom" required  />
+    <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required  />
+    <textarea id="message" [(ngModel)]="message" name="message" placeholder="Votre message" required></textarea>
     <button type="submit" [disabled]="!contactForm.form.valid">Envoyer</button>
   </form>
 

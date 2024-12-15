@@ -1,0 +1,66 @@
+<div class="adresse-add-container">
+    <h3>Ajouter une nouvelle adresse</h3>
+    <form [formGroup]="adresseForm" (ngSubmit)="onSubmit()">
+  
+      <div class="form-group">
+        <label for="numVoie">Numéro de voie</label>
+        <input id="numVoie" type="text" formControlName="numVoie" class="form-control" placeholder="Numéro de voie" />
+        <mat-error *ngIf="adresseForm.get('numVoie')?.hasError('required')">
+          Ce champ est requis
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="nomVoie">Nom de voie</label>
+        <input id="nomVoie" type="text" formControlName="nomVoie" class="form-control" placeholder="Nom de voie" />
+        <mat-error *ngIf="adresseForm.get('nomVoie')?.hasError('required')">
+          Ce champ est requis
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="codePostal">Code Postal</label>
+        <input id="codePostal" type="text" formControlName="codePostal" class="form-control" placeholder="Code Postal" />
+        <mat-error *ngIf="adresseForm.get('codePostal')?.invalid">
+          {{ getErrorMessage('codePostal') }}
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="ville">Ville</label>
+        <input id="ville" type="text" formControlName="ville" class="form-control" placeholder="Ville"/>
+        <mat-error *ngIf="adresseForm.get('ville')?.invalid">
+          {{ getErrorMessage('ville') }}
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="commune">Commune</label>
+        <input id="commune" type="text" formControlName="commune" class="form-control" placeholder="Commune" />
+        <mat-error *ngIf="adresseForm.get('commune')?.invalid">
+          {{ getErrorMessage('commune') }}
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="rue">Rue</label>
+        <input id="rue" type="text" formControlName="rue" class="form-control" placeholder="Rue" />
+        <mat-error *ngIf="adresseForm.get('rue')?.invalid">
+          {{ getErrorMessage('rue') }}
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="numero">Numéro</label>
+        <input id="numero" type="text" formControlName="numero" class="form-control" placeholder="Numéro" />
+        <mat-error *ngIf="adresseForm.get('numero')?.invalid">
+          {{ getErrorMessage('numero') }}
+        </mat-error>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="adresseForm.invalid">
+        Ajouter
+      </button>
+    </form>
+  </div>
+  

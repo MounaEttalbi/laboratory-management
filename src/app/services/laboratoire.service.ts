@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LaboratoireService {
-  private apiUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/all';  // URL pour récupérer tous les laboratoires
-  private addUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/ajouterLaboratoire'; // URL pour ajouter un laboratoire
-  private deleteUrl = 'http://localhost:8889/PROJETLIBRE/api/laboratoires/supprimerLabo';  // URL pour supprimer un laboratoire
+  private apiUrl = 'http://localhost:8089/laboratory/all';  // URL pour récupérer tous les laboratoires
+  private addUrl = 'http://localhost:8089/laboratory/ajouterLaboratoire'; // URL pour ajouter un laboratoire
+  private deleteUrl = 'http://localhost:8089/laboratory/supprimerLabo';  // URL pour supprimer un laboratoire
 
   constructor(private http: HttpClient) { }
 
@@ -30,11 +30,11 @@ export class LaboratoireService {
   }
   
   updateLaboratoire(id: number, updatedLab: any): Observable<any> {
-    const url = `http://localhost:8889/PROJETLIBRE/api/laboratoires/modifierLabo/${id}`;
+    const url = `http://localhost:8089/laboratory/modifierLabo/${id}`;
     return this.http.put<any>(url, updatedLab);
   }
   getLaboratoireById(id: number): Observable<any> {
-    const urlGet = `http://localhost:8889/PROJETLIBRE/api/laboratoires/${id}`;
+    const urlGet = `http://localhost:8089/laboratory/${id}`;
     return this.http.get<any>(urlGet);
   }
   

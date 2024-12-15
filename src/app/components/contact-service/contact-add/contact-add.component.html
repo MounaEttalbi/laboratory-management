@@ -1,0 +1,65 @@
+<div class="contact-add-container">
+    <h3>Ajouter un nouveau contact</h3>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="Email" />
+        <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+          Ce champ est requis
+        </mat-error>
+        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+          L'email n'est pas valide
+        </mat-error>
+      </div>
+    
+      <div class="form-group">
+        <label for="numTel">Numéro de téléphone</label>
+        <input id="numTel" type="text" formControlName="numTel" class="form-control" placeholder="+212xxxxxxxxx" />
+        <mat-error *ngIf="contactForm.get('numTel')?.hasError('required')">Ce champ est requis</mat-error>
+        <mat-error *ngIf="contactForm.get('numTel')?.hasError('invalidPhoneNumber')">
+          Le numéro doit commencer par +212 et être suivi de 9 chiffres
+        </mat-error>
+      </div>
+    
+      <div class="form-group">
+        <label for="fax">Fax</label>
+        <input id="fax" type="text" formControlName="fax" class="form-control" placeholder="Fax" />
+        <mat-error *ngIf="contactForm.get('fax')?.invalid">
+          {{ getErrorMessage('fax') }}
+        </mat-error>
+      </div>
+    <!-- 
+      <div class="form-group">
+        <label for="fkIdAdresse">Adresse</label>
+        <input id="fkIdAdresse" type="text" formControlName="fkIdAdresse" class="form-control" placeholder="ID Adresse" />
+        <mat-error *ngIf="contactForm.get('fkIdAdresse')?.invalid">
+          {{ getErrorMessage('fkIdAdresse') }}
+        </mat-error>
+      </div> -->
+
+     <!-- Liste déroulante pour sélectionner un laboratoire -->
+     <div>
+      <label for="fkIdLaboratoire">Laboratoire</label>
+      <select
+        id="fkIdLaboratoire"
+        formControlName="fkIdLaboratoire"
+        class="form-control"
+      >
+        <option value="" disabled selected>Sélectionner un laboratoire</option>
+        <option *ngFor="let labo of laboratoires" [value]="labo.id">
+          {{ labo.nom }}
+        </option>
+      </select>
+      <div *ngIf="contactForm.get('fkIdLaboratoire')?.invalid && contactForm.get('fkIdLaboratoire')?.touched">
+        {{ getErrorMessage('fkIdLaboratoire') }}
+      </div>
+    </div>
+  
+      
+      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">
+        Ajouter
+      </button>
+    </form>
+  </div>
+  
