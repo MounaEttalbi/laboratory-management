@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, Inject } from '@angular/core';
 import { LaboratoireService } from '../../services/laboratoire.service';
 import { Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';  // Importez MAT_DIALOG_DATA
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-laboratory',
@@ -9,8 +9,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';  // Im
   styleUrls: ['./edit-laboratory.component.css']
 })
 export class EditLaboratoryComponent implements OnInit {
-  @Input() laboratoireId: number = 2;  // ID du laboratoire à modifier (initialisé à une valeur par défaut)
-  @Output() laboratoryUpdated = new EventEmitter<void>(); // Événement émis après la mise à jour
+  @Input() laboratoireId: number = 2; // ID par défaut si non fourni
+  @Output() laboratoryUpdated = new EventEmitter<void>(); // Événement après mise à jour
 
   laboratoire = {
     id: 0,
@@ -18,52 +18,57 @@ export class EditLaboratoryComponent implements OnInit {
     nrc: '',
     statut: '',
     dateActivation: '',
-    logo: null as File | null
+    logo: '' as string | null // Stocke l'URL ou null
   };
 
   constructor(
     private laboratoireService: LaboratoireService,
     private router: Router,
     public dialogRef: MatDialogRef<EditLaboratoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number } // Récupérer l'ID du laboratoire passé dans data
+    @Inject(MAT_DIALOG_DATA) public data: { id: number } // Récupération des données via le dialog
   ) {}
 
   ngOnInit(): void {
     if (this.data.id) {
-      this.laboratoireId = this.data.id;  // Assignez l'ID récupéré depuis 'data'
-      this.getLaboratoireById(this.laboratoireId); // Récupérer les données du laboratoire
+      this.laboratoireId = this.data.id;
+      this.getLaboratoireById(this.laboratoireId); // Charger les données
     }
   }
 
-  // Méthode pour récupérer les données du laboratoire
+  // Récupérer les données du laboratoire par ID
   getLaboratoireById(id: number): void {
     this.laboratoireService.getLaboratoireById(id).subscribe({
       next: (response) => {
-        this.laboratoire = response; // Assigner les données récupérées au modèle
-        // Formater la date de l'objet laboratoire avant de l'afficher
+        this.laboratoire = response;
         this.laboratoire.dateActivation = this.formatDateForInput(this.laboratoire.dateActivation);
-     
-       },
+      },
       error: (error) => {
-        console.error("Erreur lors de la récupération du laboratoire : ", error);
+        console.error("Erreur lors de la récupération du laboratoire :", error);
         alert("Erreur lors de la récupération du laboratoire");
       }
     });
   }
 
-  // Gestion du changement de fichier pour mettre à jour le logo
-  onFileChange(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.laboratoire.logo = file;
+  // Gestion du changement de fichier pour le logo
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files && input.files.length > 0) {
+      const file = input.files[0];
+      const fileName = file.name; // Récupère le nom du fichier
+
+      // Concatène "assets/" avec le nom du fichier
+      this.laboratoire.logo = `assets/${fileName}`;
+      console.log("Chemin généré pour le logo :", this.laboratoire.logo);
     }
   }
 
-
+   // Ouvrir la fenêtre de sélection de fichier lorsque l'image du logo est cliquée
+   triggerFileInput(): void {
+    document.getElementById('logo-input')?.click();
+  }
+  // Formater une date pour un champ `date` HTML
   formatDateForInput(date: string | null): string {
-    if (!date) {
-      return '';
-    }
+    if (!date) return '';
     const parsedDate = new Date(date);
     if (isNaN(parsedDate.getTime())) {
       console.error('Format de date invalide:', date);
@@ -72,24 +77,24 @@ export class EditLaboratoryComponent implements OnInit {
     const year = parsedDate.getFullYear();
     const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
     const day = String(parsedDate.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`; // Format attendu par les champs HTML5 `date`
+    return `${year}-${month}-${day}`;
   }
 
-  
-  // Méthode pour mettre à jour le laboratoire
-  updateLaboratoire() {
+  // Mise à jour des données du laboratoire
+  updateLaboratoire(): void {
     const data = {
       id: this.laboratoire.id,
       nom: this.laboratoire.nom,
-      logo: this.laboratoire.logo, // Assurez-vous que le logo est soit un fichier soit null
       nrc: this.laboratoire.nrc,
       statut: this.laboratoire.statut,
-      // Vérifiez et convertissez la date en ISO 8601 si elle est valide
-      dateActivation: this.laboratoire.dateActivation ? new Date(this.laboratoire.dateActivation).toISOString().split('T')[0] : null
+      logo: this.laboratoire.logo,
+      dateActivation: this.laboratoire.dateActivation
+        ? new Date(this.laboratoire.dateActivation).toISOString().split('T')[0]
+        : null
     };
-  
+
     this.laboratoireService.updateLaboratoire(this.laboratoire.id, data).subscribe({
-      next: (response) => {
+      next: () => {
         this.laboratoryUpdated.emit();
         this.dialogRef.close();
       },
@@ -99,5 +104,4 @@ export class EditLaboratoryComponent implements OnInit {
       }
     });
   }
-  
 }

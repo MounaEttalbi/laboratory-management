@@ -1,17 +1,30 @@
 <div class="laboratoire-list">
-  <!-- Bouton Ajouter avec l'icône -->
-  <div class="add-button-container">
-    <button (click)="openAddLaboratory()" class="add-button">
-      <span class="material-icons">add</span> Ajouter un Laboratoire
-    </button>
+  <!-- Conteneur pour Recherche et Ajouter -->
+  <div class="search-add-container">
+    <!-- Recherche -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        placeholder="Rechercher par nom ou statut..." 
+        [(ngModel)]="searchQuery" 
+        (input)="filterLaboratories()"
+        class="search-input" />
+    </div>
+    <!-- Bouton Ajouter -->
+    <div class="add-button-container">
+      <button (click)="openAddLaboratory()" class="add-button">
+        <span class="material-icons">add</span> Ajouter un Laboratoire
+      </button>
+    </div>
   </div>
+
   <!-- Tableau des laboratoires -->
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Nom</th>
-        <th>Status</th>
+        <th>Statut</th>
         <th>NRC</th>
         <th>Date Activation</th>
         <th>Logo</th>
@@ -19,13 +32,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let labo of laboratoires">
+      <tr *ngFor="let labo of filteredLaboratories">
         <td>{{ labo.id }}</td>
         <td>{{ labo.nom }}</td>
         <td>{{ labo.statut }}</td>
         <td>{{ labo.nrc }}</td>
         <td>{{ labo.dateActivation | date }}</td>
-        <td><img [src]="labo.logo" alt="Logo"></td>
+        <td>
+          <img [src]="labo.logo" alt="Logo" width="50" height="50">
+        </td>
         <td>
           <button (click)="openEditDialog(labo.id)" class="edit-button" color="accent">
             <span class="material-icons">edit</span>
