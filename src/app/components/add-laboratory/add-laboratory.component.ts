@@ -16,7 +16,7 @@ export class AddLaboratoryComponent implements OnInit {
     nom: '',
     nrc: '',
     statut: '',
-    date_activation: '',
+    dateActivation: '',
     logo: null as File | null
   };
   isAdding = true; // Initialise l'affichage du formulaire
@@ -38,28 +38,24 @@ export class AddLaboratoryComponent implements OnInit {
   }
 
   addLaboratoire() {
-    const formData = new FormData();
-
-    // Ajout des champs de données
-    formData.append('nom', this.laboratoire.nom);
-    formData.append('nrc', this.laboratoire.nrc);
-    formData.append('statut', this.laboratoire.statut);
-    formData.append('date_activation', new Date(this.laboratoire.date_activation).toISOString().split('T')[0]);
-
-    // Ajouter le fichier logo s'il existe
-    if (this.laboratoire.logo) {
-      formData.append('logo', this.laboratoire.logo);
-    }
-
-    this.laboratoireService.addLaboratoire(formData).subscribe({
+    const laboratoireData = {
+      nom: this.laboratoire.nom,
+      nrc: this.laboratoire.nrc,
+      statut: this.laboratoire.statut,
+      dateActivation: new Date(this.laboratoire.dateActivation).toISOString()
+    };
+  
+    this.laboratoireService.addLaboratoire(laboratoireData).subscribe({
       next: (response) => {
         this.laboratoryAdded.emit(); // Émettre l'événement 
-        this.dialogRef.close();  // Close the dialog
+        this.dialogRef.close();  // Fermer la fenêtre de dialogue
       },
       error: (error) => {
-        console.error("Erreur lors de l'ajout du laboratoire : ", error);
+        console.error("Erreur lors de l'ajout du laboratoire :", error);
         alert("Erreur lors de l'ajout du laboratoire");
       }
     });
   }
+  
+  
 }

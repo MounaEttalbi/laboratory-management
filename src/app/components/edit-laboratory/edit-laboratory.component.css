@@ -1,61 +1,69 @@
-.edit-laboratory-container {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #f9f9f9;
-  }
-  
-  .edit-laboratory-container h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 1.5rem; /* Taille réduite du texte */
-    font-weight: bold;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block; /* Chaque label sur une nouvelle ligne */
-    font-weight: bold;
-  }
-  
-  input,
-  select,
-  button {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 90%; /* Largeur maximale */
-  }
-  .actions {
-    display: flex; /* Permet d'afficher les boutons côte à côte */
-    justify-content: space-between; /* Ajoute un espace égal entre les boutons */
-  }
-  button {
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    flex: 1; /* Permet aux boutons de prendre la même largeur */
-  margin: 0 20px; /* Ajoute un espace horizontal entre les boutons */
-  }
-  .action-save{
-    background-color: #4caf50;
-  }
-  .action-cancel{
-    background-color: rgb(221, 1, 1);
-  }
-  button[disabled] {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+.edit-container {
+    
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.edit-container h2 {
+  font-size: 24px; /* Taille agrandie */
+  color: black; /* Texte en blanc */
+  text-align: center; /* Centrage */
+  margin-bottom: 20px; /* Espacement sous le titre */
+  font-weight: bold; /* Texte en gras */
+}
+
+.edit-container {
+  background-color: #f9f9f9; /* Fond neutre */
+  padding: 25px; /* Espacement intérieur généreux */
+  border-radius: 10px; /* Coins arrondis */
+  max-width: 100%; /* Adapter à la largeur de .add-container */
+}
+
+.edit-container label {
+  display: block; /* Chaque label sur une nouvelle ligne */
+  margin-bottom: 5px; /* Espacement sous le label */
+  font-weight: bold; /* Texte en gras */
+  color: #000000; /* Couleur du texte */
+}
+
+.edit-container input[type="text"],
+.edit-container input[type="date"],
+.edit-container input[type="file"] {
+  width: 100%; /* Largeur maximale */
+  padding: 12px; /* Espacement confortable */
+  margin-bottom: 20px; /* Espacement entre les champs */
+  border: 1px solid #ddd; /* Bordure discrète */
+  border-radius: 8px; /* Coins arrondis */
+  font-size: 14px; /* Taille uniforme */
+  box-sizing: border-box; /* Gestion des marges/paddings */
+}
+
+.edit-container input[type="file"] {
+  padding: 8px; /* Réduction pour les fichiers */
+}
+
+.edit-container button {
+  color: white; /* Texte en blanc */
+  padding: 12px; /* Espacement généreux */
+  border-radius: 8px; /* Coins arrondis */
+  font-size: 16px; /* Taille lisible */
+  border: none; /* Pas de bordure */
+  cursor: pointer; /* Indication cliquable */
+  transition: all 0.3s ease; /* Animation douce */
+}
+
+.edit-container button:hover {
+  transform: scale(1.05); /* Léger agrandissement au survol */
+}
+.actions {
+  display: flex; /* Permet d'afficher les boutons côte à côte */
+  justify-content: space-between; /* Ajoute un espace égal entre les boutons */
+}
+.action-save{
+  background-color: #4caf50;
+  margin-right: 9rem;
+}
+.action-cancel{
+  background-color: rgb(221, 1, 1);
+}

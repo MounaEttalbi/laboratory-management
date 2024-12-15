@@ -3,7 +3,7 @@
   margin: 20px auto;
   max-width: 1200px; /* Largeur maximale de la table */
   padding: 20px;
-  background-color: #f9f9f9; /* Fond clair pour le conteneur */
+  background-color: #ffffff; /* Fond clair pour le conteneur */
   border-radius: 10px; /* Coins arrondis */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
@@ -55,70 +55,6 @@ tbody td img {
   height: auto; /* Garder les proportions */
 }
 
-/* Styles pour le formulaire de modification */
-.edit-form {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(75, 135, 83, 0.1);
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-.edit-form h3 {
-  text-align: center;
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.edit-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #055f18;
-}
-
-.edit-form input[type="text"],
-.edit-form input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-.edit-form input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.edit-form button[type="submit"],
-.edit-form button[type="button"] {
-  width: 48%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.edit-form button[type="submit"] {
-  background-color: #28a745;
-  color: white;
-}
-
-.edit-form button[type="button"] {
-  background-color: #dc3545;
-  color: white;
-  margin-left: 4%;
-}
-
-.edit-form button:hover {
-  opacity: 0.9;
-}
 
 /* Bouton Ajouter un laboratoire */
 .add-button-container {

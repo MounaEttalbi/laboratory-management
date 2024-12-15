@@ -23,6 +23,10 @@ export class ListLaboratoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadLaboratoires();
+  }
+
+  loadLaboratoires(): void {
     // Récupération des laboratoires au chargement du composant
     this.laboratoireService.getLaboratoires().subscribe(
       (data: any[]) => {
@@ -36,8 +40,11 @@ export class ListLaboratoriesComponent implements OnInit {
 
   openAddLaboratory(): void {
     console.log('Ajouter un laboratoire');
-    this.dialog.open(AddLaboratoryComponent, {
+    const dialogRef = this.dialog.open(AddLaboratoryComponent, {
       width: '500px'
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+        this.loadLaboratoires(); // Rafraîchir la liste
     });
   }
 
@@ -48,15 +55,8 @@ export class ListLaboratoriesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === true) { // Si la suppression a réussi
-        this.laboratoireService.getLaboratoires().subscribe(
-          (data: any[]) => {
-            this.laboratoires = data; // Rafraîchissez la liste
-          },
-          (error) => {
-            console.error('Erreur lors du rafraîchissement des laboratoires', error);
-          }
-        );
+      if (result === true) {
+        this.loadLaboratoires(); // Chargez les laboratoires
       }
     });
   }
@@ -65,6 +65,10 @@ export class ListLaboratoriesComponent implements OnInit {
     const dialogRef = this.dialog.open(EditLaboratoryComponent, {
       width: '400px',
       data: { id: id }  // Passez l'ID du laboratoire ici
+    });
+    dialogRef.componentInstance.laboratoryUpdated.subscribe(() => {
+      // Rafraîchir la liste après la mise à jour
+      this.loadLaboratoires();
     });
   }
   

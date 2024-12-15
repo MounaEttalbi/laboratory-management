@@ -1,55 +1,20 @@
-<div class="edit-laboratory-container">
-  <h2>Modifier le laboratoire</h2>
-  <form [formGroup]="editLabForm" (ngSubmit)="onSubmit()">
-    <!-- Nom -->
-    <div class="form-group">
-      <label for="nom">Nom :</label>
-      <input id="nom" formControlName="nom" type="text" />
-      <div *ngIf="editLabForm.get('nom')?.invalid && editLabForm.get('nom')?.touched" class="error">
-        Le nom est requis.
-      </div>
-    </div>
+<div class="edit-container">
+  <h2>Modifier Laboratoire</h2>
+  <label>Nom :</label>
+  <input type="text" [(ngModel)]="laboratoire.nom" />
 
-    <!-- NRC -->
-    <div class="form-group">
-      <label for="nrc">NRC :</label>
-      <input id="nrc" formControlName="nrc" type="text" />
-      <div *ngIf="editLabForm.get('nrc')?.invalid && editLabForm.get('nrc')?.touched" class="error">
-        NRC est requis et doit contenir uniquement des chiffres.
-      </div>
-    </div>
+  <label>NRC :</label>
+  <input type="text" [(ngModel)]="laboratoire.nrc" />
 
-    <!-- Statut -->
-    <div class="form-group">
-      <label for="statut">Statut :</label>
-      <select id="statut" formControlName="statut">
-        <option value="0">ACTIF</option>
-        <option value="1">INACTIF</option>
-      </select>
-      <div *ngIf="editLabForm.get('statut')?.invalid && editLabForm.get('statut')?.touched" class="error">
-        Le statut est requis.
-      </div>
-    </div>
+  <label>Statut :</label>
+  <input type="text" [(ngModel)]="laboratoire.statut" />
 
-    <!-- Date d'activation -->
-    <div class="form-group">
-      <label for="dateActivation">Date d'activation :</label>
-      <input id="dateActivation" formControlName="dateActivation" type="date"  />
-      <div *ngIf="editLabForm.get('dateActivation')?.invalid && editLabForm.get('dateActivation')?.touched" class="error">
-        La date d'activation est requise.
-      </div>
-    </div>
+  <label>Date d'Activation :</label>
+  <input type="date" [(ngModel)]="laboratoire.dateActivation" />
 
-    <!-- Logo -->
-    <div class="form-group">
-      <label for="logo">Logo :</label>
-      <input id="logo" type="file" (change)="onFileChange($event)" />
-    </div>
+  <label>Logo :</label>
+  <input type="file" (change)="onFileChange($event)" />
 
-    <!-- Actions -->
-    <div class="actions">
-      <button class="action-save" type="submit" [disabled]="editLabForm.invalid">Enregistrer</button>
-      <button class="action-cancel" type="button" (click)="dialogRef.close()">Annuler</button>
-    </div>
-  </form>
+  <button (click)="updateLaboratoire()" class="action-save">Mettre à jour</button>
+  <button (click)="dialogRef.close()" class="action-cancel">Annuler</button>
 </div>
