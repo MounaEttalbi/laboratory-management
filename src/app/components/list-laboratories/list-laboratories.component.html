@@ -1,25 +1,30 @@
-<div class="search-add-container">
-<div class="search-container">
-  <input 
-    type="text" 
-    placeholder="Rechercher par nom ou statut..." 
-    [(ngModel)]="searchQuery" 
-    (input)="filterLaboratories()"
-    class="search-input" />
-</div>
-<div class="add-button-container">
-  <button (click)="openAddLaboratory()" class="add-button">
-    <span class="material-icons">add</span> Ajouter un Laboratoire
-  </button>
-<br/>
-</div>  
-</div>
+<div class="laboratoire-list">
+  <!-- Conteneur pour Recherche et Ajouter -->
+  <div class="search-add-container">
+    <!-- Recherche -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        placeholder="Rechercher par nom ou statut..." 
+        [(ngModel)]="searchQuery" 
+        (input)="filterLaboratories()"
+        class="search-input" />
+    </div>
+    <!-- Bouton Ajouter -->
+    <div class="add-button-container">
+      <button (click)="openAddLaboratory()" class="add-button">
+        <span class="material-icons">add</span> Ajouter un Laboratoire
+      </button>
+    </div>
+  </div>
+
+  <!-- Tableau des laboratoires -->
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Nom</th>
-        <th>Status</th>
+        <th>Statut</th>
         <th>NRC</th>
         <th>Date Activation</th>
         <th>Logo</th>
@@ -34,22 +39,17 @@
         <td>{{ labo.nrc }}</td>
         <td>{{ labo.dateActivation | date }}</td>
         <td>
-          <img 
-            [src]="labo.logo" 
-            alt="Logo" 
-            width="50" 
-            height="50">
+          <img [src]="labo.logo" alt="Logo" width="50" height="50">
         </td>
         <td>
-           <!-- Icône pour modifier -->
-           <button (click)="openEditDialog(labo.id)" class="edit-button">
+          <button (click)="openEditDialog(labo.id)" class="edit-button" color="accent">
             <span class="material-icons">edit</span>
           </button>
-          <!-- Icône pour supprimer -->
-          <button (click)="openDeleteDialog(labo.id)" class="delete-button">
+          <button (click)="openDeleteDialog(labo.id)" class="delete-button" color="warn">
             <span class="material-icons">delete</span>
           </button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>

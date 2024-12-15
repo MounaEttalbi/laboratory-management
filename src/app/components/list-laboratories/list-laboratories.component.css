@@ -1,116 +1,118 @@
-/* Styles principaux pour la liste des laboratoires */
-.laboratoire-list {
-  margin: 20px auto;
-  max-width: 1200px; /* Largeur maximale de la table */
+/* Corps de la page */
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #f9f9f9; /* Fond blanc-gris doux */
+  margin: 0;
   padding: 20px;
-  background-color: #ffffff; /* Fond clair pour le conteneur */
-  border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
-.laboratoire-list h2 {
-  text-align: center; /* Centrer le titre */
-  color: #447d56; /* Couleur du texte du titre */
-  font-size: 28px; /* Taille du titre */
-  margin-bottom: 20px; /* Espacement sous le titre */
-}
-
-/* Styles pour le tableau */
-table {
-  width: 100%; /* Le tableau prend toute la largeur du conteneur */
-  border-collapse: collapse; /* Fusion des bordures */
-}
-
-thead {
-  background-color: #508461; /* Fond sombre pour l'en-tête */
-  color: white; /* Texte blanc pour l'en-tête */
-}
-
-th, td {
-  padding: 12px 15px; /* Espacement interne des cellules */
-  text-align: left; /* Aligner le texte à gauche */
-  border-bottom: 1px solid #ddd; /* Bordure sous chaque ligne */
-}
-
-th {
-  font-size: 18px; /* Taille du texte de l'en-tête */
-  text-transform: uppercase; /* Texte en majuscule pour l'en-tête */
-}
-
-tbody tr:hover {
-  background-color: #f1f1f1; /* Fond gris clair au survol des lignes */
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9; /* Fond différent pour les lignes paires */
-}
-
-tbody td {
-  font-size: 16px; /* Taille du texte des cellules */
-  color: #020200; /* Couleur du texte des cellules */
-}
-
-tbody td img {
-  max-width: 50px; /* Limiter la taille du logo */
-  height: auto; /* Garder les proportions */
-}
-
-
-/* Bouton Ajouter un laboratoire */
+/* Bouton Ajouter un Laboratoire */
 .add-button-container {
-  margin-top: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .add-button {
+  background-color: #000; /* Noir pour le bouton */
+  color: #fff; /* Texte blanc */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 5px; /* Espacement entre l'icône et le texte */
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px; /* Taille lisible */
-}
-
-.add-button .material-icons {
-  margin-right: 8px;
+  gap: 8px;
 }
 
 .add-button:hover {
-  background-color: #45a049;
+  background-color: #444; /* Légèrement plus clair au survol */
 }
 
-/* Boutons Modifier et Supprimer */
-.edit-button, .delete-button {
+/* Tableau des laboratoires */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #000;
+  color: #fff;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+td {
+  color: #333;
+}
+
+/* Boutons d'actions dans le tableau */
+button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px; /* Taille des icônes */
-  padding: 5px; /* Espacement */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
-.edit-button {
-  color: blue; /* Couleur de l'icône modifier */
+button[color="warn"] {
+  color: #e74c3c; /* Rouge pour suppression */
 }
 
-.edit-button:hover {
-  color: darkblue; /* Couleur au survol */
+button[color="warn"]:hover {
+  background-color: #fdecea; /* Légère surbrillance */
 }
 
-.delete-button {
-  color: red; /* Couleur de l'icône supprimer */
+button[color="accent"] {
+  color: #3498db; /* Bleu pour édition */
 }
 
-.delete-button:hover {
-  color: darkred; /* Couleur au survol */
+button[color="accent"]:hover {
+  background-color: #eaf5fd; /* Légère surbrillance */
 }
 
-/* Espacement entre les icônes dans les cellules */
-td > button {
-  margin-right: 5px;
+/* Images des logos */
+img {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  .add-button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
 }
 
 .search-container {
