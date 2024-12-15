@@ -1,23 +1,90 @@
-.mat-toolbar {
-  padding: 8px 16px;
+/* Style général de la carte */
+mat-card {
+  background-color: #fff; /* Fond blanc */
+  color: #000; /* Texte noir */
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+/* Barre d'outils */
+mat-toolbar {
+  background-color: #000; /* Fond noir */
+  color: #fff; /* Texte blanc */
+}
+
+mat-toolbar button {
+  color: #fff; /* Texte blanc */
+}
+
+mat-toolbar mat-icon {
+  color: #fff; /* Icônes blanches */
+}
+
+.action-toolbar {
+  margin-bottom: 16px;
+}
+
+/* Champ de recherche */
+mat-input {
+  color: #000;
+}
+
+div[style*="background-color: white"] {
+  background-color: #f5f5f5; /* Fond gris clair */
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+div[style*="background-color: white"] mat-icon {
+  color: #999; /* Icône gris clair */
+}
+
+/* Table des utilisateurs */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.mat-elevation-z8 {
+  border: 1px solid #ccc; /* Bordure grise */
+}
+
+th.mat-header-cell {
+  background-color: #f5f5f5; /* Fond gris clair */
+  color: #000; /* Texte noir */
   font-weight: bold;
-  background-color: #71b286 !important;
+  text-align: left;
+  padding: 8px;
 }
 
-.mat-card {
-  margin: 16px;
-  padding: 16px;
-  border-radius: 8px;
+td.mat-cell {
+  color: #000; /* Texte noir */
+  padding: 8px;
 }
 
-.mat-header-cell, .mat-cell {
-  padding: 8px 16px;
+tr.mat-header-row {
+  border-bottom: 2px solid #000;
 }
 
-.mat-header-row, .mat-row {
-  border-bottom: 1px solid #e0e0e0;
+tr.mat-row:hover {
+  background-color: #e0e0e0; /* Surlignage gris clair */
 }
 
-.mat-icon-button {
-  margin: 0 4px;
+td.mat-cell button mat-icon {
+  color: #000; /* Icônes noires */
+}
+
+/* Boutons d'actions */
+button.mat-icon-button {
+  border-radius: 50%;
+  border: 1px solid #000; /* Bordure noire */
+}
+
+button.mat-icon-button:hover {
+  background-color: #000;
+  color: #fff; /* Texte blanc au survol */
+}
+
+button.mat-icon-button:hover mat-icon {
+  color: #fff; /* Icône blanche au survol */
 }

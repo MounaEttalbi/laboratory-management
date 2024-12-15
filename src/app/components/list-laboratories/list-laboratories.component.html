@@ -1,11 +1,11 @@
 <div class="laboratoire-list">
-     <!-- Bouton Ajouter avec l'icône -->
-<div class="add-button-container">
-  <button (click)="openAddLaboratory()" class="add-button">
-    <span class="material-icons">add</span> Ajouter un Laboratoire
-  </button>
-  <br/>
-</div>
+  <!-- Bouton Ajouter avec l'icône -->
+  <div class="add-button-container">
+    <button (click)="openAddLaboratory()" class="add-button">
+      <span class="material-icons">add</span> Ajouter un Laboratoire
+    </button>
+  </div>
+  <!-- Tableau des laboratoires -->
   <table>
     <thead>
       <tr>
@@ -25,22 +25,16 @@
         <td>{{ labo.statut }}</td>
         <td>{{ labo.nrc }}</td>
         <td>{{ labo.dateActivation | date }}</td>
-        <td><img [src]="labo.logo" alt="Logo" width="50" height="50"></td>
+        <td><img [src]="labo.logo" alt="Logo"></td>
         <td>
-           <!-- Icône pour modifier -->
-           <button (click)="openEditDialog(labo.id)" class="edit-button">
+          <button (click)="openEditDialog(labo.id)" class="edit-button" color="accent">
             <span class="material-icons">edit</span>
           </button>
-          <!-- Icône pour supprimer -->
-          <button (click)="openDeleteDialog(labo.id)" class="delete-button">
+          <button (click)="openDeleteDialog(labo.id)" class="delete-button" color="warn">
             <span class="material-icons">delete</span>
           </button>
         </td>
       </tr>
     </tbody>
   </table>
-
-
-
-
 </div>

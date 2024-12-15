@@ -1,31 +1,133 @@
-.table-contact{
-    width: 100%;
+/* Conteneur global */
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #f9f9f9; /* Fond blanc-gris doux */
+  margin: 0;
+  padding: 20px;
+}
+
+/* Bouton Ajouter un Contact */
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.header-actions button {
+  background-color: #000; /* Noir pour le bouton */
+  color: #fff; /* Texte blanc */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header-actions button:hover {
+  background-color: #444; /* Légèrement plus clair au survol */
+}
+
+/* Barre de recherche */
+.search-bar-contact {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar-contact mat-icon {
+  color: #000;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  flex: 1;
+  color: #333;
+}
+
+/* Tableau des contacts */
+.table-contact {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-contact thead {
+  background-color: #000;
+  color: #fff;
+  text-align: left;
+}
+
+.table-contact th,
+.table-contact td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.table-contact tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-contact tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table-contact td {
+  color: #333;
+}
+
+.table-contact button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.table-contact button[color="warn"] {
+  color: #e74c3c; /* Rouge pour suppression */
+}
+
+.table-contact button[color="warn"]:hover {
+  background-color: #fdecea; /* Légère surbrillance */
+}
+
+.table-contact button[color="accent"] {
+  color: #3498db; /* Bleu pour édition */
+}
+
+.table-contact button[color="accent"]:hover {
+  background-color: #eaf5fd; /* Légère surbrillance */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .table-contact {
+    font-size: 14px;
   }
-  
-  th.mat-header-cell,
-  td.mat-cell {
-    padding: 8px;
+
+  .header-actions button {
+    font-size: 14px;
+    padding: 8px 15px;
   }
-  .search-bar-contact {
-      display: flex;
-      align-items: center;
-      margin-left: 750px;
-      margin-bottom: 20px;
-    }
-    
-    .search-bar-contact mat-icon {
-      margin-right: 8px; 
-      color: rgb(69, 71, 71);
-    }
-    
-    .search-input {
-      border: 1px solid #cccccc7c;
-      padding: 8px;
-      width: 200px;
-      border-radius: 20px;
-    }
-    .search-input:hover{
-      border-color:  #55e060;
-    }
-    
-    
+
+  .search-input {
+    font-size: 14px;
+  }
+}
