@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LaboratoireService } from '../../services/laboratoire.service';
+import { ContactService } from '../../services/contact.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddLaboratoryComponent } from '../add-laboratory/add-laboratory.component';
 import { DeleteLaboratoryComponent } from '../delete-laboratory/delete-laboratory.component';
 import { EditLaboratoryComponent } from '../edit-laboratory/edit-laboratory.component';
-
+import { ContactDetailsComponent } from '../contact-details/contact-details.component'; // Importer le composant modale
 @Component({
   selector: 'app-list-laboratories',
   templateUrl: './list-laboratories.component.html',
@@ -17,10 +18,13 @@ export class ListLaboratoriesComponent implements OnInit {
   selectedLabo: any = null; // Propriété pour le laboratoire sélectionné pour l'édition
   searchQuery: string = '';
   filteredLaboratories: any[] = []; // Tableau filtré des laboratoires
+
+  contacts: any[] = [];  // Stockage des contacts du laboratoire
   constructor(
     private laboratoireService: LaboratoireService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private contactService: ContactService
   ) {}
 
   ngOnInit(): void {
@@ -90,5 +94,18 @@ export class ListLaboratoriesComponent implements OnInit {
     console.log('Laboratoires filtrés :', this.filteredLaboratories);  // Log pour vérifier le résultat
   }
   
-  
+   // Méthode pour afficher les contacts du laboratoire
+   viewLaboratoryContacts(laboId: number): void {
+    this.contactService.getContactsByLaboratoryId(laboId).subscribe(contacts => {
+      this.contacts = contacts;
+      this.openContactDialog(contacts);  // Ouvre un dialogue avec les informations des contacts
+    });
+  }
+
+  // Ouvrir un dialogue avec les contacts du laboratoire
+  openContactDialog(contacts: any[]): void {
+    this.dialog.open(ContactDetailsComponent, {
+      data: { contacts: contacts }
+    });
+  }
 }

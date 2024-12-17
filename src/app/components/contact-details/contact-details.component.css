@@ -1,0 +1,26 @@
+.contact-list {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.contacts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-card {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card p {
+  margin: 5px 0;
+}
+
+.contact-card strong {
+  color: #333;
+}

@@ -47,8 +47,14 @@ export class ContactService {
     return this.http.put<Contact>(`${this.apiUrl}/updateContact/${id}`, contact, { headers: this.headers });
   }
 
+
   // Supprimer un contact
   deleteContact(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/deleteContact/${id}`, { headers: this.headers });
   }
+  // Récupérer des contacts par ID de laboratoire
+getContactsByLaboratoryId(fkIdLaboratoire: number): Observable<Contact[]> {
+  return this.http.get<Contact[]>(`${this.apiUrl}/labo/${fkIdLaboratoire}`, { headers: this.headers });
+}
+
 }

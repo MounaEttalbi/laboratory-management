@@ -133,3 +133,12 @@ img {
   align-items: center; /* Centrer verticalement */
   gap: 10px; /* Espacement entre les éléments */
 }
+.labo-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.labo-link:hover {
+  color: darkblue;
+  cursor: pointer;
+}

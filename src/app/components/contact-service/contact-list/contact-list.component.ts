@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../services/contact.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
-import { ContactUpdateComponent } from '../contact-update/contact-update.component';
+import { ContactUpdate2Component } from '../contact-update2/contact-update2.component';
 import { ContactDeleteComponent } from '../contact-delete/contact-delete.component';
-import { Observable } from 'rxjs';
 
 interface Contact {
   id: number;
@@ -56,7 +55,7 @@ export class ContactListComponent implements OnInit {
   }
 
   openUpdateContactDialog(contact: Contact): void {
-    const dialogRef = this.dialog.open(ContactUpdateComponent, {
+    const dialogRef = this.dialog.open(ContactUpdate2Component, {
       data: contact
     });
 
@@ -82,4 +81,5 @@ export class ContactListComponent implements OnInit {
       }
     });
   }
+
 }

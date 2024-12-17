@@ -1,0 +1,12 @@
+<div class="contact-list">
+  <h2>Les contacts du laboratoire</h2>
+  <div class="contacts-container">
+    <div *ngFor="let contact of data.contacts" class="contact-card">
+      <p><strong>ID:</strong> {{ contact.id }}</p>
+      <p><strong>Téléphone:</strong> {{ contact.numTel }}</p>
+      <p><strong>Fax:</strong> {{ contact.fax }}</p>
+      <p><strong>Email:</strong> {{ contact.email }}</p>
+      <!-- <p><strong>Adresse:</strong> {{ contact.adresse }}</p> -->
+    </div>
+  </div>
+</div>

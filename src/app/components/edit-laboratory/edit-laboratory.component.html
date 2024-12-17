@@ -1,4 +1,6 @@
-<div class="edit-container">
+<div  class="edit-container">
+   <button (click)="dialogRef.close()" class="close-button"><i class="fa fa-times"></i> </button> 
+
   <h2>Modifier Laboratoire</h2>
   <label>Nom :</label>
   <input type="text" [(ngModel)]="laboratoire.nom" />
@@ -23,6 +25,11 @@
     <!-- Champ pour choisir un nouveau fichier -->
     <input type="file" id="logo-input" (change)="onFileChange($event)" style="display: none" />
   </div>
+  <div class="button-container">
   <button (click)="updateLaboratoire()" class="action-save">Mettre à jour</button>
-  <button (click)="dialogRef.close()" class="action-cancel">Annuler</button>
+  
+ <!-- Nouveau bouton pour modifier le contact -->
+ <button (click)="viewAndEditLaboratoryContacts(laboratoireId)" class="action-contact" (click)="editContact.emit()" >Modifier le contact</button>
+</div>
+
 </div>

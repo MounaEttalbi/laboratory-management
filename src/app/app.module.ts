@@ -43,6 +43,8 @@ import {ContactListComponent} from './components/contact-service/contact-list/co
 import {ContactAddComponent} from './components/contact-service/contact-add/contact-add.component';
 import {ContactUpdateComponent} from './components/contact-service/contact-update/contact-update.component';
 import {ContactDeleteComponent} from './components/contact-service/contact-delete/contact-delete.component';
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+import { ContactUpdate2Component } from './components/contact-service/contact-update2/contact-update2.component';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import {ContactDeleteComponent} from './components/contact-service/contact-delet
     ContactAddComponent,
     ContactUpdateComponent,
     ContactDeleteComponent,
+    ContactDetailsComponent,
+    ContactUpdate2Component,
     
   ],
   imports: [

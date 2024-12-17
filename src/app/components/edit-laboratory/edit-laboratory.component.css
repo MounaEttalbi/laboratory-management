@@ -22,7 +22,7 @@
 
 .edit-container label {
   display: block; /* Chaque label sur une nouvelle ligne */
-  margin-bottom: 5px; /* Espacement sous le label */
+  margin-bottom: 0px; /* Espacement sous le label */
   font-weight: bold; /* Texte en gras */
   color: #000000; /* Couleur du texte */
 }
@@ -32,7 +32,7 @@
 .edit-container input[type="file"] {
   width: 100%; /* Largeur maximale */
   padding: 12px; /* Espacement confortable */
-  margin-bottom: 20px; /* Espacement entre les champs */
+  margin-bottom: 2px; /* Espacement entre les champs */
   border: 1px solid #ddd; /* Bordure discrète */
   border-radius: 8px; /* Coins arrondis */
   font-size: 14px; /* Taille uniforme */
@@ -44,7 +44,6 @@
 }
 
 .edit-container button {
-  color: white; /* Texte en blanc */
   padding: 12px; /* Espacement généreux */
   border-radius: 8px; /* Coins arrondis */
   font-size: 16px; /* Taille lisible */
@@ -64,10 +63,20 @@
   background-color: #4caf50;
   margin-right: 9rem;
 }
-.action-cancel{
-  background-color: rgb(221, 1, 1);
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
 }
 
+.close-button:hover {
+  color: rgb(179, 0, 0);
+}
 /* Conteneur de la section Logo */
 .logo-container {
   display: flex;
@@ -154,4 +163,9 @@ button.action-cancel:hover {
 
 .custom-file-label:hover {
   background-color: #0056b3; /* Changer la couleur au survol */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start; /* Aligner les boutons à gauche */
 }

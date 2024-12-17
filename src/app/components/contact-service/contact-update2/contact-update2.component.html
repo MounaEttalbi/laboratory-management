@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Modifier le contact</h1>
+
+<form [formGroup]="contactForm" (ngSubmit)="onUpdate()">
+  <!-- Champ pour le numéro de téléphone -->
+  <mat-form-field appearance="fill">
+    <mat-label>Numéro de téléphone</mat-label>
+    <input matInput formControlName="numTel" placeholder="Numéro de téléphone" />
+    <mat-error *ngIf="contactForm.get('numTel')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Champ pour le fax -->
+  <mat-form-field appearance="fill">
+    <mat-label>Fax</mat-label>
+    <input matInput formControlName="fax" placeholder="Fax" />
+    <mat-error *ngIf="contactForm.get('fax')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Champ pour l'email -->
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Email" />
+    <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+      Ce champ est requis.
+    </mat-error>
+    <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+      L'email est invalide.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Actions du dialogue -->
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Annuler</button>
+    <button mat-button type="submit" [disabled]="!contactForm.valid">Mettre à jour</button>
+  </div>
+</form>
