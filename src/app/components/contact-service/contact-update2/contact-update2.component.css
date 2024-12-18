@@ -6,4 +6,31 @@ mat-form-field {
   button {
     margin-right: 8px;
   }
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: rgb(179, 0, 0);
+  }
+  .action-contact {
+    margin-right: 10px; /* Ajoutez l'espace désiré */
+  }
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;  /* Pour espacer les boutons */
+    gap: 20px;  /* Ajouter de l'espace entre les boutons */
+    padding: 10px 0;  /* Ajouter un peu de padding si nécessaire */
+  }
+  
+  .dialog-actions button {
+    flex: 1;  /* Si vous voulez que les boutons prennent toute la largeur disponible */
+  }
   

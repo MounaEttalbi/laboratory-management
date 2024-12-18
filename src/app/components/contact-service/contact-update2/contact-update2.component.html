@@ -1,3 +1,4 @@
+<button mat-button (click)="onCancel()" class="close-button"><i class="fa fa-times"></i></button>
 <h1 mat-dialog-title>Modifier le contact</h1>
 
 <form [formGroup]="contactForm" (ngSubmit)="onUpdate()">
@@ -32,8 +33,9 @@
   </mat-form-field>
 
   <!-- Actions du dialogue -->
-  <div mat-dialog-actions>
-    <button mat-button (click)="onCancel()">Annuler</button>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="viewAndEditContactAdresse(data.fkIdAdresse)" class="action-contact">Modifier Adresse</button>
     <button mat-button type="submit" [disabled]="!contactForm.valid">Mettre à jour</button>
   </div>
+  
 </form>

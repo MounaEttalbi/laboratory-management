@@ -45,7 +45,8 @@ import {ContactUpdateComponent} from './components/contact-service/contact-updat
 import {ContactDeleteComponent} from './components/contact-service/contact-delete/contact-delete.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { ContactUpdate2Component } from './components/contact-service/contact-update2/contact-update2.component';
-
+import { AdresseDetailsComponent } from './components/adresse-service/adresse-details/adresse-details.component';
+import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-laboratory.component'
 
 @NgModule({
   declarations: [
@@ -72,6 +73,8 @@ import { ContactUpdate2Component } from './components/contact-service/contact-up
     ContactDeleteComponent,
     ContactDetailsComponent,
     ContactUpdate2Component,
+    AdresseDetailsComponent,
+    DeleteLaboratoryComponent,
     
   ],
   imports: [

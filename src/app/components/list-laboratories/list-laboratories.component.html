@@ -23,11 +23,11 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Logo</th>
         <th>Nom</th>
         <th>Statut</th>
         <th>NRC</th>
         <th>Date Activation</th>
-        <th>Logo</th>
         <th>Contacts</th>
         <th>Actions</th>
       </tr>
@@ -35,13 +35,13 @@
     <tbody>
       <tr *ngFor="let labo of filteredLaboratories">
         <td>{{ labo.id }}</td>
+        <td>
+          <img [src]="labo.logo" alt="Logo" width="50" height="50">
+        </td>
         <td>{{ labo.nom }}</td>
         <td>{{ labo.statut }}</td>
         <td>{{ labo.nrc }}</td>
         <td>{{ labo.dateActivation | date }}</td>
-        <td>
-          <img [src]="labo.logo" alt="Logo" width="50" height="50">
-        </td>
         <td><a class="labo-link" (click)="viewLaboratoryContacts(labo.id)">voir</a></td>
         <td>
           <button (click)="openEditDialog(labo.id)" class="edit-button" color="accent">

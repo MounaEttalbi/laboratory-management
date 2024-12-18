@@ -38,6 +38,7 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   margin-bottom: 20px;
+  width: 30%;
 }
 
 .search-bar-contact mat-icon {
@@ -130,4 +131,7 @@ body {
   .search-input {
     font-size: 14px;
   }
+}
+.contact-link{
+  cursor: pointer;
 }

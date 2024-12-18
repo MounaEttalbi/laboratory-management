@@ -1,9 +1,8 @@
-<div class="delete-dialog-container">
-    <h2 class="dialog-title">Confirmation de suppression</h2>
-    <p class="dialog-message">Voulez-vous vraiment supprimer ce laboratoire ?</p>
-    <div class="dialog-buttons">
-      <button class="confirm-button" (click)="deleteLaboratoire()">Confirmer</button>
-      <button class="cancel-button" (click)="dialogRef.close()">Annuler</button>
-    </div>
-  </div>
-  
+<h2 mat-dialog-title>Confirmation de suppression</h2>
+<mat-dialog-content>
+  Voulez-vous vraiment supprimer ce laboratoire ?
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="deleteLaboratoire()">Confirmer</button>
+  <button mat-button mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

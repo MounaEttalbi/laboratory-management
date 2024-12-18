@@ -1,171 +1,61 @@
+/* Conteneur principal */
 .edit-container {
-    
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  position: relative;
+  padding: 20px;
   background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.edit-container h2 {
-  font-size: 24px; /* Taille agrandie */
-  color: black; /* Texte en blanc */
-  text-align: center; /* Centrage */
-  margin-bottom: 20px; /* Espacement sous le titre */
-  font-weight: bold; /* Texte en gras */
-}
-
-.edit-container {
-  background-color: #f9f9f9; /* Fond neutre */
-  padding: 25px; /* Espacement intérieur généreux */
-  border-radius: 10px; /* Coins arrondis */
-  max-width: 100%; /* Adapter à la largeur de .add-container */
-}
-
-.edit-container label {
-  display: block; /* Chaque label sur une nouvelle ligne */
-  margin-bottom: 0px; /* Espacement sous le label */
-  font-weight: bold; /* Texte en gras */
-  color: #000000; /* Couleur du texte */
-}
-
-.edit-container input[type="text"],
-.edit-container input[type="date"],
-.edit-container input[type="file"] {
-  width: 100%; /* Largeur maximale */
-  padding: 12px; /* Espacement confortable */
-  margin-bottom: 2px; /* Espacement entre les champs */
-  border: 1px solid #ddd; /* Bordure discrète */
-  border-radius: 8px; /* Coins arrondis */
-  font-size: 14px; /* Taille uniforme */
-  box-sizing: border-box; /* Gestion des marges/paddings */
-}
-
-.edit-container input[type="file"] {
-  padding: 8px; /* Réduction pour les fichiers */
-}
-
-.edit-container button {
-  padding: 12px; /* Espacement généreux */
-  border-radius: 8px; /* Coins arrondis */
-  font-size: 16px; /* Taille lisible */
-  border: none; /* Pas de bordure */
-  cursor: pointer; /* Indication cliquable */
-  transition: all 0.3s ease; /* Animation douce */
-}
-
-.edit-container button:hover {
-  transform: scale(1.05); /* Léger agrandissement au survol */
-}
-.actions {
-  display: flex; /* Permet d'afficher les boutons côte à côte */
-  justify-content: space-between; /* Ajoute un espace égal entre les boutons */
-}
-.action-save{
-  background-color: #4caf50;
-  margin-right: 9rem;
-}
+/* Bouton de fermeture */
 .close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: red;
-  cursor: pointer;
+  color: red; /* Couleur rouge */
+  font-size: 1.5em;
+  z-index: 10;
 }
 
-.close-button:hover {
-  color: rgb(179, 0, 0);
-}
-/* Conteneur de la section Logo */
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Champs de formulaire pleine largeur */
+.full-width {
+  width: 100%;
   margin-bottom: 20px;
 }
 
-/* Image du logo actuel */
-.logo-container img {
-  max-width: 100px; /* Limite la taille du logo */
-  max-height: 100px;
-  border-radius: 8px; /* Bord arrondi */
-  margin-bottom: 10px; /* Espacement sous l'image */
-}
-
-/* Message pour le logo actuel */
-.logo-container p {
-  font-size: 14px;
-  color: #777;
+/* Conteneur pour le logo */
+.logo-container {
+  margin: 0;
   text-align: center;
-  margin-bottom: 10px;
 }
 
-/* Style du champ input pour le fichier */
-input[type="file"] {
-  padding: 8px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
+/* Aperçu du logo */
+.logo-preview img {
+  
+  border-radius: 10%; /* Rond si souhaité */
+  border: 2px solid #ccc;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.logo-preview img:hover {
+  transform: scale(1.1);
+}
+
+.logo-preview p {
+  font-size: 0.9em;
+  color: #666;
   margin-top: 10px;
 }
 
-/* Effet au survol du champ fichier */
-input[type="file"]:hover {
-  border-color: #007bff;
-}
-
-/* Ajout d'un bouton d'action personnalisé pour la mise à jour */
-button.action-save {
-  background-color: #4CAF50; /* Vert */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+/* Boutons d'action */
+.button-container {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
-button.action-save:hover {
-  background-color: #45a049;
-}
-
-/* Ajout d'un bouton d'annulation */
-button.action-cancel {
-  background-color: #f44336; /* Rouge */
-  color: white;
+.action-save,
+.action-contact {
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-button.action-cancel:hover {
-  background-color: #e53935;
-}
-/* Style pour le label personnalisé "Choisir un logo" */
-.custom-file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.custom-file-label:hover {
-  background-color: #0056b3; /* Changer la couleur au survol */
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-start; /* Aligner les boutons à gauche */
 }

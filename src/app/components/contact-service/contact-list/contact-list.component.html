@@ -24,7 +24,7 @@
         <th>Fax</th>
         <th>Email</th>
         <th>Laboratoire</th> <!-- Nouvelle colonne pour le laboratoire -->
-       <!-- <th>Adresse</th>      Nouvelle colonne pour l'adresse -->
+        <th>Adresse</th>    
         <th>Actions</th>
       </tr>
     </thead>
@@ -35,7 +35,8 @@
         <td>{{ contact.fax }}</td>
         <td>{{ contact.email }}</td>
         <td>{{ contact.laboratoryName }}</td> <!-- Affichage du nom du laboratoire -->
-         <!-- <td>{{ contact.adresse }}</td>         Affichage de l'adresse formatée -->
+        <td><a class="contact-link" (click)="viewContactAdresse(contact.fkIdAdresse)">voir</a></td>
+        
         <td>
           <!-- Bouton de suppression -->
           <button mat-icon-button color="warn" (click)="openDeleteContactDialog(contact.id)">

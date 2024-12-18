@@ -25,7 +25,7 @@ export class AdresseUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private adresseService: AdresseService,
     private dialogRef: MatDialogRef<AdresseUpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number } // Récupère l'ID de l'adresse à mettre à jour
+    @Inject(MAT_DIALOG_DATA) public data: { adresseId: number } // Récupère l'ID de l'adresse à mettre à jour
   ) {
     this.adresseForm = this.fb.group({
       numVoie: ['', [Validators.required]],
@@ -41,15 +41,18 @@ export class AdresseUpdateComponent implements OnInit {
   }
 
   loadAdresse(): void {
-    this.adresseService.getAdresseById(this.data.id).subscribe((data: Adresse) => {
-      this.adresse = data;
-      this.adresseForm.patchValue(this.adresse); // Remplir le formulaire avec les données de l'adresse
-    });
+    this.adresseService.getAdresseById(this.data.adresseId).subscribe(
+      (adresse) => {
+        this.adresseForm.patchValue(adresse); // Remplissez le formulaire avec les données de l'adresse
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération de l\'adresse', error);
+      }
+    );
   }
-
   onUpdate(): void {
     if (this.adresseForm.valid) {
-      this.adresseService.updateAdresse(this.data.id, this.adresseForm.value).subscribe(
+      this.adresseService.updateAdresse(this.data.adresseId, this.adresseForm.value).subscribe(
         (response) => {
           console.log('Adresse mise à jour avec succès', response);
           this.dialogRef.close(true); // Fermer le dialogue et retourner `true` pour rafraîchir la liste des adresses

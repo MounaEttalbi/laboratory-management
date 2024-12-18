@@ -1,35 +1,67 @@
-<div  class="edit-container">
-   <button (click)="dialogRef.close()" class="close-button"><i class="fa fa-times"></i> </button> 
+<div class="edit-container">
+  <!-- Bouton de fermeture en rouge, aligné à droite -->
+  <button
+    mat-icon-button
+    color="warn"
+    class="close-button"
+    (click)="dialogRef.close()"
+  >
+    <i class="fa fa-times"></i>
+  </button>
 
   <h2>Modifier Laboratoire</h2>
-  <label>Nom :</label>
-  <input type="text" [(ngModel)]="laboratoire.nom" />
 
-  <label>NRC :</label>
-  <input type="text" [(ngModel)]="laboratoire.nrc" />
+  <!-- Champ Nom -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nom</mat-label>
+    <input matInput type="text" [(ngModel)]="laboratoire.nom" name="nom" required />
+  </mat-form-field>
 
-  <label>Statut :</label>
-  <input type="text" [(ngModel)]="laboratoire.statut" />
+  <!-- Champ NRC -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>NRC</mat-label>
+    <input matInput type="text" [(ngModel)]="laboratoire.nrc" name="nrc" required />
+  </mat-form-field>
 
-  <label>Date d'Activation :</label>
-  <input type="date" [(ngModel)]="laboratoire.dateActivation" />
+  <!-- Champ Statut -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Statut</mat-label>
+    <input matInput type="text" [(ngModel)]="laboratoire.statut" name="statut" required />
+  </mat-form-field>
 
-  <label>Logo :</label>
+  <!-- Champ Date d'Activation -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Date d'Activation</mat-label>
+    <input matInput type="date" [(ngModel)]="laboratoire.dateActivation" name="dateActivation" required />
+  </mat-form-field>
+
+  <!-- Section pour le logo -->
   <div class="logo-container">
-    <!-- Affichage du logo actuel -->
-    <div *ngIf="laboratoire.logo">
-      <img [src]="laboratoire.logo" alt="Logo actuel" (click)="triggerFileInput()" style="cursor: pointer; width: 100px; height: 100px; object-fit: cover;" />
+    <mat-label>Logo</mat-label>
+    <div *ngIf="laboratoire.logo" class="logo-preview">
+      <img
+        [src]="laboratoire.logo"
+        alt="Logo actuel"
+        (click)="triggerFileInput()"
+        style="cursor: pointer;"
+      />
       <p>Cliquez sur l'image pour changer le logo</p>
     </div>
-
-    <!-- Champ pour choisir un nouveau fichier -->
     <input type="file" id="logo-input" (change)="onFileChange($event)" style="display: none" />
   </div>
-  <div class="button-container">
-  <button (click)="updateLaboratoire()" class="action-save">Mettre à jour</button>
-  
- <!-- Nouveau bouton pour modifier le contact -->
- <button (click)="viewAndEditLaboratoryContacts(laboratoireId)" class="action-contact" (click)="editContact.emit()" >Modifier le contact</button>
-</div>
 
+  <!-- Boutons d'action -->
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="updateLaboratoire()" class="action-save">
+      Mettre à jour
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="viewAndEditLaboratoryContacts(laboratoireId)"
+      class="action-contact"
+    >
+      Modifier le contact
+    </button>
+  </div>
 </div>

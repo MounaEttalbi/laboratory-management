@@ -1,24 +1,60 @@
-<!-- Bouton de fermeture -->
-<button (click)="closeForm()" class="close-button">
-  <i class="fa fa-times"></i> <!-- Icône de fermeture -->
-</button>
-<h2>Modifier les contacts</h2>
-<form [formGroup]="contactForm" (ngSubmit)="saveContacts()">
-  <div formArrayName="contacts">
-    <div *ngFor="let contact of contactsArray.controls; let i = index" [formGroupName]="i" class="contact-group">
-      <div class="input-group">
-        <label for="numTel">Téléphone</label>
-        <input type="text" formControlName="numTel" placeholder="Numéro de téléphone">
-      </div>
-      <div class="input-group">
-        <label for="fax">Fax</label>
-        <input type="text" formControlName="fax" placeholder="Fax">
-      </div>
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="email" formControlName="email" placeholder="Email">
+<div class="edit-container">
+  <!-- Bouton de fermeture -->
+  <button mat-icon-button class="close-button" (click)="closeForm()">
+    <mat-icon color="warn">close</mat-icon>
+  </button>
+
+  <h2>Modifier les contacts</h2>
+
+  <!-- Formulaire des contacts -->
+  <form [formGroup]="contactForm" (ngSubmit)="saveContacts()">
+    <div formArrayName="contacts">
+      <div
+        *ngFor="let contact of contactsArray.controls; let i = index"
+        [formGroupName]="i"
+        class="contact-group"
+      >
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Téléphone</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="numTel"
+            placeholder="Numéro de téléphone"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Fax</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="fax"
+            placeholder="Fax"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          />
+        </mat-form-field>
       </div>
     </div>
-  </div>
-  <button type="submit" >Enregistrer</button>
-</form>
+
+    <!-- Bouton d'enregistrement -->
+    <div class="button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        Enregistrer
+      </button>
+    </div>
+  </form>
+</div>

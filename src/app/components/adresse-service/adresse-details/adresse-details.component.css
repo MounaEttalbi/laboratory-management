@@ -1,0 +1,38 @@
+/* Style pour le conteneur des détails de l'adresse */
+div {
+  background-color: #f9f9f9;  /* Fond clair */
+  padding: 20px;  /* Espacement interne */
+  border-radius: 8px;  /* Coins arrondis */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Légère ombre pour le conteneur */
+}
+
+h3 {
+  color: #3f51b5;  /* Couleur du titre */
+  font-size: 1.5em;  /* Taille du texte */
+  margin-bottom: 15px;  /* Espacement sous le titre */
+}
+
+p {
+  font-size: 1.1em;  /* Taille du texte */
+  margin-bottom: 10px;  /* Espacement sous chaque ligne de texte */
+}
+
+strong {
+  font-weight: bold;
+  color: #333;  /* Couleur des titres de champ */
+}
+
+/* Style pour le message d'erreur ou "aucune adresse" */
+ng-template #noAdresse {
+  text-align: center;  /* Centrer le texte */
+  font-size: 1.2em;  /* Taille du texte */
+  color: #f44336;  /* Couleur rouge pour l'erreur */
+  padding: 20px;  /* Espacement interne */
+  background-color: #ffe0e0;  /* Fond rouge clair */
+  border-radius: 8px;  /* Coins arrondis */
+  border: 1px solid #f44336;  /* Bordure rouge */
+}
+
+ng-template p {
+  margin: 0;
+}

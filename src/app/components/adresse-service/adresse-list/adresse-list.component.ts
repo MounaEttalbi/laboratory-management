@@ -54,17 +54,21 @@ export class AdresseListComponent implements OnInit {
     });
   }
 
-  openUpdateAdresseDialog(adresse: Adresse): void {
+  openUpdateAdresseDialog(id: number): void {
     const dialogRef = this.dialog.open(AdresseUpdateComponent, {
-      data: adresse
+      width: '600px', // Optionnel, définit la largeur du dialogue
+      data: { adresseId: id } // Passez l'ID comme un objet pour une meilleure extensibilité
     });
-
-    dialogRef.afterClosed().subscribe(result => {
+  
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.loadAdresses(); // Recharger la liste après mise à jour
+        this.loadAdresses(); // Recharger la liste si l'utilisateur a validé la mise à jour
+      } else {
+        console.log('Modification annulée.');
       }
     });
   }
+  
 
   // Ouvrir le dialogue de suppression avec l'ID de l'adresse
   openDeleteAdresseDialog(id: number): void {

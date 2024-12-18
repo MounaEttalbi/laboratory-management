@@ -1,25 +1,40 @@
 <div *ngIf="isAdding" class="add-container">
-    <h2>Ajouter un laboratoire</h2>
-    <form (ngSubmit)="addLaboratoire()" enctype="multipart/form-data">
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" name="nom" [(ngModel)]="laboratoire.nom" required>
-  
-      <label for="nrc">NRC</label>
-      <input type="text" id="nrc" name="nrc" [(ngModel)]="laboratoire.nrc" required>
-  
-      <label for="statut">Statut</label>
-      <input type="text" id="statut" name="statut" [(ngModel)]="laboratoire.statut" required>
-  
-      <label for="dateActivation">Date Activation</label>
-      <input type="date" id="dateActivation" name="dateActivation" [(ngModel)]="laboratoire.dateActivation" required>
-  
-      <label for="logo">Logo</label>
+  <h2 mat-dialog-title>Ajouter un laboratoire</h2>
+  <form (ngSubmit)="addLaboratoire()" enctype="multipart/form-data" class="styled-form">
+    <!-- Nom -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput type="text" id="nom" name="nom" [(ngModel)]="laboratoire.nom" required>
+    </mat-form-field>
+
+    <!-- NRC -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>NRC</mat-label>
+      <input matInput type="text" id="nrc" name="nrc" [(ngModel)]="laboratoire.nrc" required>
+    </mat-form-field>
+
+    <!-- Statut -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Statut</mat-label>
+      <input matInput type="text" id="statut" name="statut" [(ngModel)]="laboratoire.statut" required>
+    </mat-form-field>
+
+    <!-- Date Activation -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date Activation</mat-label>
+      <input matInput type="date" id="dateActivation" name="dateActivation" [(ngModel)]="laboratoire.dateActivation" required>
+    </mat-form-field>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <label for="logo" class="logo-label">Logo</label>
       <input type="file" id="logo" name="logo" (change)="onFileChange($event)" required>
-  
-      <div class="actions">
-        <button type="submit" class="action-save">Ajouter</button>
-        <button class="action-cancel" type="button" (click)="dialogRef.close()">Annuler</button>
-      </div>
-    </form>
-  </div>
-  
+    </div>
+
+    <!-- Boutons d'action -->
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" class="action-save">Ajouter</button>
+      <button mat-button color="warn" type="button" (click)="dialogRef.close()">Annuler</button>
+    </div>
+  </form>
+</div>

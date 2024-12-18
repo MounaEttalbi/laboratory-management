@@ -1,0 +1,14 @@
+<div *ngIf="adresse; else noAdresse">
+  <h3>Détails de l'Adresse</h3>
+  <p><strong>ID:</strong> {{ adresse.id }}</p>
+  <p><strong>Numéro de Voie:</strong> {{ adresse.numVoie }}</p>
+  <p><strong>Nom de Voie:</strong> {{ adresse.nomVoie }}</p>
+  <p><strong>Code Postal:</strong> {{ adresse.codePostal }}</p>
+  <p><strong>Ville:</strong> {{ adresse.ville }}</p>
+  <p><strong>Commune:</strong> {{ adresse.commune }}</p>
+</div>
+
+<ng-template #noAdresse>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  <p *ngIf="!errorMessage">Il n'y a aucune adresse.</p>
+</ng-template>

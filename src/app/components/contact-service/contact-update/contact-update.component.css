@@ -1,92 +1,65 @@
-/* Style général pour la section du formulaire */
-h2 {
-  text-align: center;
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-/* Style pour le formulaire */
-form {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
+/* Conteneur principal */
+.edit-container {
+  position: relative;
+  padding: 10px;
+  background: #f9f9f9;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
 }
 
-/* Style pour chaque groupe de champs (Téléphone, Fax, Email) */
-.contact-group {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 15px;
-}
-
-/* Style pour chaque champ à l'intérieur du groupe */
-.input-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Style des champs de saisie */
-input[type="text"], input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-input[type="text"]:focus, input[type="email"]:focus {
-  border-color: #007BFF;
-  outline: none;
-}
-
-/* Style des labels */
-label {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 5px;
-}
-
-/* Style du bouton de soumission */
-button[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Changement de couleur du bouton au survol */
-button[type="submit"]:hover {
-  background-color: #218838;
-}
-
-/* Désactivation du bouton si le formulaire est invalide */
-button[type="submit"]:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
+/* Bouton de fermeture */
 .close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: #333;
-  cursor: pointer;
 }
 
-.close-button:hover {
-  color: red;
+/* Titre */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Formulaires Material */
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Groupe de contact */
+.contact-group {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Bouton d'enregistrement */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+/* Réduction des marges des mat-form-fields */
+mat-form-field {
+  margin-bottom: 4px; /* Réduit l'espace entre les champs */
+}
+
+/* Suppression du padding interne si nécessaire */
+mat-form-field .mat-form-field-wrapper {
+  padding: 0;
+}
+
+/* Si vous utilisez la classe full-width, ajustez également */
+.full-width {
+  margin-bottom: 4px; /* Applique une marge inférieure plus petite */
+}
+
+/* Optionnel : ajustez les styles des labels */
+.mat-form-field-label {
+  margin-bottom: 4px; /* Ajuste l'espace autour du label */
 }

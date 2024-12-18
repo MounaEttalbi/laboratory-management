@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ContactAddComponent } from '../contact-add/contact-add.component';
 import { ContactUpdate2Component } from '../contact-update2/contact-update2.component';
 import { ContactDeleteComponent } from '../contact-delete/contact-delete.component';
-
+import {AdresseDetailsComponent} from '../../adresse-service/adresse-details/adresse-details.component';
 interface Contact {
   id: number;
   numTel: string;
@@ -12,6 +12,7 @@ interface Contact {
   email: string;
   laboratoryName: string;  // Nom du laboratoire
   //adresse: string;         // Adresse formatée
+  fkIdAdresse:number;
 }
 
 @Component({
@@ -82,4 +83,15 @@ export class ContactListComponent implements OnInit {
     });
   }
 
+  viewContactAdresse(adresseId: number): void {
+    this.openAdresseDialog(adresseId);  // Passe l'ID de l'adresse directement
+  }
+  
+  // Ouvrir le dialogue avec l'ID de l'adresse
+  openAdresseDialog(adresseId: number): void {
+    this.dialog.open(AdresseDetailsComponent, {
+      data: { adresseId: adresseId } // Transmet l'ID de l'adresse au composant
+    });
+  }
+  
 }
