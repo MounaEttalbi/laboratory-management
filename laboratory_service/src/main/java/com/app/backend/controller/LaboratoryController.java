@@ -54,7 +54,6 @@ public class LaboratoryController {
 	    return ResponseEntity.status(HttpStatus.CREATED).body(laboratory);
 	}
 
-
 	// Mettre à jour un laboratoire existant
 	@PutMapping("/modifierLabo/{id}")
 	public ResponseEntity<Laboratory> updateLaboratory(@PathVariable Long id, @RequestBody LaboratoryDTO updatedLaboratoryDTO) {

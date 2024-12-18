@@ -14,6 +14,8 @@ public class Adresse {
     private String ville;
     private String commune;
 
+    //setters and getters
+
     public Adresse() { super();}
 
     public Adresse(Long id , String numVoie, String nomVoie,String codePostal,String ville,String commune) {
