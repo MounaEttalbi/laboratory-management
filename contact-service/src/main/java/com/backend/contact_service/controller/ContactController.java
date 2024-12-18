@@ -59,4 +59,14 @@ public class ContactController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/labo/{fkIdLaboratoire}")
+    public ResponseEntity<List<Contact>> getContactsByLaboratoryId(@PathVariable Long fkIdLaboratoire) {
+        List<Contact> contacts = contactService.getContactsByLaboratoryId(fkIdLaboratoire);
+        if (contacts.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(contacts);
+    }
+
 }

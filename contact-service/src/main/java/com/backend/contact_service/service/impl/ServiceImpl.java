@@ -102,4 +102,10 @@ public class ServiceImpl implements ContactService {
     public void deleteContact(Long id) {
         contactRepository.deleteById(id);
     }
+
+    @Override
+    public List<Contact> getContactsByLaboratoryId(Long fkIdLaboratoire) {
+        return contactRepository.findByFkIdLaboratoire(fkIdLaboratoire);
+    }
+
 }

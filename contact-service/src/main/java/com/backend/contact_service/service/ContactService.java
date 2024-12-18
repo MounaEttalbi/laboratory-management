@@ -19,4 +19,6 @@ public interface ContactService {
     Optional<Contact> getContactById(long id);
 
     void deleteContact(Long id);
+
+    public List<Contact> getContactsByLaboratoryId(Long fkIdLaboratoire);
 }
