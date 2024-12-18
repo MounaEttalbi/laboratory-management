@@ -102,4 +102,9 @@ public class ServiceImpl implements ContactService {
     public void deleteContact(Long id) {
         contactRepository.deleteById(id);
     }
+    public List<Contact> getContactsByLaboratoryId(Long fkIdLaboratoire) {
+        // Supposons que vous avez un repository contactRepository qui interagit avec la base de données.
+        return contactRepository.findByFkIdLaboratoire(fkIdLaboratoire);
+    }
+
 }
