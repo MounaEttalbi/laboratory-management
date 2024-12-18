@@ -102,14 +102,8 @@ public class ServiceImpl implements ContactService {
     public void deleteContact(Long id) {
         contactRepository.deleteById(id);
     }
-<<<<<<< HEAD
-    public List<Contact> getContactsByLaboratoryId(Long fkIdLaboratoire) {
-        // Supposons que vous avez un repository contactRepository qui interagit avec la base de données.
-=======
-
     @Override
     public List<Contact> getContactsByLaboratoryId(Long fkIdLaboratoire) {
->>>>>>> 2bec11be510752e94c7aee8b6585e9372c32062e
         return contactRepository.findByFkIdLaboratoire(fkIdLaboratoire);
     }
 

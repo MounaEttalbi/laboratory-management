@@ -59,12 +59,6 @@ public class ContactController {
             return ResponseEntity.notFound().build();
         }
     }
-<<<<<<< HEAD
-    @GetMapping("/labo/{fkIdLaboratoire}")
-    public ResponseEntity<List<Contact>> getContactsByLaboratoryId(@PathVariable Long fkIdLaboratoire) {
-        List<Contact> contacts = contactService.getContactsByLaboratoryId(fkIdLaboratoire);
-        return contacts.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(contacts);
-=======
 
     @GetMapping("/labo/{fkIdLaboratoire}")
     public ResponseEntity<List<Contact>> getContactsByLaboratoryId(@PathVariable Long fkIdLaboratoire) {
@@ -73,7 +67,6 @@ public class ContactController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(contacts);
->>>>>>> 2bec11be510752e94c7aee8b6585e9372c32062e
     }
 
 }
