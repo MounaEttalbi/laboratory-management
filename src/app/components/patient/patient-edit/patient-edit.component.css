@@ -1,0 +1,40 @@
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1px;
+  }
+  
+  .form-row mat-form-field {
+    flex: 1;
+    margin-right: 6px;
+  }
+  
+  .form-row mat-form-field:last-child {
+    margin-right: 0;
+  }
+  
+  h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .form-edit{
+    padding: 5px;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .button-group button {
+    margin-right: 16px; /* Ajouter un espace entre les boutons */
+  }
+  
+  .button-group button:last-child {
+    margin-right: 0; /* Ne pas ajouter d'espace après le dernier bouton */
+  }
+  

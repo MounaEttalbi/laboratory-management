@@ -22,6 +22,10 @@
         <mat-icon matListIcon>contacts</mat-icon>
         <span>Contacts</span>
       </a>
+      <a mat-list-item (click)="selectSection('Patients')" [class.active]="selectedSection === 'Patients'">
+        <mat-icon matListIcon>people</mat-icon>
+        <span>Patients</span>
+      </a>
       <!-- Bouton de déconnexion qui affiche le message de confirmation -->
       <a mat-list-item (click)="confirmLogout()">
         <mat-icon matListIcon>exit_to_app</mat-icon>
@@ -49,6 +53,9 @@
     <div *ngIf="selectedSection === 'contacts'">
       <app-contact-list></app-contact-list>
   </div>
+  <div *ngIf="selectedSection === 'Patients'">
+    <app-patient></app-patient>
+</div>
     
     <!-- Message de confirmation -->
     <div *ngIf="showConfirmation" class="confirmation-message">

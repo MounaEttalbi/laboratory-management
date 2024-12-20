@@ -1,0 +1,51 @@
+<div class="header-actions">
+  <div class="search-bar-adresse">
+    <mat-icon>search</mat-icon>
+    <input type="text" [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Rechercher par nom, email, tel">
+  </div>
+  <button mat-raised-button color="primary" (click)="openAddPatientDialog()">Ajouter un Patient</button>
+</div>
+
+<div class="patient-list-container">
+  <h2>Liste des Patients</h2>
+  <table class="patient-table">
+    <thead>
+      <tr>
+        <th>Nom Complet</th>
+        <th>Date de Naissance</th>
+        <th>Lieu de naissance</th>
+        <th>Sexe</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Type pièce identité</th>
+        <th>Num pièce identité</th>
+        <th>Adresse</th>
+        <th>Visible pour</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of filteredPatients; let i = index">
+        
+        <td>{{ patient.nomcomplet }}</td>
+        <td>{{ patient.dateNaissance | date }}</td>
+        <td>{{ patient.lieuDeNaissance }}</td>
+        <td>{{ patient.sexe }}</td>
+        <td>{{ patient.email }}</td>
+        <td>{{ patient.numTel }}</td>
+        <td>{{ patient.typePieceIdentite }}</td>
+        <td>{{ patient.numPieceIdentite }}</td>
+        <td>{{ patient.adresse }}</td>
+        <td>{{ patient.visible_pour }}</td>
+        <td>
+          <button class="edit-button" mat-icon-button (click)="openEditPatientDialog(patient)">
+            <span class="material-icons">edit</span>
+          </button>
+          <button class="delete-button" mat-icon-button (click)="openDeleteDialog(patient)">
+            <span class="material-icons">delete</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

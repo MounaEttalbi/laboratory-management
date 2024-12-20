@@ -1,0 +1,10 @@
+<div class="patient-delete-container">
+  <mat-dialog-content>
+    <p>Êtes-vous sûr de vouloir supprimer le patient ? Cette action est irréversible.</p>
+  </mat-dialog-content>
+
+  <div class="button-group">
+    <button mat-raised-button color="warn" (click)="onDelete()" class="confirm-button">Oui, Supprimer</button>
+    <button mat-raised-button color="primary" (click)="onCancel()" class="cancel-button">Annuler</button>
+  </div>
+</div>

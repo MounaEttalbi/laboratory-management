@@ -1,0 +1,80 @@
+<div class="form-container" *ngIf="isFormVisible">
+  <h2 mat-dialog-title>Ajouter un Patient</h2>
+
+  <form (ngSubmit)="onSubmit()" class="styled-form" novalidate>
+
+    <div class="form-group">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nom complet</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.nomcomplet" name="nomcomplet" required />
+      <mat-error *ngIf="!patient.nomcomplet">Le nom complet est requis.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput type="date" [(ngModel)]="patient.dateNaissance" name="dateNaissance" required />
+      <mat-error *ngIf="!patient.dateNaissance">La date de naissance est requise.</mat-error>
+    </mat-form-field>
+  </div>
+
+    <div class="form-group">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Lieu de naissance</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.lieuDeNaissance" name="lieuDeNaissance" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Sexe</mat-label>
+      <mat-select [(ngModel)]="patient.sexe" name="sexe" required>
+        <mat-option value="M">Masculin</mat-option>
+        <mat-option value="F">Féminin</mat-option>
+      </mat-select>
+      <mat-error *ngIf="!patient.sexe">Veuillez sélectionner un sexe.</mat-error>
+    </mat-form-field>
+  </div>
+
+    <div class="form-group">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Type de pièce d’identité</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.typePieceIdentite" name="typePieceIdentite" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Numéro de pièce d’identité</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.numPieceIdentite" name="numPieceIdentite" />
+    </mat-form-field>
+  </div>
+
+    <div class="form-group">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Adresse</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.adresse" name="adresse" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Numéro de téléphone</mat-label>
+      <input matInput type="tel" [(ngModel)]="patient.numTel" name="numTel" />
+    </mat-form-field>
+  </div>
+
+    <div class="form-group">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="patient.email" name="email" />
+      <mat-error *ngIf="!patient.email">Veuillez fournir une adresse email valide.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Visible pour</mat-label>
+      <input matInput type="text" [(ngModel)]="patient.visible_pour" name="visible_pour" />
+    </mat-form-field>
+  </div>
+  
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" class="action-save">Ajouter</button>
+    </div>
+  </form>
+
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

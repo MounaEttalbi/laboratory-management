@@ -46,8 +46,13 @@ import {ContactDeleteComponent} from './components/contact-service/contact-delet
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { ContactUpdate2Component } from './components/contact-service/contact-update2/contact-update2.component';
 import { AdresseDetailsComponent } from './components/adresse-service/adresse-details/adresse-details.component';
-import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-laboratory.component'
+import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-laboratory.component';
+import { PatientComponent } from './components/patient/patient.component';
+import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
+import { PatientDeleteComponent } from './components/patient/patient-delete/patient-delete.component';
+import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +80,10 @@ import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-l
     ContactUpdate2Component,
     AdresseDetailsComponent,
     DeleteLaboratoryComponent,
+    PatientComponent,
+    PatientAddComponent,
+    PatientDeleteComponent,
+    PatientEditComponent,
     
   ],
   imports: [
@@ -100,6 +109,7 @@ import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-l
     AppRoutingModule,
     MatDialogModule,
     MatSnackBarModule, 
+    MatDatepickerModule,
     
   ],
   providers: [

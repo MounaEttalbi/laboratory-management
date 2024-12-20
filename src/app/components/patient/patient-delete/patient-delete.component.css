@@ -1,0 +1,19 @@
+.patient-delete-container {
+    text-align: center;
+    padding: 5px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-around;  /* Ajoute de l'espace entre les boutons */
+    margin-top: 16px;
+  }
+  
+  .button-group button {
+    margin-right: 16px; /* Espace entre les boutons */
+  }
+  
+  .button-group button:last-child {
+    margin-right: 0;  /* Retirer l'espace à droite du dernier bouton */
+  }
+  

@@ -1,0 +1,105 @@
+.patient-list-container {
+  width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+
+.patient-list-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.patient-table th,
+.patient-table td {
+  padding-bottom: 12px;
+  padding-top: 12px;
+  border: 1px solid #ddd;
+}
+
+.patient-table th {
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
+
+.patient-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.patient-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.patient-table td {
+  text-align: center;
+  color: #333;
+}
+
+/* Container de la barre de recherche */
+.search-bar-adresse {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50px; /* Rendre la barre de recherche arrondie */
+  padding: 5px 20px; /* Plus d'espace à l'intérieur */
+  margin-left: 20px;
+  width: 300px; /* Largeur fixe de la barre de recherche */
+}
+
+.search-bar-adresse mat-icon {
+  color: #000;
+  font-size: 20px;
+  margin-right: 10px; /* Plus d'espace entre l'icône et l'input */
+}
+
+.search-bar-adresse input {
+  border: none; /* Supprimer la bordure de l'input */
+  outline: none; /* Enlever l'effet de surbrillance bleu */
+  font-size: 16px; /* Police de taille agréable */
+  width: 100%; /* L'input prend toute la largeur disponible */
+  padding: 5px; /* Ajouter du padding pour un espacement confortable */
+  color: #333; /* Couleur du texte */
+}
+
+.search-bar-adresse input::placeholder {
+  color: #bbb; /* Couleur du placeholder */
+}
+
+/* Flexbox dans l'header */
+.header-actions {
+  display: flex;
+  justify-content: flex-start; /* Alignement à gauche */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-actions button {
+  margin-left: 650px; /* Espacement entre le bouton et la barre de recherche */
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 50px; /* Arrondi des coins du bouton */
+}
+
+/* Boutons d'édition et de suppression */
+.edit-button,
+.delete-button {
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  color: #4caf50;
+}
+
+.delete-button {
+  color: #f44336;
+}

@@ -1,0 +1,82 @@
+<h2>Modifier le Patient</h2>
+
+<form class="form-edit">
+  <div class="form-row">
+    <!-- Nom Complet -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nom Complet</mat-label>
+      <input matInput type="text" id="nomcomplet" [(ngModel)]="patient.nomcomplet" name="nomcomplet" />
+    </mat-form-field>
+
+    <!-- Date de Naissance -->
+    <mat-form-field appearance="fill">
+      <mat-label>Date de Naissance</mat-label>
+      <input matInput type="date" id="dateNaissance" [(ngModel)]="patient.dateNaissance" name="dateNaissance" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <!-- Lieu de Naissance -->
+    <mat-form-field appearance="fill">
+      <mat-label>Lieu de Naissance</mat-label>
+      <input matInput type="text" id="lieuDeNaissance" [(ngModel)]="patient.lieuDeNaissance" name="lieuDeNaissance" />
+    </mat-form-field>
+
+    <!-- Sexe -->
+    <mat-form-field appearance="fill">
+      <mat-label>Sexe</mat-label>
+      <mat-select id="sexe" [(ngModel)]="patient.sexe" name="sexe">
+        <mat-option value="M">Masculin</mat-option>
+        <mat-option value="F">Féminin</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <!-- Email -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" id="email" [(ngModel)]="patient.email" name="email" />
+    </mat-form-field>
+
+    <!-- Téléphone -->
+    <mat-form-field appearance="fill">
+      <mat-label>Téléphone</mat-label>
+      <input matInput type="text" id="numTel" [(ngModel)]="patient.numTel" name="numTel" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <!-- Type de pièce d'identité -->
+    <mat-form-field appearance="fill">
+      <mat-label>Type de pièce d'identité</mat-label>
+      <input matInput type="text" id="typePiece" [(ngModel)]="patient.typePieceIdentite" name="typePiece" />
+    </mat-form-field>
+
+    <!-- Numéro de pièce d'identité -->
+    <mat-form-field appearance="fill">
+      <mat-label>Numéro de pièce d'identité</mat-label>
+      <input matInput type="text" id="numPiece" [(ngModel)]="patient.numPieceIdentite" name="numPiece" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <!-- Adresse -->
+    <mat-form-field appearance="fill">
+      <mat-label>Adresse</mat-label>
+      <input matInput type="text" id="adresse" [(ngModel)]="patient.adresse" name="adresse" />
+    </mat-form-field>
+
+    <!-- Visible pour -->
+    <mat-form-field appearance="fill">
+      <mat-label>Visible pour</mat-label>
+      <input matInput type="text" id="visiblePour" [(ngModel)]="patient.visible_pour" name="visiblePour" />
+    </mat-form-field>
+  </div>
+
+  <!-- Boutons -->
+  <div class="button-group">
+    <button mat-raised-button color="primary" type="button" (click)="onSave()">Enregistrer</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Annuler</button>
+  </div>
+</form>
