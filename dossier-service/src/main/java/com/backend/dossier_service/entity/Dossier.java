@@ -5,15 +5,9 @@ import java.util.Date;
 import com.backend.dossier_service.model.Patient;
 import com.backend.dossier_service.model.Utilisateur;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Dossier {
 	@Id
@@ -27,6 +21,22 @@ public class Dossier {
     private Patient patient;
     private String fkIdPatient;
     
+	public Dossier() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Dossier(int numDossier, Date date, Utilisateur utilisateur, String fkEmailUtilisateur, Patient patient,
+			String fkIdPatient) {
+		super();
+		this.numDossier = numDossier;
+		this.date = date;
+		this.utilisateur = utilisateur;
+		this.fkEmailUtilisateur = fkEmailUtilisateur;
+		this.patient = patient;
+		this.fkIdPatient = fkIdPatient;
+	}
+
 	public int getNumDossier() {
 		return numDossier;
 	}

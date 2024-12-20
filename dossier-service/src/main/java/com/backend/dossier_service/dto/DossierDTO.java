@@ -1,11 +1,7 @@
 package com.backend.dossier_service.dto;
 
 import java.util.Date;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 public class DossierDTO {
     private int numDossier;
     private Date date;
@@ -13,6 +9,23 @@ public class DossierDTO {
     private String fkIdPatient;         // ID du patient
     private String utilisateurNom;      // Nom de l'utilisateur (optionnel)
     private String patientNom;
+    
+	public DossierDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public DossierDTO(int numDossier, Date date, String fkEmailUtilisateur, String fkIdPatient, String utilisateurNom,
+			String patientNom) {
+		super();
+		this.numDossier = numDossier;
+		this.date = date;
+		this.fkEmailUtilisateur = fkEmailUtilisateur;
+		this.fkIdPatient = fkIdPatient;
+		this.utilisateurNom = utilisateurNom;
+		this.patientNom = patientNom;
+	}
+
 	public int getNumDossier() {
 		return numDossier;
 	}
