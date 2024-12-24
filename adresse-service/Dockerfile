@@ -1,5 +1,5 @@
 # Étape 1 : Image de construction avec Maven et OpenJDK
-FROM maven:3.8.8-openjdk-17 AS build
+FROM openjdk:17-oracle AS build
 
 # Étape 2 : Répertoire de travail
 WORKDIR /app
