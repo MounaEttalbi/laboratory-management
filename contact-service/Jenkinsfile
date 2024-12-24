@@ -5,7 +5,7 @@ pipeline {
         // Variables pour SonarQube
         SONAR_HOST_URL = 'http://localhost:9000'
         SONAR_TOKEN = credentials('sonar-token')  // SonarQube token, à configurer dans Jenkins
-        DOCKER_IMAGE = 'adresse-service:latest'
+        DOCKER_IMAGE = 'contact-service:latest'
     }
 
     stages {
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Analyser le code avec SonarQube
-                    bat "mvn sonar:sonar -Dsonar.projectKey=adresse-service -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_TOKEN}"
+                    bat "mvn sonar:sonar -Dsonar.projectKey=contact-service -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_TOKEN}"
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Créer l'image Docker
-                    bat "docker build -t ${env.DOCKER_IMAGE} ./adresse-service"
+                    bat "docker build -t ${env.DOCKER_IMAGE} ./contact-service"
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
                 script {
                     // Lancer le conteneur Docker
                     bat """
-                    docker run -d -p 8090:8090 ${env.DOCKER_IMAGE}
+                    docker run -d -p 8055:8055 ${env.DOCKER_IMAGE}
                     """
                 }
             }
