@@ -12,4 +12,7 @@ public interface DossierService {
     List<Dossier> getDossiersByDate(Date date);
     Dossier updateDossier(int numDossier, Dossier dossierDetails);
     void deleteDossier(int numDossier);
+    Dossier archiveDossier(int numDossier);
+    List<Dossier> getDossiersByPatient(String patientId) ;
+    public List<Dossier> getDossiersByUser(String userEmail);
 }

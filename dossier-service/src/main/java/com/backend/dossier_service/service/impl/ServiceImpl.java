@@ -40,14 +40,46 @@ public class ServiceImpl implements DossierService {
 
     @Override
     public Dossier updateDossier(int numDossier, Dossier dossierDetails) {
-        Dossier existingDossier = getDossierById(numDossier);
-        existingDossier.setDate(dossierDetails.getDate());
-        return dossierRepository.save(existingDossier);
-    }
+        // Récupérer le dossier existant
+        Optional<Dossier> dossierOptional = dossierRepository.findById(numDossier);
+
+        if (dossierOptional.isPresent()) {
+            // Récupérer le dossier à mettre à jour
+            Dossier dossier = dossierOptional.get();
+
+            // Mettre à jour les propriétés du dossier avec les nouvelles valeurs
+            dossier.setDate(dossierDetails.getDate());
+            dossier.setFkEmailUtilisateur(dossierDetails.getFkEmailUtilisateur());
+            dossier.setFkIdPatient(dossierDetails.getFkIdPatient());
+            dossier.setStatus(dossierDetails.getStatus());
+
+            // Sauvegarder les modifications dans la base de données
+            return dossierRepository.save(dossier);
+        } else {
+            // Si le dossier n'existe pas, renvoyer null ou lancer une exception
+            throw new RuntimeException("Dossier non trouvé pour le numéro: " + numDossier);
+        }}
 
     @Override
     public void deleteDossier(int numDossier) {
         Dossier dossier = getDossierById(numDossier);
         dossierRepository.delete(dossier);
     }
+    @Override
+    public Dossier archiveDossier(int numDossier) {
+        Dossier dossier = dossierRepository.findById(numDossier).orElseThrow(() -> new RuntimeException("Dossier introuvable"));
+        dossier.setStatus("ARCHIVED");  // Marque le dossier comme archivé
+        return dossierRepository.save(dossier);
+    }
+    @Override
+    public List<Dossier> getDossiersByPatient(String patientId) {
+        // Assurez-vous que vous avez un repository DossierRepository
+        return dossierRepository.findByFkIdPatient(patientId);
+    }
+    @Override
+    public List<Dossier> getDossiersByUser(String userEmail) {
+        // Assurez-vous que vous avez un repository DossierRepository
+        return dossierRepository.findByFkEmailUtilisateur(userEmail);
+    }
+
 }
