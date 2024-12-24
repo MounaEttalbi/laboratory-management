@@ -17,10 +17,10 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Étape 7 : Copie du fichier JAR généré
-COPY --from=build /app/target/monservice.jar /app/monservice.jar
+COPY --from=build /app/target/adresse-service.jar /app/adresse-service.jar
 
 # Étape 8 : Commande d'exécution du service
-ENTRYPOINT ["java", "-jar", "/app/monservice.jar"]
+ENTRYPOINT ["java", "-jar", "/app/adresse-service.jar"]
 
 # Expose le port 8090 par défaut
 EXPOSE 8090
