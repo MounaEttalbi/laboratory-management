@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/dossiers")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DossierController {
 
     @Autowired
@@ -58,4 +59,22 @@ public class DossierController {
         dossierService.deleteDossier(numDossier);
         return ResponseEntity.noContent().build();
     }
+    
+    @GetMapping("/by-user/{email}")
+    public ResponseEntity<List<Dossier>> getDossiersByUser(@PathVariable String email) {
+        List<Dossier> dossiers = dossierService.getDossiersByUser(email);
+        return ResponseEntity.ok(dossiers);
+    }
+
+    @GetMapping("/by-patient/{patientId}")
+    public ResponseEntity<List<Dossier>> getDossiersByPatient(@PathVariable String patientId) {
+        List<Dossier> dossiers = dossierService.getDossiersByPatient(patientId);
+        return ResponseEntity.ok(dossiers);
+    }
+    @PutMapping("/{numDossier}/archive")
+    public ResponseEntity<Dossier> archiveDossier(@PathVariable int numDossier) {
+        Dossier archivedDossier = dossierService.archiveDossier(numDossier);
+        return ResponseEntity.ok(archivedDossier);
+    }
+
 }

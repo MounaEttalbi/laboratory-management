@@ -10,16 +10,21 @@ import jakarta.persistence.*;
 
 @Entity
 public class Dossier {
-	@Id
-	private int numDossier;
-	private Date date;
-	
-	@Transient
-    private Utilisateur utilisateur;
-    private String fkEmailUtilisateur;
-    @Transient
-    private Patient patient;
-    private String fkIdPatient;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private int numDossier;
+
+	    private Date date;
+	    
+	    @Transient
+	    private Utilisateur utilisateur;
+	    private String fkEmailUtilisateur;
+	    
+	    @Transient
+	    private Patient patient;
+	    private String fkIdPatient;
+	    
+	    private String status;
     
 	public Dossier() {
 		super();
@@ -72,6 +77,14 @@ public class Dossier {
 	}
 	public void setFkIdPatient(String fkIdPatient) {
 		this.fkIdPatient = fkIdPatient;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

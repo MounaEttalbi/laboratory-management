@@ -10,4 +10,8 @@ import java.util.List;
 public interface DossierRepository extends JpaRepository<Dossier, Integer> {
     // Exemple de méthode personnalisée pour trouver les dossiers par date
     List<Dossier> findByDate(Date date);
+
+	List<Dossier> findByFkIdPatient(String patientId);
+
+	List<Dossier> findByFkEmailUtilisateur(String userEmail);
 }
