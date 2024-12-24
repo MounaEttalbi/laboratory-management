@@ -1,80 +1,74 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven' // Assurez-vous que Maven est configuré dans Jenkins
-    }
+
     environment {
-        SONARQUBE_TOKEN = credentials('projet-libre-sonar-token') // Remplacez par votre ID d'identifiant Jenkins pour SonarQube
+        // Variables pour SonarQube
+        SONAR_HOST_URL = 'http://localhost:9000'
+        SONAR_TOKEN = credentials('sonar-token')  // SonarQube token, à configurer dans Jenkins
+        DOCKER_IMAGE = 'adresse-service:latest'
     }
+
     stages {
-        stage('Checkout Backend') {
+        stage('Checkout') {
             steps {
-                // Checkout du backend à partir de la branche main
-                dir('./adresse-service') {
-                    git branch: 'backend', url: 'https://github.com/MounaEttalbi/Laboratory_Management.git'
-                }
+                // Récupère le code source
+                checkout scm
             }
         }
 
-        stage('Checkout Frontend') {
+        stage('Build & Test') {
             steps {
-                // Checkout du frontend à partir de la branche master
-                dir('./front-end') {
-                    git branch: 'master', url: 'https://github.com/MounaEttalbi/Laboratory_Management.git'
+                script {
+                    // Compilation et exécution des tests unitaires (Junit, Mockito)
+                    sh './mvnw clean install -DskipTests=false'  // Utilisation de Maven, ajustez selon votre build tool (Maven/Gradle)
                 }
             }
         }
-
-        stage('Build & Test Backend') {
-            steps {
-                dir('./laboratory_service') {
-                    // Exécution du build Maven
-                    bat 'mvn clean install' // Utilisez 'bat' si sous Windows
-                }
-            }
-        }
-
-        /*stage('Build & Test Frontend') {
-            steps {
-                dir('./front-end') {
-                    // Installation des dépendances npm et build Angular
-                    sh 'npm install' // Utilisez 'bat' si sous Windows
-                    sh 'npx --max_old_space_size=8192 npm run build --prod'
-                    // Exécution des tests
-                    sh 'npm run test -- --watch=false'
-                }
-            }
-        }*/
 
         stage('SonarQube Analysis') {
             steps {
-                dir('./laboratory_service') {
-                    // Exécution de l'analyse SonarQube
-                    sh "mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=sonar-jenkins \
-                        -Dsonar.projectName='sonar-jenkins' \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=${SONARQUBE_TOKEN}"
+                script {
+                    // Analyser le code avec SonarQube
+                    sh """
+                    ./mvnw sonar:sonar \
+                        -Dsonar.projectKey=adresse-service \
+                        -Dsonar.host.url=${SONAR_HOST_URL} \
+                        -Dsonar.login=${SONAR_TOKEN}
+                    """
                 }
             }
         }
 
-        stage('Deploy with Docker Compose') {
+        stage('Build Docker Image') {
             steps {
-                dir('./laboratory_service') {
-                    // Démarrage de Docker Compose
-                    sh 'docker-compose -f docker-compose.yml up --build -d' // Utilisez 'bat' si sous Windows
+                script {
+                    // Créer l'image Docker
+                    sh 'docker build -t ${DOCKER_IMAGE} .'
                 }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Pousser l'image Docker dans votre registre (par exemple DockerHub ou un registre privé)
+                    // Assurez-vous de configurer votre login Docker dans Jenkins
+                    sh 'docker push ${DOCKER_IMAGE}'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Vous pouvez ajouter un stage de déploiement ici si nécessaire
+                echo 'Deployment stage (optional)'
             }
         }
     }
 
     post {
-        success {
-            echo 'Le build, les tests et le déploiement ont réussi !'
-        }
-        failure {
-            echo 'Échec du build, des tests ou du déploiement.'
+        always {
+            cleanWs()  // Nettoie l'espace de travail après chaque exécution
         }
     }
 }
