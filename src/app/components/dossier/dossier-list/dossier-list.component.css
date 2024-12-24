@@ -1,0 +1,62 @@
+/* Style pour les en-têtes de tableau */
+th {
+  background-color: #000 !important; /* Fond noir */
+  color: #fff !important; /* Texte blanc */
+  text-align: center; /* Alignement gauche */
+  padding: 10px; /* Espacement */
+}
+td{
+  text-align: center;
+}
+
+/* Style pour les cellules */
+table.mat-table td.mat-cell {
+  padding: 10px;
+}
+
+/* Général */
+.dossier-list-container {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+
+/* Boutons */
+.icon-button {
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: auto;
+}
+
+.icon-button .material-icons {
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 650px; /* Ajoute un espace entre les éléments */
+}
+
+.search-field {
+  flex: 1; /* Permet à la barre de recherche de s'étendre */
+}
+
+.mat-form-field {
+  width: 10%;
+}
+.transparent-button {
+  background: none !important;
+  box-shadow: none !important;
+}

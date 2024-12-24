@@ -1,51 +1,90 @@
 <div class="header-actions">
   <div class="search-bar-adresse">
-    <mat-icon>search</mat-icon>
-    <input type="text" [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Rechercher par nom, email, tel">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="text" [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Rechercher par nom, email, tel">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="openAddPatientDialog()">Ajouter un Patient</button>
   </div>
-  <button mat-raised-button color="primary" (click)="openAddPatientDialog()">Ajouter un Patient</button>
 </div>
 
 <div class="patient-list-container">
-  <h2>Liste des Patients</h2>
-  <table class="patient-table">
-    <thead>
-      <tr>
-        <th>Nom Complet</th>
-        <th>Date de Naissance</th>
-        <th>Lieu de naissance</th>
-        <th>Sexe</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Type pièce identité</th>
-        <th>Num pièce identité</th>
-        <th>Adresse</th>
-        <th>Visible pour</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let patient of filteredPatients; let i = index">
-        
-        <td>{{ patient.nomcomplet }}</td>
-        <td>{{ patient.dateNaissance | date }}</td>
-        <td>{{ patient.lieuDeNaissance }}</td>
-        <td>{{ patient.sexe }}</td>
-        <td>{{ patient.email }}</td>
-        <td>{{ patient.numTel }}</td>
-        <td>{{ patient.typePieceIdentite }}</td>
-        <td>{{ patient.numPieceIdentite }}</td>
-        <td>{{ patient.adresse }}</td>
-        <td>{{ patient.visible_pour }}</td>
-        <td>
-          <button class="edit-button" mat-icon-button (click)="openEditPatientDialog(patient)">
-            <span class="material-icons">edit</span>
-          </button>
-          <button class="delete-button" mat-icon-button (click)="openDeleteDialog(patient)">
-            <span class="material-icons">delete</span>
-          </button>
-        </td>
-      </tr>
-    </tbody>
+  <table mat-table [dataSource]="filteredPatients" class="mat-elevation-z8">
+    <!-- Nom Complet Column -->
+    <ng-container matColumnDef="nomcomplet">
+      <th mat-header-cell *matHeaderCellDef> Nom Complet </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.nomcomplet }} </td>
+    </ng-container>
+
+    <!-- Date de Naissance Column -->
+    <ng-container matColumnDef="dateNaissance">
+      <th mat-header-cell *matHeaderCellDef> Date de Naissance </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.dateNaissance | date }} </td>
+    </ng-container>
+
+    <!-- Lieu de Naissance Column -->
+    <ng-container matColumnDef="lieuDeNaissance">
+      <th mat-header-cell *matHeaderCellDef> Lieu de Naissance </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.lieuDeNaissance }} </td>
+    </ng-container>
+
+    <!-- Sexe Column -->
+    <ng-container matColumnDef="sexe">
+      <th mat-header-cell *matHeaderCellDef> Sexe </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.sexe }} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.email }} </td>
+    </ng-container>
+
+    <!-- Téléphone Column -->
+    <ng-container matColumnDef="numTel">
+      <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.numTel }} </td>
+    </ng-container>
+
+    <!-- Type Pièce Identité Column -->
+    <ng-container matColumnDef="typePieceIdentite">
+      <th mat-header-cell *matHeaderCellDef> Type Pièce Identité </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.typePieceIdentite }} </td>
+    </ng-container>
+
+    <!-- Num Pièce Identité Column -->
+    <ng-container matColumnDef="numPieceIdentite">
+      <th mat-header-cell *matHeaderCellDef> Num Pièce Identité </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.numPieceIdentite }} </td>
+    </ng-container>
+
+    <!-- Adresse Column -->
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef> Adresse </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.adresse }} </td>
+    </ng-container>
+
+    <!-- Visible Pour Column -->
+    <ng-container matColumnDef="visible_pour">
+      <th mat-header-cell *matHeaderCellDef> Visible Pour </th>
+      <td mat-cell *matCellDef="let patient"> {{ patient.visible_pour }} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let patient">
+        <button mat-icon-button color="accent" (click)="openEditPatientDialog(patient)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="openDeleteDialog(patient)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Table Headers and Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>

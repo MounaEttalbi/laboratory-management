@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Créer un Dossier</h2>
+
+<form (ngSubmit)="onSubmit()" class="form-add">
+  <!-- Date -->
+  <div>
+  <mat-form-field appearance="fill">
+    <mat-label>Date de Création</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="dossier.date" name="date" required />
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div>
+  <!-- Email de l'utilisateur -->
+  <mat-form-field appearance="fill">
+    <mat-label>Email Utilisateur</mat-label>
+    <input matInput type="email" [(ngModel)]="dossier.fkEmailUtilisateur" name="fkEmailUtilisateur" required />
+  </mat-form-field>
+</div>
+<div>
+  <!-- ID du patient -->
+  <mat-form-field appearance="fill">
+    <mat-label>ID Patient</mat-label>
+    <input matInput type="text" [(ngModel)]="dossier.fkIdPatient" name="fkIdPatient" required />
+  </mat-form-field>
+</div>
+<mat-form-field appearance="fill">
+  <mat-label>Status</mat-label>
+  <mat-select [(ngModel)]="dossier.status" name="status" required>
+    <mat-option value="Active">Active</mat-option>
+    <mat-option value="Archived">Archived</mat-option>
+    <mat-option value="Pending">Pending</mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <!-- Boutons -->
+  <div class="button-group">
+    <button mat-raised-button color="primary" type="submit">Ajouter Dossier</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Annuler</button>
+  </div>
+</form>

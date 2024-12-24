@@ -26,6 +26,11 @@
         <mat-icon matListIcon>people</mat-icon>
         <span>Patients</span>
       </a>
+      <a mat-list-item (click)="selectSection('Dossiers')" [class.active]="selectedSection === 'Dossiers'">
+        <mat-icon matListIcon>folder</mat-icon>  <!-- Icône 'folder' pour Dossiers -->
+        <span>Dossiers</span>
+      </a>
+      
       <!-- Bouton de déconnexion qui affiche le message de confirmation -->
       <a mat-list-item (click)="confirmLogout()">
         <mat-icon matListIcon>exit_to_app</mat-icon>
@@ -55,7 +60,10 @@
   </div>
   <div *ngIf="selectedSection === 'Patients'">
     <app-patient></app-patient>
-</div>
+  </div>
+  <div *ngIf="selectedSection === 'Dossiers'">
+  <app-dossier-list></app-dossier-list>
+  </div>
     
     <!-- Message de confirmation -->
     <div *ngIf="showConfirmation" class="confirmation-message">

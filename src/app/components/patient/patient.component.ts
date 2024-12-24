@@ -89,5 +89,18 @@ export class PatientComponent implements OnInit {
     });
   }
   
+  displayedColumns: string[] = [
+    'nomcomplet',
+    'dateNaissance',
+    'lieuDeNaissance',
+    'sexe',
+    'email',
+    'numTel',
+    'typePieceIdentite',
+    'numPieceIdentite',
+    'adresse',
+    'visible_pour',
+    'actions'
+  ];
   
 }

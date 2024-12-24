@@ -1,0 +1,22 @@
+.form-add{
+    padding: 5px;
+}
+.form-add mat-form-field {
+    width: 100%;
+  }
+
+ h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+  }
+  

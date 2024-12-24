@@ -53,6 +53,12 @@ import { PatientDeleteComponent } from './components/patient/patient-delete/pati
 import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DossierAddComponent } from './components/dossier/dossier-add/dossier-add.component';
+import { DossierListComponent } from './components/dossier/dossier-list/dossier-list.component';
+
+import { MatNativeDateModule } from '@angular/material/core';
+import { DossierDeleteComponent } from './components/dossier/dossier-delete/dossier-delete.component';
+import { DossierEditComponent } from './components/dossier/dossier-edit/dossier-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +90,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     PatientAddComponent,
     PatientDeleteComponent,
     PatientEditComponent,
+    DossierAddComponent,
+    DossierListComponent,
+    DossierDeleteComponent,
+    DossierEditComponent,
     
   ],
   imports: [
@@ -110,6 +120,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDialogModule,
     MatSnackBarModule, 
     MatDatepickerModule,
+    MatNativeDateModule,
     
   ],
   providers: [
