@@ -85,6 +85,10 @@
 .exit { 
   color: rgb(165, 27, 14) ;
 }
+.dashboard { 
+  color: rgb(147, 92, 8) ;
+}
+
 mat-sidenav-content {
   padding: 20px;
   background-color: #ffffff;

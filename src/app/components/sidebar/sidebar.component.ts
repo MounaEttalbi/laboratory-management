@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  selectedSection: string = ''; // Section initiale vide
+  selectedSection: string = 'statistics'; // Section initiale vide
   showConfirmation: boolean = false; // Variable pour afficher/masquer la confirmation
 
   constructor(private router: Router) {}

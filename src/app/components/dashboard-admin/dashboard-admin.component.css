@@ -1,0 +1,146 @@
+/* Conteneur principal du tableau de bord */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 40px;
+  }
+  
+  /* Section des cartes de statistiques */
+  .stats-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  /* Carte individuelle */
+  .card1 {
+    background-color: #a9dbf8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+  }
+  .card2 {
+    background-color: #c0f7e1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+  }
+  .card3 {
+    background-color: #f9b3cb;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Animation au survol des cartes */
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card1 h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .card1 p {
+    font-size: 2rem;
+    color: #007bff;
+    margin: 0;
+    font-weight: 500;
+  }
+  .card2 h3 {
+    font-size: 1.2rem;
+    color: #333333;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .card2 p {
+    font-size: 2rem;
+    color: #057b40;
+    margin: 0;
+    font-weight: 500;
+  }
+  .card3 h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .card3 p {
+    font-size: 2rem;
+    color: #850909;
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  /* Section des graphiques */
+  .charts-section {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  
+  /* Chaque graphique */
+  .chart {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 48%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Animation fade-in pour les graphiques */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsivité pour les petits écrans */
+  @media (max-width: 768px) {
+    .stats-cards {
+      flex-direction: column;
+    }
+  
+    .card {
+      margin-bottom: 20px;
+    }
+  
+    .charts-section {
+      flex-direction: column;
+    }
+  
+    .chart {
+      width: 100%;
+    }
+  }
+  

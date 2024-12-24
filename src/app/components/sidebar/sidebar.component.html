@@ -6,6 +6,10 @@
     </div>
     
     <mat-nav-list class="matnavlistSid">
+      <a mat-list-item (click)="selectSection('statistics')" [class.active]="selectedSection === 'statistics'">
+        <mat-icon matListIcon class="dashboard">dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
       <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
         <mat-icon matListIcon class="business">business</mat-icon>
         <span>Laboratoires</span>
@@ -46,6 +50,9 @@
       <mat-icon class="user-icon">account_circle</mat-icon>
     </div>
 <br/>
+    <div *ngIf="selectedSection === 'statistics'">
+      <app-dashboard-admin></app-dashboard-admin>
+    </div>
     <div *ngIf="selectedSection === 'laboratories'">
       <app-list-laboratories></app-list-laboratories>
     </div>

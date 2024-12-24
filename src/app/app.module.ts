@@ -59,6 +59,13 @@ import { DossierListComponent } from './components/dossier/dossier-list/dossier-
 import { MatNativeDateModule } from '@angular/material/core';
 import { DossierDeleteComponent } from './components/dossier/dossier-delete/dossier-delete.component';
 import { DossierEditComponent } from './components/dossier/dossier-edit/dossier-edit.component';
+
+import { NgChartsModule } from 'ng2-charts'; // Importation correcte
+import { bootstrapApplication } from '@angular/platform-browser';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +101,7 @@ import { DossierEditComponent } from './components/dossier/dossier-edit/dossier-
     DossierListComponent,
     DossierDeleteComponent,
     DossierEditComponent,
-    
+    DashboardAdminComponent
   ],
   imports: [
 
@@ -121,12 +128,13 @@ import { DossierEditComponent } from './components/dossier/dossier-edit/dossier-
     MatSnackBarModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    
+    NgChartsModule
+
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent]
 })
