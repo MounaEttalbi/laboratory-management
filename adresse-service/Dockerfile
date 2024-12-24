@@ -1,5 +1,5 @@
 # Étape 1 : Image de construction avec Maven et OpenJDK
-FROM openjdk:17-oracle AS build
+FROM maven:3.8.7-openjdk-17 AS build
 
 # Étape 2 : Répertoire de travail
 WORKDIR /app
@@ -17,7 +17,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Étape 7 : Copie du fichier JAR généré
-COPY --from=build /app/target/*.jar /app/adresse-service.jar
+COPY --from=build /app/target/adresse-service.jar /app/adresse-service.jar
 
 # Étape 8 : Commande d'exécution
 ENTRYPOINT ["java", "-jar", "/app/adresse-service.jar"]
