@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Compilation et exécution des tests unitaires (Junit, Mockito)
-                    bat 'mvnw.cmd clean install -DskipTests=false'  // Maven wrapper pour Windows
+                    bat 'mvn clean install -DskipTests=false' // Maven wrapper pour Windows
                 }
             }
         }
