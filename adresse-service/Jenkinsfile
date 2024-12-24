@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Compilation et exécution des tests unitaires (Junit, Mockito)
-                    sh './mvnw clean install -DskipTests=false'  // Utilisation de Maven, ajustez selon votre build tool (Maven/Gradle)
+                    bat 'mvnw.cmd clean install -DskipTests=false'  // Maven wrapper pour Windows
                 }
             }
         }
@@ -29,11 +29,11 @@ pipeline {
             steps {
                 script {
                     // Analyser le code avec SonarQube
-                    sh """
-                    ./mvnw sonar:sonar \
-                        -Dsonar.projectKey=adresse-service \
-                        -Dsonar.host.url=${SONAR_HOST_URL} \
-                        -Dsonar.login=${SONAR_TOKEN}
+                    bat """
+                    mvnw.cmd sonar:sonar ^
+                        -Dsonar.projectKey=adresse-service ^
+                        -Dsonar.host.url=%SONAR_HOST_URL% ^
+                        -Dsonar.login=%SONAR_TOKEN%
                     """
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     // Créer l'image Docker
-                    sh 'docker build -t ${DOCKER_IMAGE} .'
+                    bat 'docker build -t %DOCKER_IMAGE% .'
                 }
             }
         }
@@ -51,16 +51,15 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Pousser l'image Docker dans votre registre (par exemple DockerHub ou un registre privé)
-                    // Assurez-vous de configurer votre login Docker dans Jenkins
-                    sh 'docker push ${DOCKER_IMAGE}'
+                    // Pousser l'image Docker dans votre registre
+                    bat 'docker push %DOCKER_IMAGE%'
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                // Vous pouvez ajouter un stage de déploiement ici si nécessaire
+                // Stage de déploiement (ajustez en fonction de vos besoins)
                 echo 'Deployment stage (optional)'
             }
         }
