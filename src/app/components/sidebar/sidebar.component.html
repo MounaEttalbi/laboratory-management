@@ -5,35 +5,35 @@
       <span class="sidebar-title">LabManage</span>
     </div>
     
-    <mat-nav-list class="matnavlist">
+    <mat-nav-list class="matnavlistSid">
       <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
-        <mat-icon matListIcon>business</mat-icon>
+        <mat-icon matListIcon class="business">business</mat-icon>
         <span>Laboratoires</span>
       </a>
       <a mat-list-item (click)="selectSection('adresses')" [class.active]="selectedSection === 'adresses'">
-        <mat-icon matListIcon>location_on</mat-icon>
+        <mat-icon matListIcon class="location_on">location_on</mat-icon>
         <span>Adresses</span>
       </a>
       <a mat-list-item (click)="selectSection('users')" [class.active]="selectedSection === 'users'">
-        <mat-icon matListIcon>group</mat-icon>
+        <mat-icon matListIcon class="group">group</mat-icon>
         <span>Utilisateurs</span>
       </a>
       <a mat-list-item (click)="selectSection('contacts')" [class.active]="selectedSection === 'contacts'">
-        <mat-icon matListIcon>contacts</mat-icon>
+        <mat-icon matListIcon class="contacts">contacts</mat-icon>
         <span>Contacts</span>
       </a>
       <a mat-list-item (click)="selectSection('Patients')" [class.active]="selectedSection === 'Patients'">
-        <mat-icon matListIcon>people</mat-icon>
+        <mat-icon matListIcon class="people">people</mat-icon>
         <span>Patients</span>
       </a>
       <a mat-list-item (click)="selectSection('Dossiers')" [class.active]="selectedSection === 'Dossiers'">
-        <mat-icon matListIcon>folder</mat-icon>  <!-- Icône 'folder' pour Dossiers -->
+        <mat-icon matListIcon class="folder">folder</mat-icon>  <!-- Icône 'folder' pour Dossiers -->
         <span>Dossiers</span>
       </a>
       
       <!-- Bouton de déconnexion qui affiche le message de confirmation -->
       <a mat-list-item (click)="confirmLogout()">
-        <mat-icon matListIcon>exit_to_app</mat-icon>
+        <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
         <span>Se déconnecter</span>
       </a>
     </mat-nav-list>

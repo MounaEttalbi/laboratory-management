@@ -54,6 +54,27 @@
   margin-right: 12px;
 }
 
+.business { 
+  color: rgb(5, 93, 181) ;
+}
+.location_on { 
+  color: rgb(36, 159, 8) ;
+}
+.group { 
+  color: rgb(36, 5, 5) ;
+}
+.contacts { 
+  color: rgb(130, 26, 97) ;
+}
+.people { 
+  color: rgb(48, 58, 146) ;
+}
+.folder { 
+  color: rgb(163, 165, 14) ;
+}
+.exit { 
+  color: rgb(165, 27, 14) ;
+}
 mat-sidenav-content {
   padding: 20px;
   background-color: #ffffff;
@@ -135,7 +156,7 @@ button {
   margin-right: 15px;
   cursor: pointer;
   font-size: 26px;
-  color: #131212;
+  color: #d8c814;
 }
 
 /* Icône de l'utilisateur */
@@ -143,7 +164,7 @@ button {
   cursor: pointer;
   font-size: 26px;
   margin-right: 20px;
-  color: #131212;
+  color: #161717;
 }
 
 .matnavlist{
