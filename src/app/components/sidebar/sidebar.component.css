@@ -54,6 +54,16 @@
   margin-right: 12px;
 }
 
+.matnavlistSid { 
+  margin-left: 16px;
+  margin-top: 14px;
+}
+.matnavlistSid a mat-icon { 
+  margin-top: 18px;
+  width: 21px;
+  height: 21px;
+  margin-right: 14px;
+}
 .business { 
   color: rgb(5, 93, 181) ;
 }
