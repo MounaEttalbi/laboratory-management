@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Étape 4 : Construction du projet
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Étape 5 : Image de runtime
 FROM openjdk:17-jdk-slim
