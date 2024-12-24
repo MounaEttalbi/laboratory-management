@@ -1,9 +1,13 @@
-package com.backend.analyse_service;
+package ProjetLibre.analyse_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class AnalyseServiceApplication {
 
 	public static void main(String[] args) {

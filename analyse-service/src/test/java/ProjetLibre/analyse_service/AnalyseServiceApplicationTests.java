@@ -1,4 +1,4 @@
-package com.backend.analyse_service;
+package ProjetLibre.analyse_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
