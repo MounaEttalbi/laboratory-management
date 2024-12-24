@@ -49,7 +49,7 @@ pipeline {
                     // Lancer le conteneur Docker
                     bat """
                     docker run -d -p 8090:8090 ${env.DOCKER_IMAGE}
-                    docker ps  // Vérifier que le conteneur fonctionne
+                    docker ps
                     """
                 }
             }
