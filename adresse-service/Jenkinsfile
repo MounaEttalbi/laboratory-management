@@ -30,7 +30,7 @@ pipeline {
                 script {
                     // Analyser le code avec SonarQube
                     bat """
-                    mvnw.cmd sonar:sonar ^
+                    mvn sonar:sonar ^
                         -Dsonar.projectKey=adresse-service ^
                         -Dsonar.host.url=%SONAR_HOST_URL% ^
                         -Dsonar.login=%SONAR_TOKEN%
