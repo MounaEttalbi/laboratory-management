@@ -29,12 +29,7 @@ pipeline {
             steps {
                 script {
                     // Analyser le code avec SonarQube
-                    bat """
-                    mvn sonar:sonar ^
-                        -Dsonar.projectKey=adresse-service ^
-                        -Dsonar.host.url=%SONAR_HOST_URL% ^
-                        -Dsonar.login=%SONAR_TOKEN%
-                    """
+                    bat "mvn sonar:sonar -Dsonar.projectKey=adresse-service -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_TOKEN}"
                 }
             }
         }
@@ -43,24 +38,20 @@ pipeline {
             steps {
                 script {
                     // Créer l'image Docker
-                    bat 'docker build -t %DOCKER_IMAGE% ./adresse-service'
+                    bat "docker build -t ${env.DOCKER_IMAGE} ./adresse-service"
                 }
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Docker Run') {
             steps {
                 script {
-                    // Pousser l'image Docker dans votre registre
-                    bat 'docker push %DOCKER_IMAGE%'
+                    // Lancer le conteneur Docker
+                    bat """
+                    docker run -d -p 8090:8090 ${env.DOCKER_IMAGE}
+                    docker ps  // Vérifier que le conteneur fonctionne
+                    """
                 }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Stage de déploiement (ajustez en fonction de vos besoins)
-                echo 'Deployment stage (optional)'
             }
         }
     }
@@ -68,6 +59,9 @@ pipeline {
     post {
         always {
             cleanWs()  // Nettoie l'espace de travail après chaque exécution
+        }
+        failure {
+            echo "Le pipeline a échoué. Veuillez vérifier les logs."
         }
     }
 }
