@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     // Créer l'image Docker
-                    bat 'docker build -t %DOCKER_IMAGE% .'
+                    bat 'docker build -t %DOCKER_IMAGE% ./adresse-service'
                 }
             }
         }
