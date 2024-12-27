@@ -19,6 +19,10 @@ public class KeycloakUserApi {
 
     private final KeycloakUserService keycloakUserService;
 
+    public KeycloakUserApi(KeycloakUserService keycloakUserService) {
+        this.keycloakUserService = keycloakUserService;
+    }
+
 
     @PostMapping
     public UserRegistrationRecord createUser(@RequestBody UserRegistrationRecord userRegistrationRecord) {
