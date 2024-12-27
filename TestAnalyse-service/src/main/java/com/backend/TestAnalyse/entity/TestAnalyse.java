@@ -1,6 +1,7 @@
 package com.backend.TestAnalyse.entity;
 
-import com.backend.TestAnalyse.model.Analyse;
+
+import com.backend.TestAnalyse.model.AnalyseModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,7 +20,7 @@ public class TestAnalyse {
     private String details;
 
     @Transient
-    private Analyse analyse;
+    private AnalyseModel analyse;
 
 
     public TestAnalyse() {
@@ -51,11 +52,11 @@ public class TestAnalyse {
         this.fkIdAnalyse = fkIdAnalyse;
     }
 
-    public Analyse getAnalyse() {
+    public AnalyseModel getAnalyse() {
         return analyse;
     }
 
-    public void setAnalyse(Analyse analyse) {
+    public void setAnalyse(AnalyseModel analyse) {
         this.analyse = analyse;
     }
 
