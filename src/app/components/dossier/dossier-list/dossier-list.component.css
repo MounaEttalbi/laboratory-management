@@ -13,15 +13,9 @@ td{
 table.mat-table td.mat-cell {
   padding: 10px;
 }
-
-/* Général */
-.dossier-list-container {
-  margin: 20px;
-}
-
 table {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 0px;
   border-collapse: collapse;
 }
 
