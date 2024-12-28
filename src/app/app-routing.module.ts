@@ -19,6 +19,9 @@ import {ContactDeleteComponent} from './components/contact-service/contact-delet
 import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
+import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
+
 const routes: Routes = [
   { path: 'addA', component: AnalyseFormComponent },  { path: 'profil', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
@@ -39,6 +42,8 @@ const routes: Routes = [
   { path: 'contact-add', component: ContactAddComponent},
   { path: 'contact-update/:id', component: ContactUpdateComponent},
   { path: 'contact-delete/:id', component: ContactDeleteComponent},
+  { path: 'technicien', component: TechnicianPageComponent},
+  { path: 'chercheur', component: ChercheurPageComponent},
 ];
 
 @NgModule({

@@ -89,6 +89,8 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
 import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
+import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
+import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
 
 
 @NgModule({
@@ -131,7 +133,9 @@ import { AnalyseFormComponent } from './components/analyse-form/analyse-form.com
     DossierListComponent,
     DossierDeleteComponent,
     DossierEditComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    TechnicianPageComponent,
+    ChercheurPageComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,
@@ -158,7 +162,9 @@ import { AnalyseFormComponent } from './components/analyse-form/analyse-form.com
     MatSnackBarModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    NgChartsModule
+    NgChartsModule,
+    ReactiveFormsModule, 
+    BrowserAnimationsModule,
 
   ],
   providers: [ {

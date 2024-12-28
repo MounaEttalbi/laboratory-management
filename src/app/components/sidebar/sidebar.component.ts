@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   selectedSection: string = 'statistics';
  
 
-  showConfirmation: boolean = false; // Variable pour afficher/masquer la confirmation
+  showConfirmation = false;  // Variable pour afficher/masquer la confirmation
 
   constructor(private router: Router, private profilService: ProfilService) {}
 
