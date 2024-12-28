@@ -36,6 +36,9 @@
   border: 2px solid #ccc;
   object-fit: cover;
   transition: transform 0.3s ease;
+  
+  width: 100px;
+  height: 70px;
 }
 
 .logo-preview img:hover {
