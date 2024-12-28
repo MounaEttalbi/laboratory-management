@@ -185,3 +185,41 @@ button {
   margin-top: 18px;
   margin-left: 12px;
 }
+/* Header global */
+.header-pannel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #eeeeee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour un effet plus élégant */
+}
+
+/* Section de la salutation de bienvenue */
+.welcome-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: capitalize; /* Mise en valeur de la première lettre du prénom */
+}
+
+/* Icônes de notification et de profil */
+.header-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.notification-icon,
+.user-icon {
+  margin-left: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333; /* Couleur pour les icônes */
+}
+
+.notification-icon:hover,
+.user-icon:hover {
+  color: #007bff; /* Couleur au survol */
+}

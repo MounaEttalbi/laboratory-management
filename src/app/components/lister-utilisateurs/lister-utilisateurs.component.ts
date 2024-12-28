@@ -23,7 +23,7 @@ export class ListerUtilisateursComponent implements OnInit {
   // Méthode pour supprimer un utilisateur
   onDeleteUser(utilisateur: any): void {
     console.log('Suppression de l’utilisateur :', utilisateur);
-    this.utilisateurService.deleteUtilisateur(utilisateur.cin).subscribe({
+    this.utilisateurService.deleteUtilisateur(utilisateur.username).subscribe({
         next: () => {
             console.log('Utilisateur supprimé avec succès.');
             // Ajoutez ici des actions supplémentaires, comme rafraîchir la liste des utilisateurs

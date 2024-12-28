@@ -20,7 +20,7 @@
       <!-- Colonnes du tableau -->
       <ng-container matColumnDef="nomComplet">
         <th mat-header-cell *matHeaderCellDef> Nom Complet </th>
-        <td mat-cell *matCellDef="let utilisateur"> {{ utilisateur.nomComplet }} </td>
+        <td mat-cell *matCellDef="let utilisateur"> {{ utilisateur.username }} </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
@@ -29,14 +29,13 @@
       </ng-container>
 
       <ng-container matColumnDef="numTel">
-        <th mat-header-cell *matHeaderCellDef> Téléphone </th>
-        <td mat-cell *matCellDef="let utilisateur"> {{ utilisateur.numTel }} </td>
+        <th mat-header-cell *matHeaderCellDef> Prénom</th>
+        <td mat-cell *matCellDef="let utilisateur"> {{ utilisateur.firstName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="profession">
-        <th mat-header-cell *matHeaderCellDef> Profession </th>
-        <td mat-cell *matCellDef="let utilisateur"> {{ utilisateur.
-          profession }} </td>
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let utilisateur"> {{ utilisateur.lastName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Action">
