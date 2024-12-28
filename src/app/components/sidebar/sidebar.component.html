@@ -4,13 +4,13 @@
       <div class="sidebar-logo"></div>
       <span class="sidebar-title">LabManage</span>
     </div>
-    
+
     <mat-nav-list class="matnavlistSid">
       <a mat-list-item (click)="selectSection('statistics')" [class.active]="selectedSection === 'statistics'">
         <mat-icon matListIcon class="dashboard">dashboard</mat-icon>
         <span>Dashboard</span>
+      </a>
 
-    <mat-nav-list class="matnavlist">
       <a mat-list-item (click)="selectSection('profil')" [class.active]="selectedSection === 'profil'">
         <mat-icon matListIcon>Profil</mat-icon>
         <span>profil</span>
@@ -31,7 +31,6 @@
         <mat-icon matListIcon class="contacts">contacts</mat-icon>
         <span>Contacts</span>
       </a>
-
       <a mat-list-item (click)="selectSection('Patients')" [class.active]="selectedSection === 'Patients'">
         <mat-icon matListIcon class="people">people</mat-icon>
         <span>Patients</span>
@@ -40,7 +39,6 @@
         <mat-icon matListIcon class="folder">folder</mat-icon>  <!-- Icône 'folder' pour Dossiers -->
         <span>Dossiers</span>
       </a>
- 
 
       <a mat-list-item (click)="confirmLogout()">
         <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
@@ -48,13 +46,12 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  
+
   <mat-sidenav-content>
     <!-- Header avec la salutation et nom de l'utilisateur -->
     <div class="header-pannel">
       <div class="welcome-message">
         <span>Bonjour, {{ userInfo.nom }} {{ userInfo.prenom }}!</span> <!-- Affichage du nom de l'utilisateur -->
-       
       </div>
 
       <div class="header-icons">
@@ -67,7 +64,7 @@
       <app-user-profile></app-user-profile>
     </div>
 
-<br/>
+    <br/>
     <div *ngIf="selectedSection === 'statistics'">
       <app-dashboard-admin></app-dashboard-admin>
     </div>
@@ -75,27 +72,26 @@
       <app-list-laboratories></app-list-laboratories>
     </div>
     <div *ngIf="selectedSection === 'adresses'">
-        <app-adresse-list></app-adresse-list>
+      <app-adresse-list></app-adresse-list>
     </div>
     <div *ngIf="selectedSection === 'users'">
       <app-lister-utilisateurs></app-lister-utilisateurs>
     </div>
     <div *ngIf="selectedSection === 'contacts'">
       <app-contact-list></app-contact-list>
-  </div>
-  <div *ngIf="selectedSection === 'Patients'">
-    <app-patient></app-patient>
-  </div>
-  <div *ngIf="selectedSection === 'Dossiers'">
-  <app-dossier-list></app-dossier-list>
-  </div>
     </div>
-    
-    <!-- Message de confirmation -->
-    <div *ngIf="showConfirmation" class="confirmation-message">
-      <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
-      <button (click)="logout()" class="confirm-btn">Oui</button>
-      <button (click)="cancelLogout()" class="cancel-btn">Non</button>
+    <div *ngIf="selectedSection === 'Patients'">
+      <app-patient></app-patient>
+    </div>
+    <div *ngIf="selectedSection === 'Dossiers'">
+      <app-dossier-list></app-dossier-list>
     </div>
   </mat-sidenav-content>
+
+  <!-- Message de confirmation -->
+  <div *ngIf="showConfirmation" class="confirmation-message">
+    <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+    <button (click)="logout()" class="confirm-btn">Oui</button>
+    <button (click)="cancelLogout()" class="cancel-btn">Non</button>
+  </div>
 </mat-sidenav-container>
