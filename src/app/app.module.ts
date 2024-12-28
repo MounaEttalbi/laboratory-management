@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER,  NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -69,6 +69,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       .then(() => console.log('Keycloak initialized'))
       .catch((err) => console.error('Keycloak initialization failed', err));
 }
+
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
 import { PatientDeleteComponent } from './components/patient/patient-delete/patient-delete.component';
@@ -86,6 +87,8 @@ import { NgChartsModule } from 'ng2-charts'; // Importation correcte
 import { bootstrapApplication } from '@angular/platform-browser';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
 
 
 @NgModule({
@@ -116,6 +119,10 @@ import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
     AdresseDetailsComponent,
     DeleteLaboratoryComponent,
 
+    AnalyseFormComponent,
+    UserProfileComponent,
+
+
     PatientComponent,
     PatientAddComponent,
     PatientDeleteComponent,
@@ -127,7 +134,7 @@ import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
     DashboardAdminComponent
   ],
   imports: [
-    KeycloakAngularModule,
+    KeycloakAngularModule,    KeycloakAngularModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,  // Ajout de BrowserAnimationsModule
@@ -160,6 +167,7 @@ import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
     multi: true,
     deps: [KeycloakService]
   },
+
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),

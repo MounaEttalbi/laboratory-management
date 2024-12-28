@@ -12,7 +12,11 @@ export class SidebarComponent implements OnInit {
   userInfo = { nom: '', prenom: '' };
   profil: ExtendedKeycloakProfile | null = null;
   roles: string[] = [];  // Tableau pour stocker les rôles de l'utilisateur
-  selectedSection: string = ''; // Section initiale vide
+
+
+  selectedSection: string = 'statistics';
+ 
+
   showConfirmation: boolean = false; // Variable pour afficher/masquer la confirmation
 
   constructor(private router: Router, private profilService: ProfilService) {}

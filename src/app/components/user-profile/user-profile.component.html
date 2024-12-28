@@ -1,0 +1,66 @@
+<div class="user-profile-page container ">
+  <!-- Header avec avatar et informations utilisateur -->
+  <div class="header d-flex align-items-center ">
+    <div class="avatar-circle-sm">
+      <span class="initials">{{ getInitials(user.firstName, user.lastName) }}</span>
+    </div>
+    <div class="ms-3">
+      <h2 class="mb-1">{{ user.firstName }} {{ user.lastName }}</h2>
+      <p class="text-muted mb-0">{{ user.username }}</p>
+      <p class="role-text">{{ user.role }}</p>
+      <button class="btn btn-outline-custom btn-sm mt-2">Modifier le mot de passe</button>
+    </div>
+  </div>
+
+  <!-- Formulaire d'édition -->
+  <div class="form-container">
+    <form>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="firstName" class="form-label">Nom</label>
+          <input
+            type="text"
+            id="firstName"
+            class="form-control form-control-lg"
+            [(ngModel)]="user.firstName"
+            name="firstName"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Prénom</label>
+          <input
+            type="text"
+            id="lastName"
+            class="form-control form-control-lg"
+            [(ngModel)]="user.lastName"
+            name="lastName"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control form-control-lg"
+            [(ngModel)]="user.email"
+            name="email"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="role" class="form-label">Rôle</label>
+          <input
+            type="text"
+            id="role"
+            class="form-control form-control-lg"
+            [(ngModel)]="user.role"
+            name="role"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="mt-4 text-end">
+        <button class="btn btn-custom btn-sm">Sauvegarder les modifications</button>
+      </div>
+    </form>
+  </div>
+</div>

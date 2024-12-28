@@ -1,0 +1,64 @@
+<div class="container">
+    <h2>Ajouter une Analyse</h2>
+  
+    <form [formGroup]="analyseForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input
+          id="nom"
+          formControlName="nom"
+          type="text"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': nom?.invalid && nom?.touched }"
+        />
+        <div *ngIf="nom?.invalid && nom?.touched" class="invalid-feedback">
+          Nom is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          id="description"
+          formControlName="description"
+          type="text"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': description?.invalid && description?.touched }"
+        />
+        <div *ngIf="description?.invalid && description?.touched" class="invalid-feedback">
+          Description is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="laboratoire">Laboratoire</label>
+        <input
+          id="laboratoire"
+          formControlName="laboratoire"
+          type="text"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': laboratoire?.invalid && laboratoire?.touched }"
+        />
+        <div *ngIf="laboratoire?.invalid && laboratoire?.touched" class="invalid-feedback">
+          Laboratoire is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input
+          id="type"
+          formControlName="type"
+          type="text"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': type?.invalid && type?.touched }"
+        />
+        <div *ngIf="type?.invalid && type?.touched" class="invalid-feedback">
+          Type is required
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="analyseForm.invalid">Ajouter</button>
+    </form>
+  </div>
+  

@@ -24,21 +24,21 @@ export class AjouterUtilisateurComponent {
     if (this.utilisateurData ) {
       this.isEditMode = true;  // Si un utilisateur existe, on est en mode édition
       this.formGroup = this.fb.group({
-        cin: [this.utilisateurData.cin, Validators.required],
-        nomComplet: [this.utilisateurData.nomComplet, Validators.required],
+        username: [this.utilisateurData.username, Validators.required],
+        firstName: [this.utilisateurData.firstName, Validators.required],
+        lastName: [this.utilisateurData.lastName, [Validators.required]],
         email: [this.utilisateurData.email, [Validators.required, Validators.email]],
-        numTel: [this.utilisateurData.numTel, [Validators.required, Validators.pattern('^\\+?\\d{1,3}?[- ]?\\(?\\d{1,3}\\)?[- ]?\\d{1,4}[- ]?\\d{1,4}[- ]?\\d{1,9}$')]],
-        role: [this.utilisateurData.role],
-        signature: [this.utilisateurData.signature || '']
+        role: [],
+        
       });
     } else {
     this.formGroup = this.fb.group({
-      cin: ['', Validators.required],  // Nouveau champ CIN
-      nomComplet: ['', Validators.required],
+      username: ['', Validators.required],  // Nouveau champ CIN
+      firstName: ['', Validators.required],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      numTel: ['', [Validators.required, Validators.pattern('^\\+?\\d{1,3}?[- ]?\\(?\\d{1,3}\\)?[- ]?\\d{1,4}[- ]?\\d{1,4}[- ]?\\d{1,9}$')]],
-      role: ['', Validators.required],
-      signature: []
+  
+      role: ['', Validators.required]
     });
   }}
 
@@ -61,7 +61,7 @@ export class AjouterUtilisateurComponent {
 
   onSave(): void {
     if(this.isEditMode){
-      this.utilisateurService.updateUtilisateur(this.formGroup.value.cin,this.formGroup.value).subscribe(() => {
+      this.utilisateurService.updateUtilisateur(this.formGroup.value.username,this.formGroup.value).subscribe(() => {
         console.log('Conducteur modif avec succès');
        // this.router.navigate(['/confirmationCond'], { state: {conducteur: conducteur } });
         
@@ -82,7 +82,8 @@ export class AjouterUtilisateurComponent {
       const utilisateur: InscriptionUtilisateur = {
         ...this.formGroup.value,
       };
-      utilisateur.mdp = this.generateRandomString(10);
+      utilisateur.password = this.generateRandomString(10);
+      console.log('Cvoirr',utilisateur);
       this.utilisateurService.ajouterUtilisateur(utilisateur).subscribe(() => {
         console.log('Conducteur ajouté avec succès',utilisateur);
        // this.router.navigate(['/confirmationCond'], { state: {conducteur: conducteur } });

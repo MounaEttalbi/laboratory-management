@@ -5,44 +5,41 @@
       <span class="sidebar-title">LabManage</span>
     </div>
 
-    <mat-nav-list class="matnavlist">
-      <a mat-list-item (click)="selectSection('profil')" [class.active]="selectedSection === 'profil'">
-        <mat-icon matListIcon>Profil</mat-icon>
-        <span>Profil</span>
+    <mat-nav-list class="matnavlistSid">
+      <a mat-list-item (click)="selectSection('statistics')" [class.active]="selectedSection === 'statistics'">
+        <mat-icon matListIcon class="dashboard">dashboard</mat-icon>
+        <span>Dashboard</span>
       </a>
 
-      <mat-nav-list class="matnavlistSid">
-        <a mat-list-item (click)="selectSection('statistics')" [class.active]="selectedSection === 'statistics'">
-          <mat-icon matListIcon class="dashboard">dashboard</mat-icon>
-          <span>Dashboard</span>
-        </a>
-        <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
-          <mat-icon matListIcon class="business">business</mat-icon>
-          <span>Laboratoires</span>
-        </a>
-        <a mat-list-item (click)="selectSection('adresses')" [class.active]="selectedSection === 'adresses'">
-          <mat-icon matListIcon class="location_on">location_on</mat-icon>
-          <span>Adresses</span>
-        </a>
-        <a mat-list-item (click)="selectSection('users')" [class.active]="selectedSection === 'users'">
-          <mat-icon matListIcon class="group">group</mat-icon>
-          <span>Utilisateurs</span>
-        </a>
-        <a mat-list-item (click)="selectSection('contacts')" [class.active]="selectedSection === 'contacts'">
-          <mat-icon matListIcon class="contacts">contacts</mat-icon>
-          <span>Contacts</span>
-        </a>
-        <a mat-list-item (click)="selectSection('Patients')" [class.active]="selectedSection === 'Patients'">
-          <mat-icon matListIcon class="people">people</mat-icon>
-          <span>Patients</span>
-        </a>
-        <a mat-list-item (click)="selectSection('Dossiers')" [class.active]="selectedSection === 'Dossiers'">
-          <mat-icon matListIcon class="folder">folder</mat-icon>
-          <span>Dossiers</span>
-        </a>
-      </mat-nav-list>
-      
-      <!-- Bouton de déconnexion -->
+      <a mat-list-item (click)="selectSection('profil')" [class.active]="selectedSection === 'profil'">
+        <mat-icon matListIcon>Profil</mat-icon>
+        <span>profil</span>
+      </a>
+      <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
+        <mat-icon matListIcon class="business">business</mat-icon>
+        <span>Laboratoires</span>
+      </a>
+      <a mat-list-item (click)="selectSection('adresses')" [class.active]="selectedSection === 'adresses'">
+        <mat-icon matListIcon class="location_on">location_on</mat-icon>
+        <span>Adresses</span>
+      </a>
+      <a mat-list-item (click)="selectSection('users')" [class.active]="selectedSection === 'users'">
+        <mat-icon matListIcon class="group">group</mat-icon>
+        <span>Utilisateurs</span>
+      </a>
+      <a mat-list-item (click)="selectSection('contacts')" [class.active]="selectedSection === 'contacts'">
+        <mat-icon matListIcon class="contacts">contacts</mat-icon>
+        <span>Contacts</span>
+      </a>
+      <a mat-list-item (click)="selectSection('Patients')" [class.active]="selectedSection === 'Patients'">
+        <mat-icon matListIcon class="people">people</mat-icon>
+        <span>Patients</span>
+      </a>
+      <a mat-list-item (click)="selectSection('Dossiers')" [class.active]="selectedSection === 'Dossiers'">
+        <mat-icon matListIcon class="folder">folder</mat-icon>  <!-- Icône 'folder' pour Dossiers -->
+        <span>Dossiers</span>
+      </a>
+
       <a mat-list-item (click)="confirmLogout()">
         <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
         <span>Se déconnecter</span>
@@ -62,12 +59,12 @@
         <mat-icon class="user-icon">account_circle</mat-icon>
       </div>
     </div>
-
-    <br />
-    
+    <br/>
     <div *ngIf="selectedSection === 'profil'">
       <app-user-profile></app-user-profile>
     </div>
+
+    <br/>
     <div *ngIf="selectedSection === 'statistics'">
       <app-dashboard-admin></app-dashboard-admin>
     </div>
@@ -89,12 +86,12 @@
     <div *ngIf="selectedSection === 'Dossiers'">
       <app-dossier-list></app-dossier-list>
     </div>
-    
-    <!-- Message de confirmation pour déconnexion -->
-    <div *ngIf="showConfirmation" class="confirmation-message">
-      <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
-      <button (click)="logout()" class="confirm-btn">Oui</button>
-      <button (click)="cancelLogout()" class="cancel-btn">Non</button>
-    </div>
   </mat-sidenav-content>
+
+  <!-- Message de confirmation -->
+  <div *ngIf="showConfirmation" class="confirmation-message">
+    <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+    <button (click)="logout()" class="confirm-btn">Oui</button>
+    <button (click)="cancelLogout()" class="cancel-btn">Non</button>
+  </div>
 </mat-sidenav-container>
