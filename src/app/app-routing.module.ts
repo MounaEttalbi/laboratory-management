@@ -16,12 +16,16 @@ import {ContactListComponent} from './components/contact-service/contact-list/co
 import {ContactAddComponent} from './components/contact-service/contact-add/contact-add.component';
 import {ContactUpdateComponent} from './components/contact-service/contact-update/contact-update.component';
 import {ContactDeleteComponent} from './components/contact-service/contact-delete/contact-delete.component';
-
-
+import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
+import { AuthGuard } from './Guards/auth.guard';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 const routes: Routes = [
+  { path: 'addA', component: AnalyseFormComponent },  { path: 'profil', component: UserProfileComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'utilisateurs', component: ListerUtilisateursComponent, canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }, },
   { path: '', component: HomeComponent }, 
   { path: 'login', component: LoginComponent },
-  { path: 'utilisateurs', component: ListerUtilisateursComponent },
   { path: 'adminPannel' , component: SidebarComponent},
   { path: 'list-laboratory', component: ListLaboratoriesComponent },
   { path: 'edit-laboratory/:id', component: EditLaboratoryComponent },

@@ -9,6 +9,11 @@
       <a mat-list-item (click)="selectSection('statistics')" [class.active]="selectedSection === 'statistics'">
         <mat-icon matListIcon class="dashboard">dashboard</mat-icon>
         <span>Dashboard</span>
+
+    <mat-nav-list class="matnavlist">
+      <a mat-list-item (click)="selectSection('profil')" [class.active]="selectedSection === 'profil'">
+        <mat-icon matListIcon>Profil</mat-icon>
+        <span>profil</span>
       </a>
       <a mat-list-item (click)="selectSection('laboratories')" [class.active]="selectedSection === 'laboratories'">
         <mat-icon matListIcon class="business">business</mat-icon>
@@ -26,6 +31,7 @@
         <mat-icon matListIcon class="contacts">contacts</mat-icon>
         <span>Contacts</span>
       </a>
+
       <a mat-list-item (click)="selectSection('Patients')" [class.active]="selectedSection === 'Patients'">
         <mat-icon matListIcon class="people">people</mat-icon>
         <span>Patients</span>
@@ -34,8 +40,8 @@
         <mat-icon matListIcon class="folder">folder</mat-icon>  <!-- Icône 'folder' pour Dossiers -->
         <span>Dossiers</span>
       </a>
-      
-      <!-- Bouton de déconnexion qui affiche le message de confirmation -->
+ 
+
       <a mat-list-item (click)="confirmLogout()">
         <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
         <span>Se déconnecter</span>
@@ -44,11 +50,23 @@
   </mat-sidenav>
   
   <mat-sidenav-content>
-    <!-- Header avec icônes de notifications et utilisateur -->
+    <!-- Header avec la salutation et nom de l'utilisateur -->
     <div class="header-pannel">
-      <mat-icon class="notification-icon">notifications</mat-icon>
-      <mat-icon class="user-icon">account_circle</mat-icon>
+      <div class="welcome-message">
+        <span>Bonjour, {{ userInfo.nom }} {{ userInfo.prenom }}!</span> <!-- Affichage du nom de l'utilisateur -->
+       
+      </div>
+
+      <div class="header-icons">
+        <mat-icon class="notification-icon">notifications</mat-icon>
+        <mat-icon class="user-icon">account_circle</mat-icon>
+      </div>
     </div>
+    <br/>
+    <div *ngIf="selectedSection === 'profil'">
+      <app-user-profile></app-user-profile>
+    </div>
+
 <br/>
     <div *ngIf="selectedSection === 'statistics'">
       <app-dashboard-admin></app-dashboard-admin>
@@ -71,6 +89,7 @@
   <div *ngIf="selectedSection === 'Dossiers'">
   <app-dossier-list></app-dossier-list>
   </div>
+    </div>
     
     <!-- Message de confirmation -->
     <div *ngIf="showConfirmation" class="confirmation-message">

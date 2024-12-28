@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,6 +39,7 @@ import { AdresseUpdateComponent } from './components/adresse-service/adresse-upd
 import { AdresseDeleteComponent } from './components/adresse-service/adresse-delete/adresse-delete.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import {ContactListComponent} from './components/contact-service/contact-list/contact-list.component';
 import {ContactAddComponent} from './components/contact-service/contact-add/contact-add.component';
 import {ContactUpdateComponent} from './components/contact-service/contact-update/contact-update.component';
@@ -47,6 +48,27 @@ import { ContactDetailsComponent } from './components/contact-details/contact-de
 import { ContactUpdate2Component } from './components/contact-service/contact-update2/contact-update2.component';
 import { AdresseDetailsComponent } from './components/adresse-service/adresse-details/adresse-details.component';
 import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-laboratory.component';
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak
+      .init({
+        config: {
+          url: 'http://localhost:8080',
+          realm: 'ProjetLibre-realm',
+          clientId: 'Projet-client',
+        },
+        initOptions: {
+          onLoad: 'login-required',  // Vérifier si l'utilisateur est déjà authentifié
+          silentCheckSsoRedirectUri: 
+            typeof window !== 'undefined' && window.location
+              ? window.location.origin + '/assets/silent-check-sso.html'
+              : '',  // Assurez-vous que l'URL de redirection existe
+        },
+      })
+      .then(() => console.log('Keycloak initialized'))
+      .catch((err) => console.error('Keycloak initialization failed', err));
+}
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
 import { PatientDeleteComponent } from './components/patient/patient-delete/patient-delete.component';
@@ -64,6 +86,8 @@ import { NgChartsModule } from 'ng2-charts'; // Importation correcte
 import { bootstrapApplication } from '@angular/platform-browser';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
 
 
 @NgModule({
@@ -93,6 +117,10 @@ import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
     ContactUpdate2Component,
     AdresseDetailsComponent,
     DeleteLaboratoryComponent,
+
+    AnalyseFormComponent,
+    UserProfileComponent,
+
     PatientComponent,
     PatientAddComponent,
     PatientDeleteComponent,
@@ -104,7 +132,7 @@ import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
     DashboardAdminComponent
   ],
   imports: [
-
+    KeycloakAngularModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,  // Ajout de BrowserAnimationsModule
@@ -131,7 +159,12 @@ import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
     NgChartsModule
 
   ],
-  providers: [
+  providers: [ {
+    provide: APP_INITIALIZER,
+    useFactory: initializeKeycloak,
+    multi: true,
+    deps: [KeycloakService]
+  },
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
