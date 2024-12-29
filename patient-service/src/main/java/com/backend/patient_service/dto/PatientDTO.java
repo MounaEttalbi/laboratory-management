@@ -15,7 +15,29 @@ public class PatientDTO {
     private String email;
     private String visible_pour;
 
-    // Getters and Setters
+    public PatientDTO(int idPatient, String nomcomplet, Date dateNaissance, String lieuDeNaissance, String sexe,
+			String typePieceIdentite, String numPieceIdentite, String adresse, String numTel, String email,
+			String visible_pour) {
+		super();
+		this.idPatient = idPatient;
+		this.nomcomplet = nomcomplet;
+		this.dateNaissance = dateNaissance;
+		this.lieuDeNaissance = lieuDeNaissance;
+		this.sexe = sexe;
+		this.typePieceIdentite = typePieceIdentite;
+		this.numPieceIdentite = numPieceIdentite;
+		this.adresse = adresse;
+		this.numTel = numTel;
+		this.email = email;
+		this.visible_pour = visible_pour;
+	}
+
+	public PatientDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	// Getters and Setters
     public int getIdPatient() {
         return idPatient;
     }

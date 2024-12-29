@@ -20,6 +20,7 @@ public class KeycloakUserApi {
     private final KeycloakUserService keycloakUserService;
 
 
+
     @PostMapping
     public UserRegistrationRecord createUser(@RequestBody UserRegistrationRecord userRegistrationRecord) {
 
