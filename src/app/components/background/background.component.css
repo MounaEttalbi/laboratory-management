@@ -2,16 +2,33 @@
   width: 100%; /* Ajuste la largeur au maximum de l'écran */
   position: relative;
 }
-
+/* Arrière-plan avec diaporama */
 .background {
-  background-image: url('../../../assets/bg2.jpg'); /* Utilise 'assets/' comme préfixe */
-  background-size: cover; /* Remplit toute la zone sans déformer */
-  background-position: center; /* Centre l'image */
-  height: 100vh; /* Utilise 100% de la hauteur de l'écran */
-  position: relative;
-  margin-top: 72px; /* Ajout d'une marge pour éviter que la navbar ne recouvre l'image de fond */
+  width: 100%;
+  height: 100vh;
+  margin-top: 70px;
+  background-size: cover;
+  background-position: center;
+  animation: slideshow 15s infinite;
+  transition: background-image 1s ease-in-out; /* Transition douce */
 }
 
+
+/* Animation pour le diaporama */
+@keyframes slideshow {
+  0% {
+    background-image: url('../../../assets/laboratory-management.png');
+  }
+  33% {
+    background-image: url('../../../assets/bg2.jpg');
+  }
+  66% {
+    background-image: url('../../../assets/back2.jpg');
+  }
+  100% {
+    background-image: url('../../../assets/back1.jpg'); /* Retour à la première image */
+  }
+}
 .overlay-bg {
   background-color: rgba(37, 36, 36, 0.24); /* Couche semi-transparente */
   color: white;
