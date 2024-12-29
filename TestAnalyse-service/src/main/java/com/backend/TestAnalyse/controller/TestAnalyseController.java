@@ -28,7 +28,7 @@ public class TestAnalyseController {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<TestAnalyse> updateTestAnalyse(
             @PathVariable Long id,
             @RequestBody TestAnalyseDTO testAnalyseDTO) {
@@ -36,7 +36,7 @@ public class TestAnalyseController {
     }
 
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<TestAnalyse>> getAllTestAnalyses() {
         return ResponseEntity.ok(testAnalyseService.getAllTestAnalyses());
     }
@@ -50,7 +50,7 @@ public class TestAnalyseController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTestAnalyse(@PathVariable Long id) {
         testAnalyseService.deleteTestAnalyse(id);
         return ResponseEntity.noContent().build();

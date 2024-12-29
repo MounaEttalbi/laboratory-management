@@ -19,9 +19,6 @@ public class KeycloakUserApi {
 
     private final KeycloakUserService keycloakUserService;
 
-    public KeycloakUserApi(KeycloakUserService keycloakUserService) {
-        this.keycloakUserService = keycloakUserService;
-    }
 
 
     @PostMapping
