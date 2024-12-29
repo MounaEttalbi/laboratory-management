@@ -1,10 +1,10 @@
-package com.app.backend;
+package com.example.service_gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayServiceApplicationTests {
+class ServiceGatewayApplicationTests {
 
 	@Test
 	void contextLoads() {
