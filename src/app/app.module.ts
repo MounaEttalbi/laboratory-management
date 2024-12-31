@@ -91,6 +91,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
 import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
 import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
+import { ExamenListComponent } from './components/examen-service/examen-list/examen-list.component';
+import { ExamenAddComponent } from './components/examen-service/examen-add/examen-add.component';
+import { ExamenUpdateComponent } from './components/examen-service/examen-update/examen-update.component';
+import { ExamenDeleteComponent } from './components/examen-service/examen-delete/examen-delete.component';
+import { TestAnalyseComponent } from './components/test-analyse-service/test-analyse/test-analyse.component';
 
 
 @NgModule({
@@ -135,7 +140,12 @@ import { ChercheurPageComponent } from './components/chercheur-page/chercheur-pa
     DossierEditComponent,
     DashboardAdminComponent,
     TechnicianPageComponent,
-    ChercheurPageComponent
+    ChercheurPageComponent,
+    ExamenListComponent,
+    ExamenAddComponent,
+    ExamenUpdateComponent,
+    ExamenDeleteComponent,
+    TestAnalyseComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,

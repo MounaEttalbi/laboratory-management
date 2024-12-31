@@ -22,6 +22,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
 import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
 
+import { ExamenListComponent } from './components/examen-service/examen-list/examen-list.component';
+import { ExamenAddComponent } from './components/examen-service/examen-add/examen-add.component';
+import { ExamenUpdateComponent } from './components/examen-service/examen-update/examen-update.component';
+
 const routes: Routes = [
   { path: 'addA', component: AnalyseFormComponent },  { path: 'profil', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
@@ -44,6 +48,10 @@ const routes: Routes = [
   { path: 'contact-delete/:id', component: ContactDeleteComponent},
   { path: 'technicien', component: TechnicianPageComponent},
   { path: 'chercheur', component: ChercheurPageComponent},
+  { path: 'examens', component: ExamenListComponent },
+  { path: 'examen/add', component: ExamenAddComponent },
+  { path: 'examen-update/:id', component: ExamenUpdateComponent },
+  { path: '', redirectTo: '/technicien', pathMatch: 'full' },
 ];
 
 @NgModule({

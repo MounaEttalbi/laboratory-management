@@ -8,13 +8,23 @@
       <mat-nav-list class="matnavlistSid">
         <!-- Section Profil -->
         <a mat-list-item (click)="selectSection('profil')" [class.active]="selectedSection === 'profil'">
-          <mat-icon matListIcon>account_circle</mat-icon>
+          <mat-icon matListIcon class="profil">account_circle</mat-icon>
           <span>Profil</span>
+        </a>
+        <!-- Section Tests -->
+        <a mat-list-item (click)="selectSection('tests')" [class.active]="selectedSection === 'tests'">
+          <mat-icon matListIcon class="profil">list</mat-icon>
+          <span>Tests des Analyses</span>
+        </a>
+        <!-- Section Examens -->
+        <a mat-list-item (click)="selectSection('Examens')" [class.active]="selectedSection === 'Examens'">
+          <mat-icon matListIcon class="examen">folder</mat-icon>
+          <span>Examens</span>
         </a>
   
         <!-- Section Déconnexion -->
         <a mat-list-item (click)="confirmLogout()">
-          <mat-icon matListIcon>exit_to_app</mat-icon>
+          <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
           <span>Se Déconnecter</span>
         </a>
       </mat-nav-list>
@@ -33,6 +43,16 @@
       <div *ngIf="selectedSection === 'profil'">
         <app-user-profile></app-user-profile>
       </div>
+
+      <!-- Contenu de la section Tests -->
+      <div *ngIf="selectedSection === 'tests'">
+        <app-test-analyse></app-test-analyse>
+      </div>
+
+      <!-- Contenu de la section Examen -->
+      <div *ngIf="selectedSection === 'Examens'">
+        <app-examen-list></app-examen-list>
+      </div>
     </mat-sidenav-content>
   
     <!-- Message de confirmation de déconnexion -->
@@ -41,5 +61,6 @@
       <button (click)="logout()" class="confirm-btn">Oui</button>
       <button (click)="cancelLogout()" class="cancel-btn">Non</button>
     </div>
+  
   </mat-sidenav-container>
   

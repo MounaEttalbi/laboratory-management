@@ -130,6 +130,16 @@ button {
 .cancel-btn:hover {
   background-color: #e53935; 
 }
+.examen {
+  color: #d6c82a; 
+}
+.profil {
+  color: #0528b7; 
+}
+.exit {
+  color: #a42704; 
+}
+
 
 
 /* Styles du Header */
