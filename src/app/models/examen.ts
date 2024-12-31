@@ -1,8 +1,12 @@
 export interface Examen {
     id: number;
+    fkNumDossier: number;
+    fkIdEpreuve: number;
+    fkIdTestAnalyse: number;
+    date: string;  // Utilisez `string` si vous récupérez la date en format ISO
+    status: string;
+    commentaires: string;
     nom: string;
-    date: string; // Date de l'examen
-    commentaires: string; // Sujet ou description de l'examen
-    status:string;
-  }
+}
+  
   

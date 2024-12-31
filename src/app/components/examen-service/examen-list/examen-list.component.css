@@ -1,7 +1,7 @@
 .examens-container {
   padding: 20px;
   font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa;
+  background-color: #fbfefe;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -39,7 +39,7 @@ h2 {
 }
 
 .examen-folder {
-  background-color: #ffffff;
+  background-color: #f5f9cdc5;
   border: 1px solid #ddd;
   border-radius: 10px;
   width: 250px;
@@ -153,14 +153,26 @@ h2 {
   margin-left: 95px;
 }
 
-.btn-close {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: #565e5e;
-  cursor: pointer;
+.btnAddEx {
+  background-color: #107613; /* Vert éclatant */
+  color: white; /* Texte blanc */
+  font-size: 16px; /* Taille de la police */
+  padding: 10px 20px; /* Espace intérieur */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main */
+  transition: all 0.3s ease; /* Animation de transition */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
 }
 
-.btn-close:hover {
-  color: #e74c3c;
+.btnAddEx:hover {
+  background-color: #45a049; /* Vert légèrement plus foncé au survol */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Ombre plus intense au survol */
+  transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+.btnAddEx:active {
+  background-color: #388E3C; /* Couleur plus foncée quand cliqué */
+  transform: translateY(1px); /* Légère descente au clic */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre */
 }

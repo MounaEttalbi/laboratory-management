@@ -13,7 +13,7 @@ export class ExamenListComponent implements OnInit {
   selectedExamen: Examen | null = null; // Examen actuellement sélectionné
   showAddModal: boolean = false;
   
-
+  
   constructor(private examenService: ExamenService) {}
 
   ngOnInit(): void {
@@ -22,14 +22,14 @@ export class ExamenListComponent implements OnInit {
 
   loadExamens(): void {
     this.examenService.getAllExamens().subscribe((data) => {
-      this.examens = data;
+      this.examens = data;  // On charge tous les examens
     });
   }
 
   deleteExamen(id: number): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cet examen ?')) {
       this.examenService.deleteExamen(id).subscribe(() => {
-        this.examens = this.examens.filter(examen => examen.id !== id);
+        this.examens = this.examens.filter(examen => examen.id !== id);  // Suppression de l'examen de la liste
       }, error => {
         console.error('Erreur lors de la suppression', error);
       });
@@ -41,26 +41,23 @@ export class ExamenListComponent implements OnInit {
       return this.examens;
     }
     return this.examens.filter(examen =>
-      examen.nom.toLowerCase().includes(this.searchTerm.toLowerCase())
+      examen.nom.toLowerCase().includes(this.searchTerm.toLowerCase())  // Filtrage des examens par nom
     );
   }
 
   openUpdateModal(examen: Examen): void {
-    this.selectedExamen = { ...examen }; // Clone de l'examen pour éviter des modifications directes
+    this.selectedExamen = { ...examen };  // Clone l'examen sélectionné pour éviter les modifications directes
   }
 
   closeUpdateModal(): void {
-    this.selectedExamen = null; // Réinitialise l'examen sélectionné
+    this.selectedExamen = null;  // Réinitialise l'examen sélectionné
   }
-
-
 
   // Ouvrir la modale d'ajout
   openAddExamenModal(): void {
     this.showAddModal = true;
   }
 
-  // Fermer la modale d'ajout
   closeAddExamenModal(): void {
     this.showAddModal = false;
   }

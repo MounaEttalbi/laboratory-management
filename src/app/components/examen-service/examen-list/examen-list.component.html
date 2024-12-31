@@ -1,7 +1,8 @@
 <div class="examens-container">
   <div class="header-container d-flex justify-content-between align-items-center">
     <h2>Liste des examens</h2>
-    <button class="btn btn-primary" (click)="openAddExamenModal()">Ajouter Examen</button>
+    <!-- Bouton pour ouvrir la modale -->
+  <button class="btnAddEx" (click)="openAddExamenModal()">Ajouter un examen</button>
   </div>
 
   <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un examen..." class="search-input">
@@ -14,34 +15,39 @@
         </div>
         <div class="folder-details">
           <h3>{{ examen.nom }}</h3>
-          <p><strong>Date:</strong> {{ examen.date }}</p>
+          <p><strong>Date:</strong> {{ examen.date | date:'dd/MM/yyyy' }}</p>  <!-- Format de la date -->
         </div>
       </div>
       <div class="folder-content">
         <p><strong>Status:</strong> {{ examen.status }}</p>
         <p><strong>Commentaires:</strong> {{ examen.commentaires }}</p>
+        <p><strong>Numéro de Dossier:</strong> {{ examen.fkNumDossier }}</p>
+        <p><strong>ID Epreuve:</strong> {{ examen.fkIdEpreuve }}</p>
+        <p><strong>ID Test Analyse:</strong> {{ examen.fkIdTestAnalyse }}</p>
+        
+
         <button (click)="deleteExamen(examen.id)" class="btn-delete">Supprimer</button>
         <button (click)="openUpdateModal(examen)" class="btn-update">Modifier</button>
       </div>
     </div>
   </div>
 
-  <!-- Modale pour le formulaire d'ajout -->
-  <div *ngIf="showAddModal" class="modal fade show d-block" style="background-color: rgba(0, 0, 0, 0.5);">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ajouter Examen</h5>
-          <button type="button" class="btn-close" (click)="closeAddExamenModal()"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Insérer ici un composant ou formulaire d'ajout -->
-          <app-examen-add (closeModal)="closeAddExamenModal()"></app-examen-add>
-        </div>
+ <!-- Modale pour le formulaire d'ajout -->
+<div *ngIf="showAddModal" class="modal fade show d-block" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter Examen</h5>
+        <button type="button" class="btn-close" (click)="closeAddExamenModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Composant d'ajout avec événement de fermeture -->
+        <app-examen-add (closeModal)="closeAddExamenModal()"></app-examen-add>
       </div>
     </div>
   </div>
-
+</div>
+  
   <!-- Modale pour le formulaire d'update -->
   <div *ngIf="selectedExamen" class="modal fade show d-block" style="background-color: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog">

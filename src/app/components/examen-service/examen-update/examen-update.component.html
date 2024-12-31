@@ -9,8 +9,13 @@
   </div>
   <div class="mb-3">
     <label for="status" class="form-label">Status</label>
-    <input type="text" id="status" [(ngModel)]="examen.status" name="status" class="form-control" />
+    <select id="status" [(ngModel)]="examen.status" name="status" class="form-control">
+      <option value="en cours">En cours</option>
+      <option value="terminé">Terminé</option>
+      <option value="annulé">Annulé</option>
+    </select>
   </div>
+  
   <div class="mb-3">
     <label for="commentaires" class="form-label">Commentaires</label>
     <textarea id="commentaires" [(ngModel)]="examen.commentaires" name="commentaires" class="form-control"></textarea>

@@ -1,26 +1,55 @@
-<form (ngSubmit)="addExamen()">
-  <div class="form-group">
-    <label for="nom">Nom de l'examen</label>
-    <input type="text" id="nom" [(ngModel)]="examen.nom" name="nom" class="form-control" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="date">Date de l'examen</label>
-    <input type="date" id="date" [(ngModel)]="examen.date" name="date" class="form-control" required>
-  </div>
 
-  <div class="form-group">
-    <label for="status">Statut</label>
-    <input type="text" id="status" [(ngModel)]="examen.status" name="status" class="form-control" required>
-  </div>
+  <!-- Formulaire d'ajout d'examen -->
+  <form (ngSubmit)="addExamen()" #examenForm="ngForm">
+    
+    <!-- Nom de l'examen -->
+    <div class="form-group">
+      <label for="nom">Nom de l'examen</label>
+      <input type="text" id="nom" name="nom" [(ngModel)]="examen.nom" class="form-control" required>
+    </div>
 
-  <div class="form-group">
-    <label for="commentaires">Commentaires</label>
-    <textarea id="commentaires" [(ngModel)]="examen.commentaires" name="commentaires" class="form-control"></textarea>
-  </div>
+    <!-- Date de l'examen -->
+    <div class="form-group">
+      <label for="date">Date et Heure de l'examen</label>
+      <input type="datetime-local" id="date" name="date" [(ngModel)]="examen.date" class="form-control" required>
+    </div>
 
-  <div class="form-group text-right">
-    <button type="submit" class="btn btn-success">Ajouter</button>
-    <button type="button" class="btn btn-secondary" (click)="close()">Annuler</button>
-  </div>
-</form>
+    <!-- Statut de l'examen -->
+    <div class="form-group">
+      <label for="status">Statut</label>
+      <select id="status" name="status" [(ngModel)]="examen.status" class="form-control" required>
+        <option value="en cours">En cours</option>
+        <option value="terminé">Terminé</option>
+        <option value="annulé">Annulé</option>
+      </select>
+    </div>
+
+    <!-- Commentaires -->
+    <div class="form-group">
+      <label for="commentaires">Commentaires</label>
+      <textarea id="commentaires" name="commentaires" [(ngModel)]="examen.commentaires" class="form-control"></textarea>
+    </div>
+
+    <!-- fkNumDossier -->
+    <div class="form-group">
+      <label for="fkNumDossier">Numéro de dossier</label>
+      <input type="number" id="fkNumDossier" name="fkNumDossier" [(ngModel)]="examen.fkNumDossier" class="form-control" required>
+    </div>
+
+    <!-- fkIdEpreuve -->
+    <div class="form-group">
+      <label for="fkIdEpreuve">Epreuve</label>
+      <input type="number" id="fkIdEpreuve" name="fkIdEpreuve" [(ngModel)]="examen.fkIdEpreuve" class="form-control" required>
+    </div>
+
+    <!-- fkIdTestAnalyse -->
+    <div class="form-group">
+      <label for="fkIdTestAnalyse">Test d'analyse</label>
+      <input type="number" id="fkIdTestAnalyse" name="fkIdTestAnalyse" [(ngModel)]="examen.fkIdTestAnalyse" class="form-control" required>
+    </div>
+
+    <!-- Bouton de soumission et annulation -->
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" [disabled]="!examenForm.form.valid">Ajouter</button>
+    </div>
+  </form>
