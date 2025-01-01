@@ -134,10 +134,16 @@ button {
   color: #d6c82a; 
 }
 .profil {
-  color: #0528b7; 
+  color: #000000; 
 }
 .exit {
   color: #a42704; 
+}
+.result {
+  color: #054d2c; 
+}
+.dossier {
+  color: #837803; 
 }
 
 

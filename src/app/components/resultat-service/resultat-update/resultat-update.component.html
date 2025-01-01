@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <button type="button" class="btn-close" (click)="close()"></button> <!-- Modification ici -->
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="onSubmit()" #updateForm="ngForm">
+    <!-- <div class="mb-3">
+      <label for="fkIdExamen" class="form-label">Examen ID</label>
+      <input
+        type="number"
+        id="fkIdExamen"
+        [(ngModel)]="resultat.fkIdExamen"
+        name="fkIdExamen"
+        class="form-control"
+        required
+        #fkIdExamen="ngModel"
+      />
+    </div> -->
+    <div class="mb-3">
+      <label for="valeursMesurees" class="form-label">Valeurs Mesurées</label>
+      <textarea
+        id="valeursMesurees"
+        [(ngModel)]="resultat.valeursMesurees"
+        name="valeursMesurees"
+        class="form-control"
+        required
+        rows="3"
+        #valeursMesurees="ngModel"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="observations" class="form-label">Observations</label>
+      <textarea
+        id="observations"
+        [(ngModel)]="resultat.observations"
+        name="observations"
+        class="form-control"
+        rows="3"
+        #observations="ngModel"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="commentaires" class="form-label">Commentaires</label>
+      <textarea
+        id="commentaires"
+        [(ngModel)]="resultat.commentaires"
+        name="commentaires"
+        class="form-control"
+        rows="3"
+        #commentaires="ngModel"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Statut</label>
+      <select
+        id="status"
+        [(ngModel)]="resultat.status"
+        name="status"
+        class="form-control"
+        required
+        #status="ngModel"
+      >
+        <option value="En attente">En attente</option>
+        <option value="Validé">Validé</option>
+        <option value="Rejeté">Rejeté</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!updateForm.valid">Mettre à jour</button>
+  </form>
+</div>

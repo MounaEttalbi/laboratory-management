@@ -1,0 +1,70 @@
+<div class="resultat-list-container">
+    <div class="header-container d-flex justify-content-between align-items-center">
+      <h2>Liste des résultats</h2>
+      <button class="btnAddEx" (click)="openAddResultatModal()">Ajouter un résultat</button>
+    </div>
+    
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher resultat..." class="search-input">
+
+  
+    <!-- Liste des résultats -->
+    <div *ngIf="resultats.length > 0" class="resultat-cards">
+      <div *ngFor="let resultat of filterResultats()" class="resultat-card">
+        <div class="resultat-card-header">
+            <h4>Résultat du {{ currentDateTime }}</h4>
+        </div>
+        <div class="resultat-card-body">
+          <p><strong>Résultat de Examen:</strong> {{ getExamenNomById(resultat.fkIdExamen) }}</p>
+          <p><strong>Valeurs Mesurées:</strong> {{ resultat.valeursMesurees }}</p>
+          <p><strong>Observations:</strong> {{ resultat.observations }}</p>
+          <p><strong>Commentaires:</strong> {{ resultat.commentaires }}</p>
+          <p><strong>Status:</strong> {{ resultat.status }}</p>
+        </div>
+        <div class="resultat-card-footer">
+          <button (click)="viewPDF(resultat.id)" class="voirPDF">Voir le PDF</button>
+          <button (click)="deleteResultat(resultat.id)" mat-icon-button aria-label="Supprimer">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button (click)="openUpdateModal(resultat)" mat-icon-button aria-label="Modifier">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Message aucun résultat -->
+    <div *ngIf="resultats.length === 0" class="no-resultats-message">
+      <p>Aucun résultat disponible.</p>
+    </div>
+  
+    <!-- Modale d'ajout -->
+    <div *ngIf="showAddModal" class="modal fade show d-block" style="background-color: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ajouter Résultat</h5>
+            <button type="button" class="btn-close" (click)="closeAddResultatModal()"></button>
+          </div>
+          <div class="modal-body">
+            <app-resultat-add (closeModal)="closeAddResultatModal()"></app-resultat-add>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modale de mise à jour -->
+    <div *ngIf="selectedResultat" class="modal fade show d-block" style="background-color: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modifier Résultat</h5>
+            <button type="button" class="btn-close" (click)="closeUpdateModal()"></button>
+          </div>
+          <div class="modal-body">
+            <app-resultat-update [resultat]="selectedResultat" (closeModal)="closeUpdateModal()"></app-resultat-update>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

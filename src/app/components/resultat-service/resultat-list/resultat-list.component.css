@@ -1,0 +1,160 @@
+/* Container principal */
+.resultat-list-container {
+  font-family: 'Roboto', sans-serif;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* En-tête */
+.header-container {
+  margin-bottom: 20px;
+}
+
+.header-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.btnAddEx {
+  padding: 10px 20px;
+  background: #1e9603;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btnAddEx:hover {
+  background: #20b068;
+}
+
+/* Champ de recherche */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Cartes des résultats */
+.resultat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.resultat-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  
+}
+
+.resultat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.resultat-card-header {
+  background: #3e604b;
+  color: white;
+  padding: 15px;
+  font-size: 1.2rem;
+}
+
+.resultat-card-body {
+  padding: 15px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.resultat-card-body p {
+  margin: 5px 0;
+}
+
+.resultat-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: #f1f1f1;
+}
+
+.resultat-card-footer button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.resultat-card-footer .btn-primary {
+  background: #016527;
+  color: white;
+}
+
+.resultat-card-footer .btn-primary:hover {
+  background: #038260;
+}
+
+.resultat-card-footer mat-icon {
+  color: #424242;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.resultat-card-footer mat-icon:hover {
+  color: #09a456;
+}
+
+/* Message aucun résultat */
+.no-resultats-message {
+  text-align: center;
+  font-size: 1rem;
+  color: #999;
+  margin-top: 20px;
+}
+
+/* Modales */
+.modal-dialog {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background: #000000;
+  color: white;
+  padding: 15px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.voirPDF {
+  color: #ffffff;
+  background: #02654a;
+}
+

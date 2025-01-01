@@ -62,7 +62,7 @@ export class ExamenAddComponent {
       }
     });
   }
-  
+ 
 
   // Charger les tests d'analyse depuis le service
   loadTestAnalyses(): void {

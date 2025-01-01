@@ -97,6 +97,9 @@ import { ExamenUpdateComponent } from './components/examen-service/examen-update
 import { ExamenDeleteComponent } from './components/examen-service/examen-delete/examen-delete.component';
 import { TestAnalyseComponent } from './components/test-analyse-service/test-analyse/test-analyse.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ResultatListComponent } from './components/resultat-service/resultat-list/resultat-list.component';
+import { ResultatAddComponent } from './components/resultat-service/resultat-add/resultat-add.component';
+import { ResultatUpdateComponent } from './components/resultat-service/resultat-update/resultat-update.component';
 
 
 @NgModule({
@@ -147,7 +150,10 @@ import { LogoutComponent } from './components/logout/logout.component';
     ExamenUpdateComponent,
     ExamenDeleteComponent,
     TestAnalyseComponent,
-    LogoutComponent
+    LogoutComponent,
+    ResultatListComponent,
+    ResultatAddComponent,
+    ResultatUpdateComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,

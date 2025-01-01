@@ -26,6 +26,11 @@
           <mat-icon matListIcon class="examen">folder</mat-icon>
           <span>Examens</span>
         </a>
+         <!-- Section Resultats -->
+         <a mat-list-item (click)="selectSection('result')" [class.active]="selectedSection === 'result'">
+          <mat-icon matListIcon class="result">assessment</mat-icon>
+          <span>Resultats</span>
+        </a>
        <a mat-list-item (click)="selectSection('logout')" [class.active]="selectedSection === 'logout'">
           <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
           <span>Se Déconnecter</span>
@@ -60,6 +65,11 @@
       <!-- Contenu de la section Examen -->
       <div *ngIf="selectedSection === 'Examens'">
         <app-examen-list></app-examen-list>
+      </div>
+
+      <!-- Contenu de la section Examen -->
+      <div *ngIf="selectedSection === 'result'">
+        <app-resultat-list></app-resultat-list>
       </div>
    
     <!-- Contenu de la section logout -->
