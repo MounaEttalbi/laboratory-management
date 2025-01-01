@@ -16,6 +16,7 @@ public class ExamenMapper {
 
         ExamenDTO dto = new ExamenDTO();
         dto.setId(examen.getId());
+        dto.setNom(examen.getNom());
         dto.setFkNumDossier(examen.getFkNumDossier());
         dto.setFkIdEpreuve(examen.getFkIdEpreuve());
         dto.setFkIdTestAnalyse(examen.getFkIdTestAnalyse());
@@ -34,6 +35,7 @@ public class ExamenMapper {
 
         Examen examen = new Examen();
         examen.setId(dto.getId());
+        examen.setNom(dto.getNom());
         examen.setFkNumDossier(dto.getFkNumDossier());
         examen.setFkIdEpreuve(dto.getFkIdEpreuve());
         examen.setFkIdTestAnalyse(dto.getFkIdTestAnalyse());

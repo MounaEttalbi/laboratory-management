@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/testanalyses")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TestAnalyseController {
 
     private final TestAnalyseService testAnalyseService;

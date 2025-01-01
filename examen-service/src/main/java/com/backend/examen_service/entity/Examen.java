@@ -40,6 +40,7 @@ public class Examen {
 
     @Column(columnDefinition = "TEXT")
     private String commentaires; // Observations ou remarques des techniciens
+    private String nom;
 
     @Transient
     private DossierModel dossier;

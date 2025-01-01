@@ -14,6 +14,7 @@ import java.util.Date;
 @ToString
 public class ExamenDTO {
     private Long id;
+    private String nom;
     private Long fkNumDossier;
     private Long fkIdEpreuve;
     private Long fkIdTestAnalyse;

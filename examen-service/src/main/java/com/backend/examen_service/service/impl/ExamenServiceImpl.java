@@ -38,6 +38,7 @@ public class ExamenServiceImpl implements ExamenService {
 
         // Mettre à jour les champs de l'entité existante à partir du DTO
         existingExamen.setFkNumDossier(examenDTO.getFkNumDossier());
+        existingExamen.setNom(examenDTO.getNom());
         existingExamen.setFkIdEpreuve(examenDTO.getFkIdEpreuve());
         existingExamen.setFkIdTestAnalyse(examenDTO.getFkIdTestAnalyse());
         existingExamen.setDate(examenDTO.getDate());
