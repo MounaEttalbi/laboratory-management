@@ -16,12 +16,23 @@ import {ContactListComponent} from './components/contact-service/contact-list/co
 import {ContactAddComponent} from './components/contact-service/contact-add/contact-add.component';
 import {ContactUpdateComponent} from './components/contact-service/contact-update/contact-update.component';
 import {ContactDeleteComponent} from './components/contact-service/contact-delete/contact-delete.component';
+import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
+import { AuthGuard } from './Guards/auth.guard';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
+import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
 
+import { ExamenListComponent } from './components/examen-service/examen-list/examen-list.component';
+import { ExamenAddComponent } from './components/examen-service/examen-add/examen-add.component';
+import { ExamenUpdateComponent } from './components/examen-service/examen-update/examen-update.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, 
+  { path: 'addA', component: AnalyseFormComponent },  { path: 'profil', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'utilisateurs', component: ListerUtilisateursComponent },
+  { path: 'utilisateurs', component: ListerUtilisateursComponent, canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }, },
+  { path: '', component: HomeComponent }, 
+  
   { path: 'adminPannel' , component: SidebarComponent},
   { path: 'list-laboratory', component: ListLaboratoriesComponent },
   { path: 'edit-laboratory/:id', component: EditLaboratoryComponent },
@@ -35,6 +46,12 @@ const routes: Routes = [
   { path: 'contact-add', component: ContactAddComponent},
   { path: 'contact-update/:id', component: ContactUpdateComponent},
   { path: 'contact-delete/:id', component: ContactDeleteComponent},
+  { path: 'technicien', component: TechnicianPageComponent},
+  { path: 'chercheur', component: ChercheurPageComponent},
+  { path: 'examens', component: ExamenListComponent },
+  { path: 'examen/add', component: ExamenAddComponent },
+  { path: 'examen-update/:id', component: ExamenUpdateComponent },
+  { path: '', redirectTo: '/technicien', pathMatch: 'full' },
 ];
 
 @NgModule({

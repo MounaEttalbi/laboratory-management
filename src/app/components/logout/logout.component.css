@@ -1,0 +1,121 @@
+
+.confirmation-message {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: #f3f1f1; 
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.267); 
+    text-align: center;
+    z-index: 1000; 
+    width: 330px; 
+  }
+  
+  
+  .confirmation-message p {
+    margin-bottom: 25px; 
+    font-size: 18px; 
+    color: #292828; 
+  }
+  
+  
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  
+  .confirm-btn {
+    background-color: #409643; 
+    color: white;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #45a049; 
+  }
+  
+  .cancel-btn {
+    background-color: #b33128; 
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #e53935; 
+  }
+  
+  
+  /* Styles du Header */
+  .header-pannel{
+    display: flex;
+    justify-content: flex-end; /* Aligne les icônes à droite */
+    padding: 10px;
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Icône de notification */
+  .notification-icon {
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 26px;
+    color: #d8c814;
+  }
+  
+  /* Icône de l'utilisateur */
+  .user-icon {
+    cursor: pointer;
+    font-size: 26px;
+    margin-right: 20px;
+    color: #161717;
+  }
+  
+  .matnavlist{
+    margin-top: 18px;
+    margin-left: 12px;
+  }
+  /* Header global */
+  .header-pannel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #eeeeee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour un effet plus élégant */
+  }
+  
+  /* Section de la salutation de bienvenue */
+  .welcome-message {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize; /* Mise en valeur de la première lettre du prénom */
+  }
+  
+  /* Icônes de notification et de profil */
+  .header-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .notification-icon,
+  .user-icon {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333; /* Couleur pour les icônes */
+  }
+  
+  .notification-icon:hover,
+  .user-icon:hover {
+    color: #007bff; /* Couleur au survol */
+  }
+  

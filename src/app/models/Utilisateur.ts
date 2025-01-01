@@ -14,13 +14,12 @@ export enum Role {
     // Ajoutez d'autres rôles si nécessaire
   }
   export interface InscriptionUtilisateur {
-    cin: string;
+    username: string;
     email: string;
-    nomComplet: string;
-   numTel: string;
-   signature:Blob;
-   role :Role;
-   mdp: string;
+    firstName: string;
+    lastName: string;
+  // role :Role;
+  password: string;
 
   
   }

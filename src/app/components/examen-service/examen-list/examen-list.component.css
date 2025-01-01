@@ -1,0 +1,178 @@
+.examens-container {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #fbfefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #34495e;
+  font-weight: bold;
+}
+
+.search-input {
+  display: block;
+  width: 80%;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+.examens-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.examen-folder {
+  background-color: #f5f9cdc5;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 250px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.examen-folder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.folder-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+  color: #ceb10e;
+}
+
+.folder-details h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.folder-details p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.folder-content {
+  margin-top: 10px;
+}
+
+.folder-content p {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #34495e;
+}
+
+.folder-content .btn-delete,
+.folder-content .btn-update {
+  display: inline-block;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.folder-content .btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.folder-content .btn-delete:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.folder-content .btn-update {
+  background-color: #3498db;
+  color: white;
+}
+
+.folder-content .btn-update:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  width: 100%;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  color: #1b3753;
+  margin-left: 95px;
+}
+
+.btnAddEx {
+  background-color: #107613; /* Vert éclatant */
+  color: white; /* Texte blanc */
+  font-size: 16px; /* Taille de la police */
+  padding: 10px 20px; /* Espace intérieur */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main */
+  transition: all 0.3s ease; /* Animation de transition */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
+}
+
+.btnAddEx:hover {
+  background-color: #45a049; /* Vert légèrement plus foncé au survol */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Ombre plus intense au survol */
+  transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+.btnAddEx:active {
+  background-color: #388E3C; /* Couleur plus foncée quand cliqué */
+  transform: translateY(1px); /* Légère descente au clic */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre */
+}

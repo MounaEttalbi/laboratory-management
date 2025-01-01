@@ -7,24 +7,30 @@
 
       <!-- CIN -->
       <mat-form-field appearance="outline" class="form-field">
-        <mat-label>CIN</mat-label>
-        <input matInput formControlName="cin" placeholder="Entrez votre CIN" class="rounded-input">
+        <mat-label>username</mat-label>
+        <input matInput formControlName="username" placeholder="Entrez votre username" class="rounded-input">
         <mat-icon matPrefix>badge</mat-icon>
-        <mat-error *ngIf="formGroup.get('cin')?.invalid && (formGroup.get('cin')?.dirty || formGroup.get('cin')?.touched)">
-          Le CIN est requis.
+        <mat-error *ngIf="formGroup.get('username')?.invalid && (formGroup.get('username')?.dirty || formGroup.get('username')?.touched)">
+          Le username est requis.
         </mat-error>
       </mat-form-field>
 
       <!-- Nom Complet -->
       <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Nom Complet</mat-label>
-        <input matInput formControlName="nomComplet" placeholder="Entrez le nom complet" class="rounded-input">
+        <mat-label>firstName</mat-label>
+        <input matInput formControlName="firstName" placeholder="Entrez le nfirstName" class="rounded-input">
         <mat-icon matPrefix>person</mat-icon>
-        <mat-error *ngIf="formGroup.get('nomComplet')?.invalid && (formGroup.get('nomComplet')?.dirty || formGroup.get('nomComplet')?.touched)">
-          Le nom complet est requis.
+        <mat-error *ngIf="formGroup.get('firstName')?.invalid && (formGroup.get('firstName')?.dirty || formGroup.get('firstName')?.touched)">
+          Le firstName est requis.
         </mat-error>
       </mat-form-field>
+   <!-- lastname -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label> lastName</mat-label>
+        <input matInput formControlName="lastName" placeholder="Entrez votre  lastName" class="rounded-input">
+   
 
+      </mat-form-field>
       <!-- Email -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Email</mat-label>
@@ -35,15 +41,7 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- Téléphone -->
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Téléphone</mat-label>
-        <input matInput formControlName="numTel" placeholder="Entrez votre numéro de téléphone" class="rounded-input">
-        <mat-icon matPrefix>phone</mat-icon>
-        <mat-error *ngIf="formGroup.get('numTel')?.hasError('pattern')">
-          Numéro invalide.
-        </mat-error>
-      </mat-form-field>
+   
 
       <!-- Rôle -->
       <mat-form-field appearance="outline" class="form-field">
@@ -57,17 +55,14 @@
       </mat-form-field>
 
       <!-- Champ pour la signature -->
-      <div *ngIf="formGroup.get('signature')?.value" class="signature-preview">
-        <mat-icon style="color: #FF8C00;">check_circle</mat-icon>
-        <span class="signature-text">Signature téléchargée</span>
-      </div>
+    
     </form>
   </mat-dialog-content>
 
   <!-- Actions -->
   <mat-dialog-actions align="end" class="dialog-actions">
     <button mat-button (click)="onCancel()" class="cancel-button">Annuler</button>
-    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="formGroup.invalid" class="save-button">
+    <button mat-raised-button color="primary" (click)="onSave()" class="save-button">
       {{ isEditMode ? 'Modifier' : 'Ajouter' }}
     </button>
   </mat-dialog-actions>
