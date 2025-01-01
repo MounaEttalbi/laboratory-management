@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExamenService } from '../../../services/examen.service';
 import { Examen } from '../../../models/examen';
+import { TestAnalyseService } from '../../../services/test-analyse.service';
 
 @Component({
   selector: 'app-examen-list',
@@ -12,12 +13,31 @@ export class ExamenListComponent implements OnInit {
   searchTerm: string = '';
   selectedExamen: Examen | null = null; // Examen actuellement sélectionné
   showAddModal: boolean = false;
+  testAnalyses: any[] = []; // Liste des tests d'analyse
   
   
-  constructor(private examenService: ExamenService) {}
+  constructor(private examenService: ExamenService,
+    private testAnalyseService: TestAnalyseService
+  ) {}
 
   ngOnInit(): void {
     this.loadExamens();
+    this.loadTestAnalyses(); // Charger les tests d'analyse au démarrage
+  }
+  loadTestAnalyses(): void {
+    this.testAnalyseService.getAllTestAnalyses().subscribe({
+      next: (data) => {
+        this.testAnalyses = data;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des tests d\'analyse :', err);
+      }
+    });
+  }
+   // Fonction pour obtenir le nom du test d'analyse basé sur l'ID
+   getTestNomById(testId: number): string {
+    const test = this.testAnalyses.find(t => t.id === testId);
+    return test ? test.nomTest : 'Nom non trouvé';
   }
 
   loadExamens(): void {

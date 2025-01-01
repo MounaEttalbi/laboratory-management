@@ -20,10 +20,11 @@
       </div>
       <div class="folder-content">
         <p><strong>Status:</strong> {{ examen.status }}</p>
-        <p><strong>Commentaires:</strong> {{ examen.commentaires }}</p>
+        <p><strong>Test Analyse:</strong> {{ getTestNomById(examen.fkIdTestAnalyse) }}</p>
         <p><strong>Numéro de Dossier:</strong> {{ examen.fkNumDossier }}</p>
-        <p><strong>ID Epreuve:</strong> {{ examen.fkIdEpreuve }}</p>
-        <p><strong>ID Test Analyse:</strong> {{ examen.fkIdTestAnalyse }}</p>
+        <p><strong>Epreuve:</strong> {{ examen.fkIdEpreuve }}</p>
+        <p><strong>Commentaires:</strong> {{ examen.commentaires }}</p>
+
         
 
         <button (click)="deleteExamen(examen.id)" class="btn-delete">Supprimer</button>

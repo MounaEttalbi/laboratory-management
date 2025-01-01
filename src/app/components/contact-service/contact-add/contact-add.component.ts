@@ -59,7 +59,6 @@ export class ContactAddComponent implements OnInit {
       },
     });
   }
-
   // Soumettre le formulaire pour ajouter un contact
   onSubmit(): void {
     if (this.contactForm.valid) {

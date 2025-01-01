@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'utilisateurs', component: ListerUtilisateursComponent, canActivate: [AuthGuard],
     data: { roles: ['ADMIN'] }, },
   { path: '', component: HomeComponent }, 
-  { path: 'login', component: LoginComponent },
+  
   { path: 'adminPannel' , component: SidebarComponent},
   { path: 'list-laboratory', component: ListLaboratoriesComponent },
   { path: 'edit-laboratory/:id', component: EditLaboratoryComponent },

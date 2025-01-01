@@ -16,6 +16,11 @@
           <mat-icon matListIcon class="profil">list</mat-icon>
           <span>Tests des Analyses</span>
         </a>
+        <!-- Section Dossier -->
+        <a mat-list-item (click)="selectSection('dossiers')" [class.active]="selectedSection === 'dossiers'">
+          <mat-icon matListIcon class="dossier">folder</mat-icon>
+          <span>Dossiers</span>
+        </a>
         <!-- Section Examens -->
         <a mat-list-item (click)="selectSection('Examens')" [class.active]="selectedSection === 'Examens'">
           <mat-icon matListIcon class="examen">folder</mat-icon>
@@ -23,7 +28,11 @@
         </a>
   
         <!-- Section Déconnexion -->
-        <a mat-list-item (click)="confirmLogout()">
+       <!--  <a mat-list-item (click)="confirmLogout()">
+          <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
+          <span>Se Déconnecter</span>
+        </a> -->
+        <a mat-list-item (click)="selectSection('logout')" [class.active]="selectedSection === 'logout'">
           <mat-icon matListIcon class="exit">exit_to_app</mat-icon>
           <span>Se Déconnecter</span>
         </a>
@@ -49,18 +58,27 @@
         <app-test-analyse></app-test-analyse>
       </div>
 
+      <!-- Contenu de la section Dossiers -->
+      <div *ngIf="selectedSection === 'dossiers'">
+        <app-dossier-list></app-dossier-list>
+      </div>
+
       <!-- Contenu de la section Examen -->
       <div *ngIf="selectedSection === 'Examens'">
         <app-examen-list></app-examen-list>
       </div>
-    </mat-sidenav-content>
+   
+    <!-- Contenu de la section logout -->
+    <div *ngIf="selectedSection === 'logout'">
+      <app-logout></app-logout>
+    </div>
+  </mat-sidenav-content>
   
     <!-- Message de confirmation de déconnexion -->
-    <div *ngIf="showConfirmation" class="confirmation-message">
+    <!-- <div *ngIf="showConfirmation" class="confirmation-message">
       <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
       <button (click)="logout()" class="confirm-btn">Oui</button>
       <button (click)="cancelLogout()" class="cancel-btn">Non</button>
-    </div>
-  
+    </div> -->
   </mat-sidenav-container>
   

@@ -33,8 +33,23 @@
     <!-- fkNumDossier -->
     <div class="form-group">
       <label for="fkNumDossier">Numéro de dossier</label>
-      <input type="number" id="fkNumDossier" name="fkNumDossier" [(ngModel)]="examen.fkNumDossier" class="form-control" required>
+      <select 
+        id="fkNumDossier" 
+        [(ngModel)]="examen.fkNumDossier" 
+        name="fkNumDossier" 
+        class="form-control" 
+        required>
+        <option value="" disabled selected>Sélectionner Numéro de dossier</option>
+        <!-- Liste des dossiers -->
+        <option *ngFor="let dossier of dossiers" [value]="dossier.numDossier">
+          {{ dossier.numDossier }} - {{ dossier.date }} <!-- Affichage du numéro de dossier et de la date -->
+        </option>
+      </select>
+      <div *ngIf="contactForm.get('fkNumDossier')?.invalid && contactForm.get('fkNumDossier')?.touched">
+        {{ getErrorMessage('fkNumDossier') }}
+      </div>
     </div>
+    
 
     <!-- fkIdEpreuve -->
     <div class="form-group">
@@ -45,8 +60,22 @@
     <!-- fkIdTestAnalyse -->
     <div class="form-group">
       <label for="fkIdTestAnalyse">Test d'analyse</label>
-      <input type="number" id="fkIdTestAnalyse" name="fkIdTestAnalyse" [(ngModel)]="examen.fkIdTestAnalyse" class="form-control" required>
+      <select 
+        id="fkIdTestAnalyse" 
+        [(ngModel)]="examen.fkIdTestAnalyse" 
+        name="fkIdTestAnalyse" 
+        class="form-control" 
+        required>
+        <option value="" disabled selected>Sélectionner un test d'analyse</option>
+        <option *ngFor="let test of testAnalyses" [value]="test.id">
+          {{ test.nomTest  }}
+        </option>
+      </select>
+      <div *ngIf="contactForm.get('fkIdTestAnalyse')?.invalid && contactForm.get('fkIdTestAnalyse')?.touched">
+        {{ getErrorMessage('fkIdTestAnalyse') }}
+      </div>
     </div>
+    
 
     <!-- Bouton de soumission et annulation -->
     <div class="form-group text-center">

@@ -1,0 +1,5 @@
+<div *ngIf="showConfirmation" class="confirmation-message">
+    <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+    <button (click)="logout()" class="confirm-btn">Oui</button>
+    <button (click)="cancelLogout()" class="cancel-btn">Non</button>
+  </div>
