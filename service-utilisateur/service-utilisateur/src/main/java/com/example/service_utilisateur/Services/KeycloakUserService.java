@@ -21,5 +21,7 @@ public interface KeycloakUserService {
     void updatePassword(ResetPassword resetPassword, String userId);
 
     UserRegistrationRecord updateUserByUsername(String username, UserRegistrationRecord userRegistrationRecord);
+
+    String getUserIdByUsername(String username);
 }
 
