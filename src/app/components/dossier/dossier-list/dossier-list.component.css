@@ -50,7 +50,33 @@ table {
 .mat-form-field {
   width: 10%;
 }
-.transparent-button {
-  background: none !important;
-  box-shadow: none !important;
+
+
+/* Bouton de suppression */
+button.delete-button {
+    background: none !important; 
+    border: none; /* Supprime les bordures */
+    box-shadow: none !important;
+  color: #d32f2f; /* Rouge pour suppression */
+  font-size: 1.2rem; /* Taille de l'icône */
+  transition: transform 0.2s ease; /* Animation au survol */
 }
+
+button.delete-button:hover {
+  transform: scale(1.1); /* Zoom au survol */
+}
+
+/* Bouton d'édition */
+button.edit-button {
+  background: none !important; 
+    border: none; /* Supprime les bordures */
+    box-shadow: none !important;
+  color: #1976d2; /* Bleu pour édition */
+  font-size: 1.2rem; /* Taille de l'icône */
+  transition: transform 0.2s ease; /* Animation au survol */
+}
+
+button.edit-button:hover {
+  transform: scale(1.1); /* Zoom au survol */
+}
+

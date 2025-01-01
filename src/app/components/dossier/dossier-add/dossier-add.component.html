@@ -16,13 +16,18 @@
     <input matInput type="email" [(ngModel)]="dossier.fkEmailUtilisateur" name="fkEmailUtilisateur" required />
   </mat-form-field>
 </div>
+<!-- ID du patient -->
 <div>
-  <!-- ID du patient -->
   <mat-form-field appearance="fill">
-    <mat-label>ID Patient</mat-label>
-    <input matInput type="text" [(ngModel)]="dossier.fkIdPatient" name="fkIdPatient" required />
+    <mat-label>Sélectionner un Patient</mat-label>
+    <mat-select [(ngModel)]="dossier.fkIdPatient" name="fkIdPatient" required>
+      <mat-option *ngFor="let patient of patients" [value]="patient.idPatient">
+        {{ patient.nomcomplet }} (ID: {{ patient.idPatient }})
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
+
 <mat-form-field appearance="fill">
   <mat-label>Status</mat-label>
   <mat-select [(ngModel)]="dossier.status" name="status" required>

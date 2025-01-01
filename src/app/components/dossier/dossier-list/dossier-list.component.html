@@ -41,10 +41,10 @@
     <ng-container matColumnDef="Actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let dossier">
-        <button mat-raised-button color="warn" class="transparent-button" (click)="openDeleteDossierDialog(dossier.numDossier)">
+        <button mat-raised-button color="warn" class="delete-button" (click)="openDeleteDossierDialog(dossier.numDossier)">
           <mat-icon>delete</mat-icon>
         </button>
-        <button mat-raised-button color="accent" class="transparent-button" (click)="openEditDossierDialog(dossier.numDossier)">
+        <button mat-raised-button color="accent" class="edit-button" (click)="openEditDossierDialog(dossier.numDossier)">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
