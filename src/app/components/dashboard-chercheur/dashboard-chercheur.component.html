@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+    <h1>Tableau de bord</h1>
+    <div class="stats">
+      <div class="stat-card">Total Dossiers: {{ totalDossiers }}</div>
+      <div class="stat-card">Active: {{ activeDossiers }}</div>
+      <div class="stat-card">Archived: {{ archivedDossiers }}</div>
+      <div class="stat-card">Pending: {{ pendingDossiers }}</div>
+    </div>
+    <div class="charts">
+      <canvas #examensChart></canvas>
+      <canvas #testsChart></canvas>
+    </div>
+  </div>
+  

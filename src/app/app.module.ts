@@ -109,6 +109,7 @@ import { ResultatListComponent } from './components/resultat-service/resultat-li
 import { ResultatAddComponent } from './components/resultat-service/resultat-add/resultat-add.component';
 import { ResultatUpdateComponent } from './components/resultat-service/resultat-update/resultat-update.component';
 import { DashboardTechnicienComponent } from './components/dashboard-technicien/dashboard-technicien.component';
+import { DashboardChercheurComponent } from './components/dashboard-chercheur/dashboard-chercheur.component';
 
 
 
@@ -170,7 +171,8 @@ import { DashboardTechnicienComponent } from './components/dashboard-technicien/
     ResultatListComponent,
     ResultatAddComponent,
     ResultatUpdateComponent,
-    DashboardTechnicienComponent
+    DashboardTechnicienComponent,
+    DashboardChercheurComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,
