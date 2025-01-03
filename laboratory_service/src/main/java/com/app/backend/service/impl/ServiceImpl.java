@@ -7,7 +7,6 @@ import com.app.backend.entities.Laboratory;
 import com.app.backend.repository.LaboratoryRepository;
 import com.app.backend.service.LaboratoryService;
 import org.springframework.stereotype.Service;
-import com.app.backend.mapper.Mapper;
 
 @Service
 public class ServiceImpl implements LaboratoryService {
@@ -51,5 +50,10 @@ public class ServiceImpl implements LaboratoryService {
     @Override
     public void deleteLaboratory(Long id) {
         laboratoryRepository.deleteById(id);
+    }
+
+    @Override
+    public Laboratory getLaboByNom(String nom){
+        return laboratoryRepository.findByNom(nom);
     }
 }

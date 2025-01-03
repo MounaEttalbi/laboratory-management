@@ -13,18 +13,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
 @Service
 @Slf4j
 public class KeycloakUserServiceImpl implements KeycloakUserService {
 
     @Value("${keycloak.realm}")
     private String realm;
-
-    private final Keycloak keycloak;
-
+    private Keycloak keycloak;
     @Autowired
     private RoleService roleService;
 
@@ -34,13 +31,11 @@ public class KeycloakUserServiceImpl implements KeycloakUserService {
 
     @Override
     public List<UserRepresentation> getAllUsers() {
-        return getUsersResource().list();
+        return getUsersResource().list(); // Récupère tous les utilisateurs de Keycloak
     }
 
     @Override
     public UserRegistrationRecord createUser(UserRegistrationRecord userRegistrationRecord) {
-
-        // Create a new user representation
         UserRepresentation user = new UserRepresentation();
         user.setEnabled(true);
         user.setUsername(userRegistrationRecord.username());
@@ -49,70 +44,86 @@ public class KeycloakUserServiceImpl implements KeycloakUserService {
         user.setLastName(userRegistrationRecord.lastName());
         user.setEmailVerified(false);
 
-        // Set user credentials
         CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
         credentialRepresentation.setValue(userRegistrationRecord.password());
         credentialRepresentation.setTemporary(false);
         credentialRepresentation.setType(CredentialRepresentation.PASSWORD);
 
-        List<CredentialRepresentation> credentials = new ArrayList<>();
-        credentials.add(credentialRepresentation);
-        user.setCredentials(credentials);
+        List<CredentialRepresentation> list = new ArrayList<>();
+        list.add(credentialRepresentation);
+        user.setCredentials(list);
+
+        // Ajouter idLabo en tant qu'attribut utilisateur
+        Map<String, List<String>> attributes = new HashMap<>();
+        attributes.put("idLabo", List.of(String.valueOf(12)));
+        user.setAttributes(attributes);
 
         UsersResource usersResource = getUsersResource();
-
-        // Create the user in Keycloak
         Response response = usersResource.create(user);
 
-        if (response.getStatus() == 201) {
-            // Retrieve the created user
+        if (Objects.equals(201, response.getStatus())) {
             List<UserRepresentation> representationList = usersResource.searchByUsername(userRegistrationRecord.username(), true);
             if (!CollectionUtils.isEmpty(representationList)) {
                 UserRepresentation createdUser = representationList.get(0);
 
-                // Assign role to the created user
+                // Assigner un rôle à l'utilisateur
                 roleService.assignRole(createdUser.getId(), userRegistrationRecord.role());
-            }
 
+                // Vérification de l'email
+                emailVerification(createdUser.getId());
+            }
             return userRegistrationRecord;
         }
-
         return null;
     }
 
+
+
     private UsersResource getUsersResource() {
-        return keycloak.realm(realm).users();
+        RealmResource realm1 = keycloak.realm(realm);
+        return realm1.users();
     }
 
     @Override
     public UserRepresentation getUserById(String userId) {
+
+
         return getUsersResource().get(userId).toRepresentation();
     }
 
     @Override
     public void deleteUserById(String userId) {
+
         getUsersResource().delete(userId);
     }
 
+
     @Override
     public void emailVerification(String userId) {
-        getUsersResource().get(userId).sendVerifyEmail();
+
+        UsersResource usersResource = getUsersResource();
+        usersResource.get(userId).sendVerifyEmail();
     }
 
     public UserResource getUserResource(String userId) {
-        return getUsersResource().get(userId);
+        UsersResource usersResource = getUsersResource();
+        return usersResource.get(userId);
     }
 
     @Override
     public void updatePassword(String userId) {
+
         UserResource userResource = getUserResource(userId);
         List<String> actions = new ArrayList<>();
         actions.add("UPDATE_PASSWORD");
         userResource.executeActionsEmail(actions);
+
     }
 
     @Override
     public void updatePassword(ResetPassword resetPassword, String userId) {
+
+
         UserResource userResource = getUserResource(userId);
         CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
         credentialRepresentation.setValue(resetPassword.password());
@@ -120,39 +131,47 @@ public class KeycloakUserServiceImpl implements KeycloakUserService {
         credentialRepresentation.setTemporary(false);
         userResource.resetPassword(credentialRepresentation);
     }
-
     @Override
     public UserRegistrationRecord updateUserByUsername(String username, UserRegistrationRecord userRegistrationRecord) {
-        // Fetch user by username
+        // Chercher l'utilisateur par son nom d'utilisateur
         List<UserRepresentation> users = keycloak.realm(realm).users().search(username, true);
 
+        // Si l'utilisateur n'existe pas, retourner une exception ou un message d'erreur
         if (users.isEmpty()) {
             throw new RuntimeException("Utilisateur non trouvé avec ce nom d'utilisateur");
         }
 
+        // Récupérer le premier utilisateur trouvé
         UserRepresentation userRepresentation = users.get(0);
 
-        // Update user details
+        // Mettre à jour les informations de l'utilisateur
         userRepresentation.setUsername(userRegistrationRecord.username());
         userRepresentation.setEmail(userRegistrationRecord.email());
         userRepresentation.setFirstName(userRegistrationRecord.firstName());
         userRepresentation.setLastName(userRegistrationRecord.lastName());
 
-        keycloak.realm(realm).users().get(userRepresentation.getId()).update(userRepresentation);
+        // Ajouter idLabo en tant qu'attribut
+        Map<String, List<String>> attributes = userRepresentation.getAttributes();
+        if (attributes == null) {
+            attributes = new HashMap<>();
+        }
+        attributes.put("idLabo", List.of(String.valueOf(userRegistrationRecord.idLabo())));
+        userRepresentation.setAttributes(attributes);
 
-        // Update role
-        roleService.assignRole(userRepresentation.getId(), userRegistrationRecord.role());
+        // Appliquer les modifications dans Keycloak
+        keycloak.realm(realm).users().get(userRepresentation.getId()).update(userRepresentation);
 
         return new UserRegistrationRecord(
                 userRepresentation.getUsername(),
                 userRepresentation.getEmail(),
                 userRepresentation.getFirstName(),
                 userRepresentation.getLastName(),
-                "", // Password management not included here
-                userRegistrationRecord.role() // Pass the updated role
+                "", // Mot de passe non retourné ici
+                userRegistrationRecord.idLabo(),
+                userRegistrationRecord.role()
+
         );
     }
-
     @Override
     public String getUserIdByUsername(String username) {
         List<UserRepresentation> users = keycloak.realm(realm).users().search(username, true);
@@ -163,4 +182,35 @@ public class KeycloakUserServiceImpl implements KeycloakUserService {
 
         return users.get(0).getId();
     }
+    @Override
+    public Long getLaboIdByUserName(String userId) {
+        userId=this.getUserIdByUsername(userId);
+        System.out.println("username service : "+userId);
+        try {
+            // Récupérer l'utilisateur depuis Keycloak
+            UserRepresentation user = keycloak.realm(realm)
+                    .users()
+                    .get(userId)
+                    .toRepresentation();
+
+            if (user != null && user.getAttributes() != null) {
+                // Récupérer l'attribut "idLabo" et le convertir en Long
+                String idLaboStr = user.getAttributes()
+                        .getOrDefault("idLabo", List.of())
+                        .stream()
+                        .findFirst()
+                        .orElse(null);
+
+                if (idLaboStr != null) {
+                    System.out.println("mn su idlab: "+Long.parseLong(idLaboStr));
+                    return Long.parseLong(idLaboStr); // Convertir en Long
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("catch: ");
+            e.printStackTrace(); // Gérer les exceptions
+        }
+        return null; // Retourner null si non trouvé ou en cas d'erreur
+    }
+
 }

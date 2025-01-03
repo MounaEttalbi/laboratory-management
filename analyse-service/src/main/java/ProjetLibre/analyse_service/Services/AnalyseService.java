@@ -1,7 +1,6 @@
 package ProjetLibre.analyse_service.Services;
 
-import ProjetLibre.analyse_service.Classes.Laboratoire;
-import ProjetLibre.analyse_service.Clients.LaboratoireClient;
+import ProjetLibre.analyse_service.Clients.UtilisateurClient;
 import ProjetLibre.analyse_service.Daos.AnalyseDto;
 import ProjetLibre.analyse_service.Entities.AnalyseTable;
 import ProjetLibre.analyse_service.Mappers.AnalyseMapper;
@@ -16,12 +15,15 @@ public class AnalyseService {
     AnalyseMapper analyseMapper;
     @Autowired
     AnalyseRepo analyseRepo;
+
     @Autowired
-    LaboratoireClient laboratoireClient;
+    UtilisateurClient utilisateurClient;
     public void save(AnalyseDto dto){
        AnalyseTable analyseTable= analyseMapper.fromDtoToAnalyse(dto);
       // Laboratoire l=laboratoireClient.getLaboByNom(dto.getLaboratoire());
-      // analyseTable.setIdLaboratoire(l.getId());
+        System.out.println("username :"+dto.getUsername());
+        System.out.println("idLab :"+utilisateurClient.getLaboByUserName(dto.getUsername()));
+       analyseTable.setIdLaboratoire(utilisateurClient.getLaboByUserName(dto.getUsername()));
        analyseRepo.save(analyseTable);
     }
     public List<AnalyseDto> findAll(){
@@ -60,9 +62,13 @@ public class AnalyseService {
         AnalyseTable a=analyseRepo.findById(analyse.getId()).get();
         a.setType(analyse.getType());
         a.setDescription(analyse.getDescription());
-        Laboratoire l=laboratoireClient.getLaboByNom(analyse.getLaboratoire());
-        a.setLabo(l);
+       // Laboratoire l=laboratoireClient.getLaboByNom(analyse.getLaboratoire());
+       // a.setLabo(l);
         analyseRepo.save(a);
 
+    }
+
+    public List<AnalyseTable> getAnalysesByLaboratoryId(String username) {
+        return analyseRepo.findByIdLaboratoire(utilisateurClient.getLaboByUserName(username));
     }
 }

@@ -1,4 +1,4 @@
-package com.backend.epreuve_service;
+package com.ProjetLabo.Epreuve_Service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

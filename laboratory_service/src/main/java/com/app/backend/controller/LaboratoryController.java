@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class LaboratoryController {
 
 	private LaboratoryService laboratoryService;
-
+	private LaboratoryRepository laboratoireRepo;
 	public LaboratoryController(LaboratoryService laboratoryService) {
 		this.laboratoryService = laboratoryService;
 	}
@@ -75,4 +75,20 @@ public class LaboratoryController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+
+//je vais les utiliser dans service analyse
+	@GetMapping("/getLaboById/{id}")
+	public Laboratory getLaboById(@PathVariable(name="id") Long id){
+		return  laboratoireRepo.findById(id).get();
+	}
+
+
+
+	@GetMapping("/getLaboByNom/{nom}")
+	Laboratory getLaboByNom(@PathVariable(name="nom") String nom){
+		return laboratoryService.getLaboByNom(nom);
+	}
+
+
 }

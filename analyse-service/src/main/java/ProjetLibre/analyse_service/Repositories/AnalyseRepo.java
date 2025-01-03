@@ -14,5 +14,6 @@ public interface AnalyseRepo extends JpaRepository<AnalyseTable, Long> {
     public List<AnalyseTable> findAllByNom(String nom);
     @Query("SELECT a FROM AnalyseTable a WHERE a.type = :type")
     public List<AnalyseTable> findAllByType(@Param("type") String type);
+    List<AnalyseTable> findByIdLaboratoire(Long idLaboratoire);
 
 }
