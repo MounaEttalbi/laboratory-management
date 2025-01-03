@@ -1,0 +1,42 @@
+<div class="custom-modal-backdrop d-flex justify-content-center align-items-center">
+    <div class="custom-modal-content">
+      <div class="custom-modal-header">
+        <h5 class="modal-title">Ajouter une épreuve</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeF()"></button>
+      </div>
+      <div class="custom-modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="epreuve" class="form-label">Nom de l'épreuve</label>
+            <input
+              type="text"
+              id="epreuve"
+              class="form-control"
+              placeholder="Entrez le nom de l'épreuve"
+              [(ngModel)]="epreuveData.nom"
+              name="epreuve"
+            />
+          </div>
+  
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              class="form-control"
+              rows="3"
+              placeholder="Entrez une description"
+              [(ngModel)]="epreuveData.description"
+              name="description"
+            ></textarea>
+          </div>
+  
+        
+        </form>
+      </div>
+      <div class="custom-modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeF()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+  

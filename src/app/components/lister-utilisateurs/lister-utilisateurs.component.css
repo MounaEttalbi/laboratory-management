@@ -88,3 +88,24 @@ button.mat-icon-button:hover {
 button.mat-icon-button:hover mat-icon {
   color: #fff; /* Icône blanche au survol */
 }
+/* Style commun pour le texte des rôles */
+.role {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+.chercheur {
+  background-color: #4caf50; /* Vert pour CHERCHEUR */
+}
+
+.technicien {
+  background-color: #ff9800; /* Orange pour TECHNICIEN */
+}
+
+.administrateur {
+  background-color: #2196f3; /* Bleu pour ADMINISTRATEUR */
+}
+

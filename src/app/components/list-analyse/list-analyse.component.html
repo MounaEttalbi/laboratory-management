@@ -1,0 +1,88 @@
+<div class="analysis-container">
+    <!-- Barre de recherche et bouton Ajouter -->
+    <div class="toolbar">
+      <div class="search-group">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-bar"
+          placeholder="Rechercher une analyse ..."
+          aria-label="Search"
+        />
+        <button class="btn add-button" (click)="openAddAnalysisModal()">
+          <i class="fas fa-plus-circle"></i> Ajouter
+        </button>
+      </div>
+    </div>
+  
+    <!-- Tableau des analyses -->
+    <div class="table-container">
+      <table class="analysis-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th>
+            <th>Analyse</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Laboratoire</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let analysis of analyses">
+            <td><input type="checkbox" /></td>
+            <td>{{ analysis.nom }}</td>
+            <td>{{ analysis.type }}</td>
+            <td>{{ analysis.description }}</td>
+            <td>{{ analysis.laboratoire }}</td>
+            <td class="action-buttons">
+              <button
+                class="btn action-btn edit-button"
+                (click)="openeditAnalysisModal(analysis)"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button
+                class="btn action-btn delete-button"
+                (click)="deleteAnalyse(analysis)"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+              <!-- Paramètre icon to show analysis details -->
+              <button
+                class="btn action-btn details-button"
+                (click)="openAnalysisDetailsModal(analysis)"
+              >
+                <i class="fas fa-cogs"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Modal for Adding Analysis -->
+  <app-add-analyse
+    *ngIf="isModalOpen"
+    (close)="closeModal()"
+    (refresh)="fetchAnalyses()"
+  ></app-add-analyse>
+  
+  <!-- Modal for Editing Analysis -->
+  <app-edit-analyse
+    *ngIf="isModalEditOpen"
+    [analysis]="selectedAnalysis"
+    (close)="isModalEditOpen = false"
+    (refresh)="fetchAnalyses()"
+  > 
+  </app-edit-analyse>
+  
+  <!-- Modal for Analysis Details -->
+  <app-analysis-details
+    *ngIf="isDetailsModalOpen"
+    [analysis]="selectedAnalysis"
+    (close)="closeDetailsModal()"
+    (addEpreuve)="addEpreuve()"
+  ></app-analysis-details>
+  

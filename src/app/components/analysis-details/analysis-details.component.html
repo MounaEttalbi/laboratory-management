@@ -1,0 +1,42 @@
+<div class="analysis-details-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Détails de l'Analyse: {{ analysis.nom }}</h3>
+        <button (click)="closeModal()" class="close-btn">X</button>
+      </div>
+  
+      <div class="modal-body">
+        <div class="detail-section">
+          <h4><i class="fas fa-info-circle"></i> Informations générales</h4>
+          <p><strong>Type:</strong> {{ analysis.type }}</p>
+          <p><strong>Description:</strong> {{ analysis.description }}</p>
+          <p><strong>Laboratoire:</strong> {{ analysis.laboratoire }}</p>
+        </div>
+  
+        <div class="detail-section">
+          <h4><i class="fas fa-flask"></i> Liste des Épreuves</h4>
+          <div class="epreuves-container">
+            <div class="epreuve-card" *ngFor="let epreuve of epreuves; let i = index">
+              <div class="epreuve-info">
+                <h5>{{ epreuve.nom }}</h5>
+                <p>{{ epreuve.description }}</p>
+              </div>
+              <button class="delete-btn" (click)="deleteEpreuve(i)">
+                <i class="fas fa-times"></i> <!-- X icon to delete -->
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <button class="add-btn" (click)="addNewEpreuve()">
+          <i class="fas fa-plus"></i> Ajouter une épreuve
+        </button>
+      </div>
+    </div>
+  </div>
+  <app-add-epreuve
+  *ngIf="isModalOpen"
+  [idAnalyse]="analysis?.id ?? undefined"
+  (close)="closeModal()"
+></app-add-epreuve>
+

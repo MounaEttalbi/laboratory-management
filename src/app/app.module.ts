@@ -13,7 +13,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -49,6 +48,8 @@ import { ContactUpdate2Component } from './components/contact-service/contact-up
 import { AdresseDetailsComponent } from './components/adresse-service/adresse-details/adresse-details.component';
 import {DeleteLaboratoryComponent} from './components/delete-laboratory/delete-laboratory.component';
 
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak
@@ -89,6 +90,11 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
 import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
+import { AddAnalyseComponent } from './components/add-analyse/add-analyse.component';
+import { ListAnalyseComponent } from './components/list-analyse/list-analyse.component';
+import { EditAnalyseComponent } from './components/edit-analyse/edit-analyse.component';
+import { AddEpreuveComponent } from './components/add-epreuve/add-epreuve.component';
+import { AnalysisDetailsComponent } from './components/analysis-details/analysis-details.component';
 
 
 @NgModule({
@@ -131,7 +137,12 @@ import { AnalyseFormComponent } from './components/analyse-form/analyse-form.com
     DossierListComponent,
     DossierDeleteComponent,
     DossierEditComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    AddAnalyseComponent,
+    ListAnalyseComponent,
+    EditAnalyseComponent,
+    AddEpreuveComponent,
+    AnalysisDetailsComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,
@@ -158,7 +169,10 @@ import { AnalyseFormComponent } from './components/analyse-form/analyse-form.com
     MatSnackBarModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    NgChartsModule
+    NgChartsModule,
+
+    MatAutocompleteModule,
+    MatInputModule,
 
   ],
   providers: [ {
