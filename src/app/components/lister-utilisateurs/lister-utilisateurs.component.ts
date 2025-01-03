@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilisateurService } from '../../services/utilisateur.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Role, Utilisateur } from '../../models/Utilisateur';
+import { Utilisateur } from '../../models/Utilisateur';
 
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterUtilisateurComponent } from '../ajouter-utilisateur/ajouter-utilisateur.component';
@@ -12,37 +12,20 @@ import { AjouterUtilisateurComponent } from '../ajouter-utilisateur/ajouter-util
   styleUrls: ['./lister-utilisateurs.component.css']
 })
 export class ListerUtilisateursComponent implements OnInit {
-  utilisateurs: Utilisateur[] = [];
+  utilisateurs: any[] = [];
   filteredUtilisateurs!: MatTableDataSource<Utilisateur>;
-  displayedColumns: string[] = ['nomComplet', 'email', 'numTel', 'profession', 'Action'];
+  displayedColumns: string[] = ['username', 'nomComplet', 'email', 'role', 'Action'];
 
-
-  constructor(private utilisateurService: UtilisateurService, private dialog: MatDialog) { }
-  
-
-  // Méthode pour supprimer un utilisateur
-  onDeleteUser(utilisateur: any): void {
-    console.log('Suppression de l’utilisateur :', utilisateur);
-    this.utilisateurService.deleteUtilisateur(utilisateur.username).subscribe({
-        next: () => {
-            console.log('Utilisateur supprimé avec succès.');
-            // Ajoutez ici des actions supplémentaires, comme rafraîchir la liste des utilisateurs
-        },
-        error: (err) => {
-            console.error('Erreur lors de la suppression de l’utilisateur :', err);
-            // Gérer les erreurs, par exemple afficher une notification
-        }
-    });
-}
+  constructor(private utilisateurService: UtilisateurService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    console.log('Utili start:');
-    // Récupération des utilisateurs
     this.utilisateurService.getUtilisateurs().subscribe(
       (data) => {
-        console.log('Utilisateurs récupérés:', data);
-        this.utilisateurs = data;  // Affecte les données récupérées
-        // Initialise filteredUtilisateurs avec les données récupérées
+        console.log("g3 g3",data)
+        this.utilisateurs = data.map((utilisateur) => ({
+          ...utilisateur,
+          nomComplet: `${utilisateur.firstName} ${utilisateur.lastName}` // Concatène prénom et nom
+        }));
         this.filteredUtilisateurs = new MatTableDataSource(this.utilisateurs);
       },
       (error) => {
@@ -51,7 +34,6 @@ export class ListerUtilisateursComponent implements OnInit {
     );
   }
 
-  // Méthode pour filtrer les utilisateurs
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     if (this.filteredUtilisateurs) {
@@ -59,32 +41,55 @@ export class ListerUtilisateursComponent implements OnInit {
     }
   }
 
-  // Action pour ajouter un utilisateur
   onAddUser() {
-    console.log('lwl');
-    const dialogRef = this.dialog.open(AjouterUtilisateurComponent, {
-      width: '600px'
-    });
-    console.log('wst');
-    dialogRef.afterClosed().subscribe((result: Utilisateur) => {
+    const dialogRef = this.dialog.open(AjouterUtilisateurComponent, { width: '600px' });
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        console.log('lwlResut',result);
-        this.utilisateurs.push(result); // Ajouter le nouvel utilisateur à la liste
-        this.filteredUtilisateurs = new MatTableDataSource(this.utilisateurs); // Mettre à jour la table
+        this.utilisateurs.push({
+          ...result,
+          nomComplet: `${result.firstName} ${result.lastName}` // Met à jour nom complet
+        });
+        this.filteredUtilisateurs = new MatTableDataSource(this.utilisateurs);
       }
     });
   }
 
-  // Action pour modifier un utilisateur
-  onEditUser(utilisateur: any): void {
-    console.log("voir",utilisateur)
+  onEditUser(utilisateur: Utilisateur): void {
     const dialogRef = this.dialog.open(AjouterUtilisateurComponent, {
       width: '500px',
-      data: utilisateur  // Passer les données de l'utilisateur à éditer
+      data: utilisateur
     });
 
     dialogRef.afterClosed().subscribe(result => {
-     
+      if (result) {
+        // Mettez à jour l'utilisateur modifié ici
+      }
     });
   }
+
+  onDeleteUser(utilisateur: any): void {
+    this.utilisateurService.deleteUtilisateur(utilisateur.username).subscribe({
+      next: () => {
+        this.utilisateurs = this.utilisateurs.filter(u => u.username !== utilisateur.username);
+        this.filteredUtilisateurs = new MatTableDataSource(this.utilisateurs);
+      },
+      error: (err) => {
+        console.error('Erreur lors de la suppression de l’utilisateur :', err);
+      }
+    });
+  }
+  getRoleStyle(role: string) {
+    switch (role) {
+      case 'CHERCHEUR':
+        return { 'background-color': '#4caf50', 'padding': '4px 8px', 'border-radius': '12px', 'color': 'white', 'font-weight': 'bold' };
+      case 'TECHNICIEN':
+        return { 'background-color': '#ff9800', 'padding': '4px 8px', 'border-radius': '12px', 'color': 'white', 'font-weight': 'bold' };
+      case 'ADMINISTRATEUR':
+        return { 'background-color': '#2196f3', 'padding': '4px 8px', 'border-radius': '12px', 'color': 'white', 'font-weight': 'bold' };
+      default:
+        return {}; // Si le rôle est inconnu, ne pas appliquer de style
+    }
+  }
+  
+  
 }

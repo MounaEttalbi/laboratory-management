@@ -1,0 +1,150 @@
+<div
+  class="modal-backdrop"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 115%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  "
+>
+  <div
+    class="modal-content"
+    (click)="$event.stopPropagation()"
+    style="
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 500px;
+      max-width: 90%;
+      position: relative;
+    "
+  >
+    <!-- Bouton de fermeture -->
+    <button
+      style="
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
+      "
+      (click)="onClose()"
+      aria-label="Fermer"
+    >
+      &times;
+    </button>
+
+    <!-- Titre de la modale -->
+    <h2 style="margin: 0px 100px 40px; font-size: 1.5rem">
+      Modifier une Analyse
+    </h2>
+
+    <form
+      [formGroup]="editForm"
+      (ngSubmit)="onSubmit()"
+      class="needs-validation"
+      novalidate
+    >
+      <!-- Nom de l'analyse -->
+      <div class="form-group mb-3">
+        <label for="nom" class="form-label">Nom de l'analyse:</label>
+        <input
+          id="nom"
+          formControlName="nom"
+          type="text"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            editForm.controls['nom'].invalid && editForm.controls['nom'].touched
+          "
+          class="text-danger"
+        ></div>
+      </div>
+
+      <!-- Type de l'analyse -->
+      <div class="form-group mb-3">
+        <label for="type" class="form-label">Type d'analyse:</label>
+        <input
+          id="type"
+          formControlName="type"
+          type="text"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            editForm.controls['type'].invalid &&
+            editForm.controls['type'].touched
+          "
+          class="text-danger"
+        ></div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group mb-3">
+        <label for="description" class="form-label"
+          >Description de l'analyse:</label
+        >
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="3"
+          class="form-control"
+        ></textarea>
+        <div
+          *ngIf="
+            editForm.controls['description'].invalid &&
+            editForm.controls['description'].touched
+          "
+          class="text-danger"
+        ></div>
+      </div>
+
+      <!-- Liste des laboratoires -->
+      <div class="form-group mb-3">
+        <label for="laboratoire" class="form-label"
+          >SÃ©lectionner le laboratoire:</label
+        >
+        <select
+          id="laboratoire"
+          formControlName="laboratoire"
+          class="form-select"
+        >
+          
+        </select>
+        <div
+          *ngIf="
+            editForm.controls['laboratoire'].invalid &&
+            editForm.controls['laboratoire'].touched
+          "
+          class="text-danger"
+        ></div>
+      </div>
+
+      <!-- Bouton de soumission -->
+      <button
+        type="submit"
+        class="btn w-100"
+        style="
+          background-color: #f39c12;
+          border: none;
+          color: #fff;
+          cursor: pointer;
+        "
+        [disabled]="editForm.invalid"
+      >
+        Modifier
+      </button>
+    </form>
+  </div>
+</div>

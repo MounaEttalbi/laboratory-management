@@ -19,6 +19,7 @@ import {ContactDeleteComponent} from './components/contact-service/contact-delet
 import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AddAnalyseComponent } from './components/add-analyse/add-analyse.component';
 import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
 import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
 
@@ -27,7 +28,8 @@ import { ExamenAddComponent } from './components/examen-service/examen-add/exame
 import { ExamenUpdateComponent } from './components/examen-service/examen-update/examen-update.component';
 
 const routes: Routes = [
-  { path: 'addA', component: AnalyseFormComponent },  { path: 'profil', component: UserProfileComponent },
+  { path: 'addA', component: AddAnalyseComponent },  { path: 'profil', component: UserProfileComponent },
+  { path: 'addA', component: AddAnalyseComponent },  { path: 'profil', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'utilisateurs', component: ListerUtilisateursComponent, canActivate: [AuthGuard],
     data: { roles: ['ADMIN'] }, },

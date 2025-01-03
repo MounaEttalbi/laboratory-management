@@ -1,0 +1,184 @@
+.analysis-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;  /* Recouvre toute la largeur de la page */
+    height: 100%;  /* Recouvre toute la hauteur de la page */
+    background-color: rgba(0, 0, 0, 0.7); /* Ombre de fond */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    z-index: 1000; /* Pour s'assurer qu'elle soit au-dessus de tout */
+    overflow-y: auto; /* Pour permettre un défilement si le contenu est trop long */
+  }
+  
+  /* Le contenu de la modale */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;  /* Largeur de la modale */
+    max-width: 800px; /* Limite de largeur */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Masque le contenu débordant si trop de texte */
+  }
+  
+  /* Le reste du CSS reste inchangé pour la mise en forme de la modale */
+  
+  /* Réactivité : ajuster la taille sur les petits écrans */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%;
+      padding: 15px;
+    }
+  
+    .detail-section h4 {
+      font-size: 1.1rem;
+    }
+  
+    .add-btn {
+      font-size: 0.9rem;
+    }
+  
+    .epreuve-info h5 {
+      font-size: 1em;
+    }
+  }
+  
+  
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .close-btn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: #c82333;
+  }
+  
+  .modal-body {
+    font-family: 'Arial', sans-serif;
+    color: #555;
+  }
+  
+  .detail-section {
+    margin-bottom: 20px;
+  }
+  
+  .detail-section h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .detail-section h4 i {
+    margin-right: 10px;
+  }
+  
+  .detail-section p {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .epreuves-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .epreuve-card {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .epreuve-info h5 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+  
+  .epreuve-info p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  .delete-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    color: #c82333;
+  }
+  
+  .add-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-btn i {
+    margin-right: 8px;
+  }
+  
+  .add-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Réactivité : ajuster la taille sur les petits écrans */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%;
+      padding: 15px;
+    }
+    
+    .detail-section h4 {
+      font-size: 1.1rem;
+    }
+  
+    .add-btn {
+      font-size: 0.9rem;
+    }
+  
+    .epreuve-info h5 {
+      font-size: 1em;
+    }
+  }

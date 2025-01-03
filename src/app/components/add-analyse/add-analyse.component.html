@@ -1,0 +1,148 @@
+<div
+  class="modal-backdrop"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 115%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  "
+>
+  <div
+    class="modal-content"
+    (click)="$event.stopPropagation()"
+    style="
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 500px;
+      max-width: 90%;
+      position: relative;
+    "
+  >
+    <!-- Bouton de fermeture -->
+    <button
+      (click)="onClose()"
+      style="
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
+      "
+      aria-label="Fermer"
+    >
+      &times;
+    </button>
+
+    <!-- Titre de la modale -->
+    <h2 style="margin: 0px 110px 40px; font-size: 1.5rem">
+      Ajouter une Analyse
+    </h2>
+
+    <!-- Formulaire -->
+    <form
+      [formGroup]="analyseForm"
+      (ngSubmit)="onSubmit()"
+      class="needs-validation"
+      novalidate
+    >
+      <!-- Nom de l'analyse -->
+      <div class="form-group mb-3">
+        <label for="nom" class="form-label">Nom de l'analyse:</label>
+        <input
+          id="nom"
+          formControlName="nom"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div
+          *ngIf="
+            analyseForm.controls['nom'].invalid &&
+            analyseForm.controls['nom'].touched
+          "
+          class="text-danger"
+        >
+          Ce champ est requis.
+        </div>
+      </div>
+
+      <!-- Type de l'analyse -->
+      <div class="form-group mb-3">
+        <label for="type" class="form-label">Type d'analyse:</label>
+        <input
+          id="type"
+          formControlName="type"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div
+          *ngIf="
+            analyseForm.controls['type'].invalid &&
+            analyseForm.controls['type'].touched
+          "
+          class="text-danger"
+        >
+          Ce champ est requis.
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group mb-3">
+        <label for="description" class="form-label"
+          >Description de l'analyse:</label
+        >
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="3"
+          class="form-control"
+          required
+        ></textarea>
+        <div
+          *ngIf="
+            analyseForm.controls['description'].invalid &&
+            analyseForm.controls['description'].touched
+          "
+          class="text-danger"
+        >
+          Ce champ est requis.
+        </div>
+      </div>
+
+    
+
+      <!-- Bouton de soumission -->
+      <button
+        type="submit"
+        class="btn w-100"
+        style="
+          background-color: #f39c12;
+          border: none;
+          color: #fff;
+          cursor: pointer;
+        "
+        [disabled]="analyseForm.invalid"
+      >
+        Créer
+      </button>
+    </form>
+  </div>
+</div>
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
