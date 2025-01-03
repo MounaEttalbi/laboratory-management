@@ -1,0 +1,94 @@
+<div class="resultat-add-container">
+  <h2 class="text-center">Ajouter un Résultat</h2>
+
+  <!-- Afficher un message d'erreur si nécessaire -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #resultatForm="ngForm" class="add-resultat-form">
+    <!-- Examen ID -->
+    <div class="form-group">
+      <label for="fkIdExamen">Nom Examen</label>
+      <select 
+        id="fkIdExamen" 
+        [(ngModel)]="newResultat.fkIdExamen" 
+        name="fkIdExamen" 
+        class="form-control" 
+        required>
+        <option value="" disabled selected>Sélectionner un Examen</option>
+        <option *ngFor="let examen of examens" [value]="examen.id">
+          {{ examen.nom  }}
+        </option>
+      </select>
+    </div>
+    
+
+    <!-- Valeurs Mesurées -->
+    <div class="form-group">
+      <label for="valeursMesurees">Valeurs Mesurées</label>
+      <input
+        type="text"
+        id="valeursMesurees"
+        name="valeursMesurees"
+        [(ngModel)]="newResultat.valeursMesurees"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Observations -->
+    <div class="form-group">
+      <label for="observations">Observations</label>
+      <input
+        type="text"
+        id="observations"
+        name="observations"
+        [(ngModel)]="newResultat.observations"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Commentaires -->
+    <div class="form-group">
+      <label for="commentaires">Commentaires</label>
+      <input
+        type="text"
+        id="commentaires"
+        name="commentaires"
+        [(ngModel)]="newResultat.commentaires"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Statut -->
+    <div class="form-group">
+      <label for="status">Statut</label>
+      <select
+        id="status"
+        name="status"
+        [(ngModel)]="newResultat.status"
+        class="form-control"
+        required
+      >
+        <option value="En attente">En attente</option>
+        <option value="Validé">Validé</option>
+        <option value="Rejeté">Rejeté</option>
+      </select>
+    </div>
+
+    <!-- Boutons -->
+    <div class="form-actions text-center">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!resultatForm.form.valid || isLoading"
+      >
+        {{ isLoading ? 'Ajout en cours...' : 'Ajouter' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

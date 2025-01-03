@@ -1,0 +1,10 @@
+select {
+    color: black; /* Assurez-vous que la couleur du texte est définie */
+    background-color: white; /* Vérifiez que le fond est bien défini */
+  }
+  
+  option {
+    color: black; /* Assurez-vous que la couleur du texte est définie */
+    background-color: white;
+  }
+  

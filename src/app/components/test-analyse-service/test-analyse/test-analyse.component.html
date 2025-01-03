@@ -1,0 +1,205 @@
+<div class="container">
+   <!-- Bouton pour afficher le formulaire d'ajout -->
+<button class="btn btn-primary mb-3" (click)="showAddForm()">Ajouter un Test</button>
+
+<!-- Formulaire d'ajout de test -->
+<div *ngIf="isAddFormVisible" class="add-form">
+  <h3>Ajouter un Test Analyse</h3>
+  <form (ngSubmit)="addTestAnalyse()">
+    <div class="mb-3">
+      <label for="nomTest" class="form-label">Nom Test</label>
+      <input
+        type="text"
+        id="nomTest"
+        [(ngModel)]="newTestAnalyse.nomTest"
+        name="nomTest"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="sousEpreuve" class="form-label">Sous Épreuve</label>
+      <input
+        type="text"
+        id="sousEpreuve"
+        [(ngModel)]="newTestAnalyse.sousEpreuve"
+        name="sousEpreuve"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="intervalMinDeReference" class="form-label">Interval Min</label>
+      <input
+        type="number"
+        id="intervalMinDeReference"
+        [(ngModel)]="newTestAnalyse.intervalMinDeReference"
+        name="intervalMinDeReference"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="intervalMaxDeReference" class="form-label">Interval Max</label>
+      <input
+        type="number"
+        id="intervalMaxDeReference"
+        [(ngModel)]="newTestAnalyse.intervalMaxDeReference"
+        name="intervalMaxDeReference"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="uniteDeReference" class="form-label">Unité de Référence</label>
+      <input
+        type="text"
+        id="uniteDeReference"
+        [(ngModel)]="newTestAnalyse.uniteDeReference"
+        name="uniteDeReference"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="details" class="form-label">Détails</label>
+      <input
+        type="text"
+        id="details"
+        [(ngModel)]="newTestAnalyse.details"
+        name="details"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Ajouter</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelAdd()">Annuler</button>
+  </form>
+</div>
+
+  <!-- Barre de recherche -->
+  <div class="mb-3">
+    <label for="search" class="form-label"></label>
+    <input
+      type="text"
+      id="search"
+      class="form-control"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="filterTests()"
+      placeholder="recherche par nom du test..."
+    />
+  </div>
+
+  <!-- Afficher un message d'erreur si une erreur survient -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Afficher les données dans un tableau -->
+  <table class="table table-striped" *ngIf="filteredTestAnalyses.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom Test</th>
+        <th>Sous Épreuve</th>
+        <th>Interval Min</th>
+        <th>Interval Max</th>
+        <th>Unité de Référence</th>
+        <th>Détails</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let test of filteredTestAnalyses">
+        <td>{{ test.id }}</td>
+        <td>{{ test.nomTest }}</td>
+        <td>{{ test.sousEpreuve }}</td>
+        <td>{{ test.intervalMinDeReference }}</td>
+        <td>{{ test.intervalMaxDeReference }}</td>
+        <td>{{ test.uniteDeReference }}</td>
+        <td>{{ test.details }}</td>
+        <td>
+          <i
+            class="fas fa-edit text-primary me-2"
+            style="cursor: pointer;"
+            (click)="showUpdateForm(test)"
+            title="Modifier"
+          ></i>
+          <i
+            class="fas fa-trash-alt text-danger"
+            style="cursor: pointer;"
+            (click)="deleteTestAnalyse(test.id)"
+            title="Supprimer"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire de Mise à Jour -->
+  <div *ngIf="selectedTestAnalyse" class="update-form">
+    <h3>Modifier le Test Analyse</h3>
+    <form (ngSubmit)="updateTestAnalyse()">
+      <div class="mb-3">
+        <label for="nomTest" class="form-label">Nom Test</label>
+        <input
+          type="text"
+          id="nomTest"
+          [(ngModel)]="selectedTestAnalyse.nomTest"
+          name="nomTest"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="sousEpreuve" class="form-label">Sous Épreuve</label>
+        <input
+          type="text"
+          id="sousEpreuve"
+          [(ngModel)]="selectedTestAnalyse.sousEpreuve"
+          name="sousEpreuve"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="intervalMinDeReference" class="form-label">Interval Min</label>
+        <input
+          type="number"
+          id="intervalMinDeReference"
+          [(ngModel)]="selectedTestAnalyse.intervalMinDeReference"
+          name="intervalMinDeReference"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="intervalMaxDeReference" class="form-label">Interval Max</label>
+        <input
+          type="number"
+          id="intervalMaxDeReference"
+          [(ngModel)]="selectedTestAnalyse.intervalMaxDeReference"
+          name="intervalMaxDeReference"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="uniteDeReference" class="form-label">Unité de Référence</label>
+        <input
+          type="text"
+          id="uniteDeReference"
+          [(ngModel)]="selectedTestAnalyse.uniteDeReference"
+          name="uniteDeReference"
+          class="form-control"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success">Mettre à jour</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelUpdate()">Annuler</button>
+    </form>
+  </div>
+
+  <!-- Message si aucune donnée n'est disponible -->
+  <p *ngIf="testAnalyses.length === 0 && !errorMessage">Aucune donnée disponible pour l'instant.</p>
+</div>

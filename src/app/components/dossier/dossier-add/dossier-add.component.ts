@@ -1,25 +1,31 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';  // Pour fermer le dialogue
 import { DossierService } from '../../../services/dossier.service';// Import du service
 import { Dossier } from '../../../models/dossier.model'; // Import du modèle
+import { PatientService } from '../../../services/patient.service';
+import { Patient } from '../../../models/patient.model';
 
 @Component({
   selector: 'app-dossier-add',
   templateUrl: './dossier-add.component.html',
   styleUrls: ['./dossier-add.component.css']
 })
-export class DossierAddComponent {
+export class DossierAddComponent implements OnInit {
   dossier: Dossier = {
     date: '',
     fkEmailUtilisateur: '',
     fkIdPatient: '',
     status: 'Active'
   };
-
+  patients: Patient[] = [];
   constructor(
     private dossierService: DossierService,
-    public dialogRef: MatDialogRef<DossierAddComponent>  // Pour fermer le dialogue après ajout
+    public dialogRef: MatDialogRef<DossierAddComponent>,  // Pour fermer le dialogue après ajout
+    private patientService: PatientService
   ) {}
+  ngOnInit(): void {
+    this.loadPatients();
+  }
 
   // Méthode pour soumettre le formulaire et créer un dossier
   onSubmit(): void {
@@ -40,4 +46,15 @@ export class DossierAddComponent {
   onCancel(): void {
     this.dialogRef.close();
   }
+  loadPatients(): void {
+    this.patientService.getPatients().subscribe(
+      (data) => {
+        this.patients = data;
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des patients', error);
+      }
+    );
+  }
+  
 }

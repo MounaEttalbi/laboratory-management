@@ -21,7 +21,7 @@ export class AdresseDetailsComponent implements OnInit {
   errorMessage: string = '';
 
   constructor(
-    private adresseService: AdresseService,
+    public adresseService: AdresseService,
     @Inject(MAT_DIALOG_DATA) public data: { adresseId: number }
   ) {}
 

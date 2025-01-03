@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+
+    <!-- Statistiques -->
+    <div class="statistics">
+      <div class="stat-card">
+        <h3>Total Examens</h3>
+        <p>{{ totalExamens }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Total Tests</h3>
+        <p>{{ totalTests }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Examens Terminés</h3>
+        <p>{{ totalExamensTermines }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Examens En Cours</h3>
+        <p>{{ totalExamensEnCours }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Examens Annulés</h3>
+        <p>{{ totalExamensAnnules }}</p>
+      </div>
+    </div>
+  
+    <!-- Graphes -->
+    <div class="charts">
+        <div>
+          <h3>Répartition des Examens</h3>
+          <canvas #examensChart></canvas>
+        </div>
+        <div>
+          <h3>Valeurs de Référence pour les Tests</h3>
+          <canvas #testsChart></canvas>
+        </div>
+      </div>
+  </div>
+  

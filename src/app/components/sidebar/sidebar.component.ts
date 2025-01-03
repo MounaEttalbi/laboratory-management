@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   selectedSection: string = 'statistics';
  
 
-  showConfirmation: boolean = false; // Variable pour afficher/masquer la confirmation
+  showConfirmation = false;  // Variable pour afficher/masquer la confirmation
 
   constructor(private router: Router, private profilService: ProfilService) {}
 
@@ -35,20 +35,32 @@ export class SidebarComponent implements OnInit {
   }
 
   selectSection(section: string): void {
-    this.selectedSection = section;
-    console.log('Section sélectionnée:', this.selectedSection);
+    console.log('Section sélectionnée :', section);
+    if (section === 'logout') {
+      this.showConfirmation = true;
+      console.log('Confirmation affichée :', this.showConfirmation);
+    } else {
+      this.selectedSection = section;
+      this.showConfirmation = false;
+      console.log('Section actuelle :', this.selectedSection);
+    }
   }
+  
+  
 
   confirmLogout(): void {
-    this.showConfirmation = true;
+    this.logout(); // Appelez directement la déconnexion ici
   }
 
   cancelLogout(): void {
-    this.showConfirmation = false;
+    this.showConfirmation = false; // Cache la confirmation
+    this.selectedSection = 'profil'; // Revenez à une autre section
   }
 
   logout(): void {
-    sessionStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    sessionStorage.clear();
+    localStorage.clear();
+    this.router.navigate(['/login']); // Redirection
+    this.showConfirmation = false; // Cache la confirmation après déconnexion
   }
 }

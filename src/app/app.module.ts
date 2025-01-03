@@ -90,11 +90,26 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
 import { BaseChartDirective } from 'ng2-charts'; // Import du module NgCharts
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AnalyseFormComponent } from './components/analyse-form/analyse-form.component';
+
 import { AddAnalyseComponent } from './components/add-analyse/add-analyse.component';
 import { ListAnalyseComponent } from './components/list-analyse/list-analyse.component';
 import { EditAnalyseComponent } from './components/edit-analyse/edit-analyse.component';
 import { AddEpreuveComponent } from './components/add-epreuve/add-epreuve.component';
 import { AnalysisDetailsComponent } from './components/analysis-details/analysis-details.component';
+
+import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
+import { ChercheurPageComponent } from './components/chercheur-page/chercheur-page.component';
+import { ExamenListComponent } from './components/examen-service/examen-list/examen-list.component';
+import { ExamenAddComponent } from './components/examen-service/examen-add/examen-add.component';
+import { ExamenUpdateComponent } from './components/examen-service/examen-update/examen-update.component';
+import { ExamenDeleteComponent } from './components/examen-service/examen-delete/examen-delete.component';
+import { TestAnalyseComponent } from './components/test-analyse-service/test-analyse/test-analyse.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { ResultatListComponent } from './components/resultat-service/resultat-list/resultat-list.component';
+import { ResultatAddComponent } from './components/resultat-service/resultat-add/resultat-add.component';
+import { ResultatUpdateComponent } from './components/resultat-service/resultat-update/resultat-update.component';
+import { DashboardTechnicienComponent } from './components/dashboard-technicien/dashboard-technicien.component';
+
 
 
 @NgModule({
@@ -138,11 +153,24 @@ import { AnalysisDetailsComponent } from './components/analysis-details/analysis
     DossierDeleteComponent,
     DossierEditComponent,
     DashboardAdminComponent,
+
     AddAnalyseComponent,
     ListAnalyseComponent,
     EditAnalyseComponent,
     AddEpreuveComponent,
-    AnalysisDetailsComponent
+    AnalysisDetailsComponent,
+    TechnicianPageComponent,
+    ChercheurPageComponent,
+    ExamenListComponent,
+    ExamenAddComponent,
+    ExamenUpdateComponent,
+    ExamenDeleteComponent,
+    TestAnalyseComponent,
+    LogoutComponent,
+    ResultatListComponent,
+    ResultatAddComponent,
+    ResultatUpdateComponent,
+    DashboardTechnicienComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,
@@ -171,8 +199,12 @@ import { AnalysisDetailsComponent } from './components/analysis-details/analysis
     MatNativeDateModule,
     NgChartsModule,
 
+
     MatAutocompleteModule,
     MatInputModule,
+
+    ReactiveFormsModule, 
+    BrowserAnimationsModule,
 
   ],
   providers: [ {
