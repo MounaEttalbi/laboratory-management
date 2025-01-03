@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LaboratoryRepository extends JpaRepository<Laboratory, Long> {
+    Laboratory findByNom(String nom);
 }

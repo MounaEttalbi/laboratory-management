@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class RoleServiceImpl implements  RoleService{
 
     @Value("${keycloak.realm}")
@@ -23,7 +23,12 @@ public class RoleServiceImpl implements  RoleService{
 
     private final Keycloak keycloak;
 
-   // private final KeycloakUserService keycloakUserService;
+    public RoleServiceImpl(Keycloak keycloak) {
+        this.keycloak = keycloak;
+    }
+
+
+    // private final KeycloakUserService keycloakUserService;
 
     @Override
     public void assignRole(String userId, String roleName) {

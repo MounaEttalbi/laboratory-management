@@ -17,4 +17,6 @@ public interface LaboratoryService {
     Optional<Laboratory> getLaboratoryById(long id);
 
     void deleteLaboratory(Long id);
+
+    Laboratory getLaboByNom(String nom);
 }

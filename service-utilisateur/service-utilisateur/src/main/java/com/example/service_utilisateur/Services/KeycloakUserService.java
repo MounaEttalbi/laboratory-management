@@ -23,5 +23,7 @@ public interface KeycloakUserService {
     UserRegistrationRecord updateUserByUsername(String username, UserRegistrationRecord userRegistrationRecord);
 
     String getUserIdByUsername(String username);
+
+    Long getLaboIdByUserName(String userId);
 }
 

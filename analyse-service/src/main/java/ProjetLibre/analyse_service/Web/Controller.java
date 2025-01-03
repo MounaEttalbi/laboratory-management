@@ -1,14 +1,10 @@
 package ProjetLibre.analyse_service.Web;
 
-import ProjetLibre.analyse_service.Classes.Laboratoire;
-import ProjetLibre.analyse_service.Clients.LaboratoireClient;
-
 import ProjetLibre.analyse_service.Daos.AnalyseDto;
 import ProjetLibre.analyse_service.Entities.AnalyseTable;
 import ProjetLibre.analyse_service.Repositories.AnalyseRepo;
 import ProjetLibre.analyse_service.Services.AnalyseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +14,7 @@ public class Controller {
 
     @Autowired
     private AnalyseRepo analyseRepo;
-    @Autowired
-    LaboratoireClient laboratoireClient;
+
     @Autowired
     AnalyseService analyseService;
     @PostMapping("/addAnalyse")
@@ -33,8 +28,8 @@ public class Controller {
     @GetMapping("/{id}")
     public AnalyseTable getAnalyseById(@PathVariable(name="id") Long id){
         AnalyseTable analyse=analyseRepo.findById(id).get();
-        Laboratoire l=laboratoireClient.getLaboById(analyse.getIdLaboratoire());
-       analyse.setLabo(l);
+       // Laboratoire l=laboratoireClient.getLaboById(analyse.getIdLaboratoire());
+      // analyse.setLabo(l);
 
         return analyse;
     }
@@ -53,6 +48,11 @@ public class Controller {
     @DeleteMapping("/deleteAnalyse/{id}")
     public void deleteAnalyse(@PathVariable(name = "id") Long id){
         analyseService.deletAnalyse(id);
+    }
+
+    @GetMapping("/listAnalysesByUser/{username}")
+    public List<AnalyseTable> listAnalysesByUser(@PathVariable(name = "username") String username){
+        return analyseService.getAnalysesByLaboratoryId(username);
     }
 
 }
