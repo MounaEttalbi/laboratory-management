@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Étape 4 : Construction du projet Maven
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests && ls -l /app/target
 
 # Étape 5 : Image de runtime avec OpenJDK
 FROM eclipse-temurin:21-jdk-alpine
@@ -17,10 +17,9 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Étape 7 : Copie du fichier JAR généré
-COPY --from=build /app/target/epreuve-service-0.0.1-SNAPSHOT.jar /app/epreuve-service.jar
+COPY --from=build /app/target/*.jar /app/epreuve-service.jar
 
 # Étape 8 : Commande d'exécution
 ENTRYPOINT ["java", "-jar", "/app/epreuve-service.jar"]
-
 
 EXPOSE 8085
