@@ -175,7 +175,7 @@ public class KeycloakUserServiceImpl implements KeycloakUserService {
     @Override
     public String getUserIdByUsername(String username) {
         List<UserRepresentation> users = keycloak.realm(realm).users().search(username, true);
-
+        System.out.println("username  "+username);
         if (users.isEmpty()) {
             throw new RuntimeException("Utilisateur non trouvé avec ce nom d'utilisateur");
         }
@@ -184,6 +184,7 @@ public class KeycloakUserServiceImpl implements KeycloakUserService {
     }
     @Override
     public Long getLaboIdByUserName(String userId) {
+        System.out.println("getLaboIdByUserNameé() :"+userId);
         userId=this.getUserIdByUsername(userId);
         System.out.println("username service : "+userId);
         try {
