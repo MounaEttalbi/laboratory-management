@@ -5,7 +5,7 @@ pipeline {
         // Variables pour SonarQube
         SONAR_HOST_URL = 'http://localhost:9000'
         SONAR_TOKEN = credentials('sonar-token')  // SonarQube token, à configurer dans Jenkins
-        DOCKER_IMAGE = 'TestAnalyse-service:latest'
+        DOCKER_IMAGE = 'testanalyse-service:latest'
     }
 
     stages {
