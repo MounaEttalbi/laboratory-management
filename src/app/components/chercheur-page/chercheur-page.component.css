@@ -199,4 +199,9 @@
   .user-icon:hover {
     color: #007bff; /* Couleur au survol */
   }
-  
+  .examen {
+    color: #d6c82a; 
+  }
+  .dossier {
+    color: #837803; 
+  }
