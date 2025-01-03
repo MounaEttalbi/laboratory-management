@@ -36,8 +36,11 @@ public class KeycloakUserApi {
     public List<UserRegistrationRecord> getAllUsers() {
         return keycloakUserService.getAllUsers().stream()
                 .map(user -> {
+                    System.out.println("all controller :"+user.getId());
+                    System.out.println("all username :"+user.getUsername());
                     String role = roleService.getUserRole(user.getId());
-                   Long idLabo = keycloakUserService.getLaboIdByUserName(user.getId()); // Récupération de l'idLabo
+
+                   Long idLabo = keycloakUserService.getLaboIdByUserName(user.getUsername()); // Récupération de l'idLabo
 
                     return new UserRegistrationRecord(
                             user.getUsername(),
@@ -81,6 +84,7 @@ public class KeycloakUserApi {
 
     @GetMapping("/getLaboIdByUserName/{username}")
     public Long getLaboIdByUserName(@PathVariable String username) {
+        System.out.println("controller :"+username);
         return keycloakUserService.getLaboIdByUserName(username);
     }
 }
