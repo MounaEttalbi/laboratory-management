@@ -17,10 +17,10 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Étape 7 : Copie du fichier JAR généré
-COPY --from=build /app/target/analyse-service-0.0.1-SNAPSHOT.jar /app/analyse-service.jar
+COPY --from=build /app/target/TestAnalyse-service-0.0.1-SNAPSHOT.jar /app/TestAnalyse-service.jar
 
 # Étape 8 : Commande d'exécution
-ENTRYPOINT ["java", "-jar", "/app/analyse-service.jar"]
+ENTRYPOINT ["java", "-jar", "/app/TestAnalyse-service.jar"]
 
 
-EXPOSE 8083
+EXPOSE 8044

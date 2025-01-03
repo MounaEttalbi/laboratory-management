@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+
+    environment {
+        // Variables pour SonarQube
+        SONAR_HOST_URL = 'http://localhost:9000'
+        SONAR_TOKEN = credentials('sonar-token')  // SonarQube token, à configurer dans Jenkins
+        DOCKER_IMAGE = 'testanalyse-service:latest'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Récupère le code source
+                checkout scm
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                script {
+                    // Compilation et exécution des tests unitaires (Junit, Mockito)
+                    bat 'mvn clean install -DskipTests=false' // Maven wrapper pour Windows
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // Analyser le code avec SonarQube
+                    bat "mvn sonar:sonar -Dsonar.projectKey=TestAnalyse-service -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_TOKEN}"
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Créer l'image Docker
+                    bat "docker build -t ${env.DOCKER_IMAGE} ./TestAnalyse-service"
+                }
+            }
+        }
+
+        stage('Docker Run') {
+            steps {
+                script {
+                    // Lancer le conteneur Docker
+                    bat """
+                    docker run -d -p 8044:8044 ${env.DOCKER_IMAGE}
+                    """
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()  // Nettoie l'espace de travail après chaque exécution
+        }
+        failure {
+            echo "Le pipeline a échoué. Veuillez vérifier les logs."
+        }
+    }
+}
