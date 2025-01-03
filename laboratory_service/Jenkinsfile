@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Analyser le code avec SonarQube
-                    bat "mvn sonar:sonar -Dsonar.projectKey=laboratory-service -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_TOKEN}"
+                    bat "mvn sonar:sonar -Dsonar.projectKey=laboratory_service -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_TOKEN}"
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Créer l'image Docker
-                    bat "docker build -t ${env.DOCKER_IMAGE} ./laboratory-service"
+                    bat "docker build -t ${env.DOCKER_IMAGE} ./laboratory_service"
                 }
             }
         }

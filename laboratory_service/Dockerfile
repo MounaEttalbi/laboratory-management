@@ -17,10 +17,10 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Étape 7 : Copie du fichier JAR généré
-COPY --from=build /app/target/laboratory-service-0.0.1-SNAPSHOT.jar /app/laboratory-service.jar
+COPY --from=build /app/target/laboratory_service-0.0.1-SNAPSHOT.jar /app/laboratory_service.jar
 
 # Étape 8 : Commande d'exécution
-ENTRYPOINT ["java", "-jar", "/app/laboratory-service.jar"]
+ENTRYPOINT ["java", "-jar", "/app/laboratory_service.jar"]
 
 
 EXPOSE 8089
