@@ -1,178 +1,191 @@
+/* Container principal */
 .examens-container {
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
-  background-color: #fbfefe;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background-color: #f7f9fc;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #34495e;
-  font-weight: bold;
-}
-
-.search-input {
-  display: block;
-  width: 80%;
-  margin: 0 auto 20px auto;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #2980b9;
-  box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
-}
-
-.examens-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.examen-folder {
-  background-color: #f5f9cdc5;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 250px;
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.examen-folder:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.folder-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.folder-icon {
-  font-size: 2rem;
-  margin-right: 10px;
-  color: #ceb10e;
-}
-
-.folder-details h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #2c3e50;
-  font-weight: bold;
-}
-
-.folder-details p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #7f8c8d;
-}
-
-.folder-content {
-  margin-top: 10px;
-}
-
-.folder-content p {
-  font-size: 1rem;
-  margin: 5px 0;
-  color: #34495e;
-}
-
-.folder-content .btn-delete,
-.folder-content .btn-update {
-  display: inline-block;
-  font-size: 0.9rem;
-  padding: 8px 16px;
-  margin-right: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.folder-content .btn-delete {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.folder-content .btn-delete:hover {
-  background-color: #c0392b;
-  transform: scale(1.05);
-}
-
-.folder-content .btn-update {
-  background-color: #3498db;
-  color: white;
-}
-
-.folder-content .btn-update:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
-}
-
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-dialog {
-  max-width: 500px;
-  width: 100%;
-}
-
-.modal-content {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
+/* En-tête */
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  margin-bottom: 2rem;
 }
 
-.modal-title {
-  font-size: 1.5rem;
-  color: #1b3753;
-  margin-left: 95px;
+.header-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #3a3d42;
 }
 
+/* Bouton Ajouter un examen */
 .btnAddEx {
-  background-color: #107613; /* Vert éclatant */
-  color: white; /* Texte blanc */
-  font-size: 16px; /* Taille de la police */
-  padding: 10px 20px; /* Espace intérieur */
-  border: none; /* Pas de bordure */
-  border-radius: 5px; /* Coins arrondis */
-  cursor: pointer; /* Curseur en forme de main */
-  transition: all 0.3s ease; /* Animation de transition */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
+  background-color: #0b933f;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .btnAddEx:hover {
-  background-color: #45a049; /* Vert légèrement plus foncé au survol */
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Ombre plus intense au survol */
-  transform: translateY(-2px); /* Légère élévation au survol */
+  transform: scale(1.05);
+  background-color: #28a745;
 }
 
-.btnAddEx:active {
-  background-color: #388E3C; /* Couleur plus foncée quand cliqué */
-  transform: translateY(1px); /* Légère descente au clic */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Réduction de l'ombre */
+/* Champ de recherche */
+.search-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid #d1d8e0;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #34c38f;
+}
+
+/* Liste des examens */
+.examens-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Style des dossiers */
+.examen-folder {
+  background: linear-gradient(135deg, #f5f8ccc4, #fefee1);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Animation de survol pour le dossier */
+.examen-folder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.examen-folder:hover .folder-icon {
+  transform: rotate(360deg);
+}
+
+/* En-tête du dossier */
+.folder-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.folder-icon {
+  background-color: #eacc20;
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.folder-details h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.folder-details p {
+  font-size: 1rem;
+  color: #6c757d;
+  margin: 0.3rem 0;
+}
+
+/* Style du contenu du dossier */
+.folder-content {
+  font-size: 1rem;
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.folder-content p {
+  margin: 0.5rem 0;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-delete {
+  background-color: #ff4d5b;
+  color: white;
+}
+
+.btn-update {
+  background-color: #ffc107;
+  color: black;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+.btn-delete:hover {
+  background-color: #ff2a43;
+}
+
+.btn-update:hover {
+  background-color: #ff9800;
+}
+
+/* Modale pour l'ajout */
+.modal-dialog {
+  margin-top: 10%;
+  animation: fadeIn 0.5s forwards;
+}
+
+/* Modale pour le formulaire d'update */
+.modal.fade .modal-dialog {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modale Header */
+.modal-header {
+  background-color: #050404;
+  color: white;
+}
+
+.modal-header .btn-close {
+  color: white;
+  opacity: 0.7;
+}
+
+.modal-header .btn-close:hover {
+  opacity: 1;
 }
