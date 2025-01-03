@@ -8,7 +8,7 @@ import { ExtendedKeycloakProfile, ProfilService } from '../../services/profil.se
   styleUrls: ['./technician-page.component.scss']
 })
 export class TechnicianPageComponent {
-  selectedSection: string = 'profil'; // Section par défaut
+  selectedSection: string = 'statistics'; // Section par défaut
   showConfirmation: boolean = false;
  userInfo = { nom: '', prenom: '' };
     profil: ExtendedKeycloakProfile | null = null;

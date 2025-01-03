@@ -100,6 +100,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { ResultatListComponent } from './components/resultat-service/resultat-list/resultat-list.component';
 import { ResultatAddComponent } from './components/resultat-service/resultat-add/resultat-add.component';
 import { ResultatUpdateComponent } from './components/resultat-service/resultat-update/resultat-update.component';
+import { DashboardTechnicienComponent } from './components/dashboard-technicien/dashboard-technicien.component';
 
 
 @NgModule({
@@ -153,7 +154,8 @@ import { ResultatUpdateComponent } from './components/resultat-service/resultat-
     LogoutComponent,
     ResultatListComponent,
     ResultatAddComponent,
-    ResultatUpdateComponent
+    ResultatUpdateComponent,
+    DashboardTechnicienComponent
   ],
   imports: [
     KeycloakAngularModule,    KeycloakAngularModule,

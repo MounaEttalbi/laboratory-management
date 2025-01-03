@@ -6,6 +6,11 @@
       </div>
   
       <mat-nav-list class="matnavlistSid">
+         <!-- Section Dashboard -->
+        <a mat-list-item (click)="selectSection('statistics')" [class.active]="selectedSection === 'statistics'">
+          <mat-icon matListIcon class="dashboard">dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
         <!-- Section Profil -->
         <a mat-list-item (click)="selectSection('profil')" [class.active]="selectedSection === 'profil'">
           <mat-icon matListIcon class="profil">account_circle</mat-icon>
@@ -47,6 +52,10 @@
       </div>
   
       <br />
+      <!-- Contenu de la section Dashboard -->
+      <div *ngIf="selectedSection === 'statistics'">
+        <app-dashboard-technicien></app-dashboard-technicien>
+      </div>
       <!-- Contenu de la section Profil -->
       <div *ngIf="selectedSection === 'profil'">
         <app-user-profile></app-user-profile>
