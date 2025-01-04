@@ -72,15 +72,15 @@
 }
 
 .resultat-card-header {
-  background: #3e604b;
-  color: white;
+  background: #c5eed5;
+  color: rgb(33, 32, 32);
   padding: 15px;
   font-size: 1.2rem;
 }
 
 .resultat-card-body {
   padding: 15px;
-  color: #555;
+  color: #555555;
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -106,7 +106,7 @@
 }
 
 .resultat-card-footer .btn-primary {
-  background: #016527;
+  background: #0dadbf;
   color: white;
 }
 
