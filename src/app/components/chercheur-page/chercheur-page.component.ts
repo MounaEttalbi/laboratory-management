@@ -10,7 +10,7 @@ import { ExtendedKeycloakProfile, ProfilService } from '../../services/profil.se
   styleUrl: './chercheur-page.component.css'
 })
 export class ChercheurPageComponent {
-selectedSection: string = 'profil'; // Section par défaut
+selectedSection: string = 'statistics'; // Section par défaut
 showConfirmation: boolean = false;
 
   userInfo = { nom: '', prenom: '' };
